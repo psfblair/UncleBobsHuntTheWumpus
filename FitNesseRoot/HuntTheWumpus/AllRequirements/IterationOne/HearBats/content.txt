@@ -1,4 +1,34 @@
-!3 When the player is adjacent to a cavern with bats, he should hear chirping sounds.
+When the player is adjacent to a cavern with bats, he should hear chirping sounds.
 
-|tbd|
+!include <HuntTheWumpus.CrossMap
 
+!define HEAR {You hear chirping.}
+
+!|script|
+|put|bats|in cavern|3|
+|put|player|in cavern|5|
+|enter command|w|
+|check|message|${HEAR}|was printed|true|
+|enter command|e|
+|check|message|${HEAR}|was printed|false|
+||
+||''Approach going North.''|
+|put|player|in cavern|9|
+|enter command|n|
+|check|message|${HEAR}|was printed|true|
+|enter command|s|
+|check|message|${HEAR}|was printed|false|
+||
+||''Approach going East.''|
+|put|player|in cavern|1|
+|enter command|e|
+|check|message|${HEAR}|was printed|true|
+|enter command|w|
+|check|message|${HEAR}|was printed|false|
+||
+||''Approach going South.''|
+|put|player|in cavern|6|
+|enter command|s|
+|check|message|${HEAR}|was printed|true|
+|enter command|n|
+|check|message|${HEAR}|was printed|false|
