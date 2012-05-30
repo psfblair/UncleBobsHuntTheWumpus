@@ -1,6 +1,7 @@
 package HuntTheWumpus;
 
 import HuntTheWumpus.CommandInterpreter.EnglishCommandInterpreter;
+import HuntTheWumpus.Commands.GameController;
 import junit.framework.TestCase;
 import static HuntTheWumpus.Game.*;
 import HuntTheWumpus.fixtures.MockConsole;

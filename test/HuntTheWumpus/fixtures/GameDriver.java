@@ -2,6 +2,7 @@ package HuntTheWumpus.fixtures;
 
 import HuntTheWumpus.*;
 import HuntTheWumpus.CommandInterpreter.EnglishCommandInterpreter;
+import HuntTheWumpus.Commands.GameController;
 
 public class GameDriver {
   public static GameController gameController;
@@ -40,8 +41,8 @@ public class GameDriver {
     }
     return false;
   }
-  public boolean enterCommand(String command) {
-    return gameController.execute(command);
+  public void enterCommand(String command) {
+    gameController.execute(command);
   }
 
   public boolean cavernHas(int cavern, String what) {

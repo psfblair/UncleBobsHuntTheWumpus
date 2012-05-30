@@ -1,6 +1,7 @@
 package HuntTheWumpus;
 
 import HuntTheWumpus.CommandInterpreter.EnglishCommandInterpreter;
+import HuntTheWumpus.Commands.GameController;
 
 import java.io.*;
 import static HuntTheWumpus.Game.*;

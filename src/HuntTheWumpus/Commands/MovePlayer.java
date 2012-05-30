@@ -7,6 +7,10 @@ public class MovePlayer implements Command {
     this.direction = direction;
   }
 
+  public void Dispatch(GameController controller) {
+    controller.invoke(this);
+  }
+
   public String getDirection() {
     return direction;
   }

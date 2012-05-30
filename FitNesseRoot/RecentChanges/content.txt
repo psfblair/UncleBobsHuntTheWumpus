@@ -1,3 +1,4 @@
+|HuntTheWumpus.AllRequirements.IterationOne.NavigatePlayer.TestInvalidCommand||18:57:33 Wed, May 30, 2012|
 |HuntTheWumpus.AllRequirements.IterationOne.HearBats||14:10:16 Wed, May 30, 2012|
 |HuntTheWumpus.AllRequirements.IterationOne.BatTransportRandomly||13:41:17 Wed, May 30, 2012|
 |HuntTheWumpus.SetUp||19:11:39 Sat, Mar 13, 2010|

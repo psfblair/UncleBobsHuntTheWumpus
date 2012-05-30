@@ -1,5 +1,6 @@
 |script|
-|reject|enter command|zorch|
+|note|!meta Original test used return value of execute, which has been removed, so we're not checking it. The actual program doesn't use it.|
+|enter command|zorch|
 |ensure|message|I don't know how to zorch.|was printed|
 ||
 |note|!meta Make sure valid commands don't cause error messages.|

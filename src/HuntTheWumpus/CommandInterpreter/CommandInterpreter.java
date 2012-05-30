@@ -26,7 +26,7 @@ public abstract class CommandInterpreter {
   protected Map<Commands, String> commandTranslations = new HashMap();
 
   public Command getCommand(String commandString) {
-    Command command = new UnknownCommand();
+    Command command = new UnknownCommand(commandString);
     String[] tokens = tokenizeInput(commandString);
 
     if (isRestCommand(tokens))
