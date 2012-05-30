@@ -1,15 +1,16 @@
 package HuntTheWumpus.fixtures;
 
 import HuntTheWumpus.*;
+import HuntTheWumpus.CommandInterpreter.EnglishCommandInterpreter;
 
 public class GameDriver {
-  public static GameController p;
+  public static GameController gameController;
   private MockConsole mc;
   public static Game g;
 
   public GameDriver() {
-    p = new GameController(mc = new MockConsole());
-    g = p.getGame();
+    gameController = new GameController(mc = new MockConsole(), new EnglishCommandInterpreter());
+    g = gameController.getGame();
   }
 
 
@@ -40,7 +41,7 @@ public class GameDriver {
     return false;
   }
   public boolean enterCommand(String command) {
-    return p.execute(command);
+    return gameController.execute(command);
   }
 
   public boolean cavernHas(int cavern, String what) {

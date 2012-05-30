@@ -1,5 +1,6 @@
 package HuntTheWumpus;
 
+import HuntTheWumpus.CommandInterpreter.EnglishCommandInterpreter;
 import junit.framework.TestCase;
 import static HuntTheWumpus.Game.*;
 import HuntTheWumpus.fixtures.MockConsole;
@@ -8,11 +9,11 @@ public class GameControllerTest extends TestCase {
   private GameController controller;
   private MockConsole mc;
   private Game game;
-  private GamePresenter presenter;
+  private PresentationBoundary presenter;
 
   protected void setUp() throws Exception {
     mc = new MockConsole();
-    controller = new GameController(mc);
+    controller = new GameController(mc, new EnglishCommandInterpreter());
     game = controller.getGame();
     presenter = new GamePresenter(mc, game);
   }
@@ -31,20 +32,23 @@ public class GameControllerTest extends TestCase {
 
   public void testAvailableDirectionsWithNoPlaceToGo() {
     game.putPlayerInCavern(1);
-    assertEquals("There are no exits!", presenter.getAvailableDirections());
+    presenter.printAvailableDirections();
+    assertTrue(mc.check("There are no exits!"));
   }
 
   public void testSouthIsAvailable() throws Exception {
     game.addPath(1, 2, SOUTH);
     game.putPlayerInCavern(1);
-    assertEquals("You can go south from here.", presenter.getAvailableDirections());
+    presenter.printAvailableDirections();
+    assertTrue(mc.check("You can go south from here."));
   }
 
   public void testNortAndSouthAvailable() throws Exception {
     game.addPath(1, 2, SOUTH);
     game.addPath(1, 3, NORTH);
     game.putPlayerInCavern(1);
-    assertEquals("You can go north and south from here.", presenter.getAvailableDirections());
+    presenter.printAvailableDirections();
+    assertTrue(mc.check("You can go north and south from here."));
   }
 
   public void testFourDirections() throws Exception {
@@ -53,6 +57,7 @@ public class GameControllerTest extends TestCase {
     game.addPath(1, 4, SOUTH);
     game.addPath(1, 5, NORTH);
     game.putPlayerInCavern(1);
-    assertEquals("You can go north, south, east and west from here.", presenter.getAvailableDirections());
+    presenter.printAvailableDirections();
+    assertTrue(mc.check("You can go north, south, east and west from here."));
   }
 }

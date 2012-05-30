@@ -1,5 +1,7 @@
 package HuntTheWumpus;
 
+import HuntTheWumpus.CommandInterpreter.EnglishCommandInterpreter;
+
 import java.io.*;
 import static HuntTheWumpus.Game.*;
 public class Runner {
@@ -8,7 +10,7 @@ public class Runner {
       public void print(String message) {
         System.out.println(message);
       }
-    });
+    }, new EnglishCommandInterpreter());
     Game g = p.getGame();
 
     g.addPath(1,2,EAST);

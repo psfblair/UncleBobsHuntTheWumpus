@@ -1,6 +1,6 @@
 package HuntTheWumpus;
 
-public class GamePresenter {
+public class GamePresenter implements PresentationBoundary {
   private Console console;
   private Game game;
 
@@ -22,11 +22,11 @@ public class GamePresenter {
       return "tilt";
   }
 
-  void printUnknownCommand(String command) {
+  public void printUnknownCommand(String command) {
     console.print("I don't know how to " + command + ".");
   }
 
-  protected void printEndOfTurnMessages(int arrowsInQuiver) {
+  public void printEndOfTurnMessages(int arrowsInQuiver) {
     if (game.gameTerminated()) {
       printCauseOfTermination();
       console.print("Game over.");
@@ -39,6 +39,23 @@ public class GamePresenter {
       printBatSounds();
       printAvailableDirections();
     }
+  }
+
+  public void printShotArrow() {
+    console.print("The arrow flies away in silence.");
+  }
+
+  public void printNoArrows() {
+    console.print("You don't have any arrows.");
+  }
+
+  public void printCannotMove(String direction) {
+    console.print("You can't go " + GamePresenter.directionName(direction) + " from here.");
+  }
+
+  //Only really needed package level for testing
+  public void printAvailableDirections() {
+    console.print(getAvailableDirections());
   }
 
   private void printTransportMessage() {
@@ -56,10 +73,6 @@ public class GamePresenter {
   private void printPitSounds() {
     if (game.canHearPit())
       console.print("You hear wind.");
-  }
-
-  private void printAvailableDirections() {
-    console.print(getAvailableDirections());
   }
 
   private void printWumpusOdor() {
@@ -82,18 +95,6 @@ public class GamePresenter {
       console.print("You found an arrow.");
   }
 
-  void printShotArrow() {
-    console.print("The arrow flies away in silence.");
-  }
-
-  void printNoArrows() {
-    console.print("You don't have any arrows.");
-  }
-
-  void printCannotMove(String direction) {
-    console.print("You can't go " + GamePresenter.directionName(direction) + " from here.");
-  }
-
   private void printCauseOfTermination() {
     if (game.wasKilledByArrowBounce())
       console.print("The arrow bounced off the wall and killed you.");
@@ -107,7 +108,7 @@ public class GamePresenter {
       console.print("You were hit by your own arrow.");
   }
 
-  public String getAvailableDirections() {
+  private String getAvailableDirections() {
     AvailableDirections directions = new AvailableDirections();
 
     for (Game.Path p : game.paths) {
@@ -117,5 +118,4 @@ public class GamePresenter {
     }
     return directions.toString();
   }
-
 }

@@ -1,69 +1,50 @@
 package HuntTheWumpus;
 
+import HuntTheWumpus.CommandInterpreter.CommandInterpreter;
+import HuntTheWumpus.Commands.Command;
+import HuntTheWumpus.Commands.MovePlayer;
+import HuntTheWumpus.Commands.Rest;
+import HuntTheWumpus.Commands.ShootArrow;
+
 public class GameController {
 
-  private Console console;
-  private final Game game = new Game();
-    private GamePresenter presenter;
+  private final Game game = new Game();;
+  private PresentationBoundary presenter;
+  private CommandInterpreter interpreter;
 
-    public GameController() {
-    this(null);
-  }
-
-  public GameController(Console console) {
-    this.console = console;
+  public GameController(Console console, CommandInterpreter interpreter) {
+    this.interpreter = interpreter;
     presenter = new GamePresenter(console, game);
   }
 
-  public boolean execute(String command) {
+  public boolean execute(String commandString) {
     boolean valid = true;
-    int arrowsInQuiver = game.getQuiver();
-    String[] tokens = command.toLowerCase().split(" ");
-    if (isShootCommand(tokens))
-      shootArrow(directionFromName(tokens[1]));
-    else if (isSingleWordShootCommand(tokens))
-      shootArrow(directionFromName(tokens[0].substring(1)));
-    else if (isGoCommand(tokens))
-      movePlayer(directionFromName(tokens[1]));
-    else if (isRestCommand(tokens))
+    int quiver = game.getQuiver();
+    Command theCommand = interpreter.getCommand(commandString);
+    if (isShootCommand(theCommand))
+      shootArrow( ((ShootArrow) theCommand).getDirection()  );
+    else if (isGoCommand(theCommand))
+      movePlayer( ((MovePlayer) theCommand).getDirection()  );
+    else if (isRestCommand(theCommand)) {
       game.rest();
-    else if (isImplicitGoCommand(tokens)) {
-      String direction = directionFromName(tokens[0]);
-      if (direction != null)
-        movePlayer(direction);
     } else {
-        presenter.printUnknownCommand(command);
-        valid = false;
+      presenter.printUnknownCommand(commandString);
+      valid = false;
     }
 
-    presenter.printEndOfTurnMessages(arrowsInQuiver);
+    presenter.printEndOfTurnMessages(quiver);
     return valid;
   }
 
-    private boolean isSingleWordShootCommand(String[] tokens) {
-    return tokens[0].charAt(0) == 's' &&
-           directionFromName(tokens[0].substring(1)) != null;
+  private boolean isShootCommand(Command command) {
+    return command instanceof ShootArrow;
   }
 
-  private boolean isImplicitGoCommand(String[] tokens) {
-    return tokens.length == 1 &&
-           directionFromName(tokens[0]) != null;
+  private boolean isGoCommand(Command command) {
+    return command instanceof MovePlayer;
   }
-
-  private boolean isRestCommand(String[] tokens) {
-    return tokens[0].equals("r") ||
-           tokens[0].equals("rest");
-  }
-
-  private boolean isGoCommand(String[] tokens) {
-    return tokens.length == 2 &&
-           tokens[0].equals("go");
-  }
-
-  private boolean isShootCommand(String[] tokens) {
-    return tokens.length == 2 &&
-           (tokens[0].equals("shoot") ||
-            tokens[0].equals("s"));
+  private boolean isRestCommand(Command command) {
+    return command instanceof Rest;
   }
 
   private void shootArrow(String direction) {
@@ -73,23 +54,14 @@ public class GameController {
       presenter.printShotArrow();
   }
 
-
   private void movePlayer(String direction) {
     if (game.move(direction) == false)
       presenter.printCannotMove(direction);
   }
 
-  private String directionFromName(String name) {
-    if (name.equals("e") || name.equals("east")) return Game.EAST;
-    else if (name.equals("w") || name.equals("west")) return Game.WEST;
-    else if (name.equals("n") || name.equals("north")) return Game.NORTH;
-    else if (name.equals("s") || name.equals("south")) return Game.SOUTH;
-    else return null;
-  }
-
-    public Game getGame() {
+  public Game getGame() {
     return game;
   }
 
-} // public class GamePresenter
+}
 

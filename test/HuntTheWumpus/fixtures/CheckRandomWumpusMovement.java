@@ -1,7 +1,7 @@
 package HuntTheWumpus.fixtures;
 
 import static HuntTheWumpus.fixtures.GameDriver.g;
-import static HuntTheWumpus.fixtures.GameDriver.p;
+import static HuntTheWumpus.fixtures.GameDriver.gameController;
 
 public class CheckRandomWumpusMovement {
   private int carvernCounts[] = new int[6];
@@ -11,7 +11,7 @@ public class CheckRandomWumpusMovement {
     int wumpusCavern = 2;
     for (int i = 0; i < 1000; i++) {
       g.putWumpusInCavern(wumpusCavern);
-      p.execute("R");
+      gameController.execute("R");
       carvernCounts[g.getWumpusCavern()]++;
     }
   }
