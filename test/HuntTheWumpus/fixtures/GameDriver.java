@@ -3,12 +3,12 @@ package HuntTheWumpus.fixtures;
 import HuntTheWumpus.*;
 
 public class GameDriver {
-  public static GamePresenter p;
+  public static GameController p;
   private MockConsole mc;
   public static Game g;
 
   public GameDriver() {
-    p = new GamePresenter(mc = new MockConsole());
+    p = new GameController(mc = new MockConsole());
     g = p.getGame();
   }
 

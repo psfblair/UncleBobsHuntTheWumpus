@@ -4,7 +4,7 @@ import java.io.*;
 import static HuntTheWumpus.Game.*;
 public class Runner {
   public static void main(String[] args) throws Exception {
-    GamePresenter p = new GamePresenter(new Console() {
+    GameController p = new GameController(new Console() {
       public void print(String message) {
         System.out.println(message);
       }
