@@ -25,13 +25,13 @@ public class GameControllerTest extends TestCase {
 
   public void testDirectionErrorMessages() throws Exception {
     game.gameMap.putPlayerInCavern(1);
-    controller.execute(GameMap.EAST);
+    controller.execute(GameCaverns.EAST);
     assertTrue(mc.check("You can't go east from here."));
-    controller.execute(GameMap.WEST);
+    controller.execute(GameCaverns.WEST);
     assertTrue(mc.check("You can't go west from here."));
-    controller.execute(GameMap.SOUTH);
+    controller.execute(GameCaverns.SOUTH);
     assertTrue(mc.check("You can't go south from here."));
-    controller.execute(GameMap.NORTH);
+    controller.execute(GameCaverns.NORTH);
     assertTrue(mc.check("You can't go north from here."));
   }
 
@@ -45,23 +45,23 @@ public class GameControllerTest extends TestCase {
 
   public void testSouthIsAvailable() throws Exception {
     game.initializeResponseModel();
-    game.gameMap.addPath(1, 2, GameMap.SOUTH);
+    game.gameMap.addPath(1, 2, GameCaverns.SOUTH);
     game.gameMap.putPlayerInCavern(1);
     Set<String> expected = (new HashSet<String>());
-    expected.add(GameMap.SOUTH);
+    expected.add(GameCaverns.SOUTH);
     Set<String> availableDirections = game.finalizeResponseModel().getAvailableDirections();
     assertEquals(expected, availableDirections);
   }
 
   public void testNorthAndSouthAvailable() throws Exception {
     game.initializeResponseModel();
-    game.gameMap.addPath(1, 2, GameMap.SOUTH);
-    game.gameMap.addPath(1, 3, GameMap.NORTH);
+    game.gameMap.addPath(1, 2, GameCaverns.SOUTH);
+    game.gameMap.addPath(1, 3, GameCaverns.NORTH);
     game.gameMap.putPlayerInCavern(1);
 
     Set<String> expected = (new HashSet<String>());
-    expected.add(GameMap.SOUTH);
-    expected.add(GameMap.NORTH);
+    expected.add(GameCaverns.SOUTH);
+    expected.add(GameCaverns.NORTH);
 
     Set<String>  availableDirections = game.finalizeResponseModel().getAvailableDirections();
     assertEquals(expected, availableDirections);
@@ -69,17 +69,17 @@ public class GameControllerTest extends TestCase {
 
   public void testFourDirections() throws Exception {
     game.initializeResponseModel();
-    game.gameMap.addPath(1, 2, GameMap.EAST);
-    game.gameMap.addPath(1, 3, GameMap.WEST);
-    game.gameMap.addPath(1, 4, GameMap.SOUTH);
-    game.gameMap.addPath(1, 5, GameMap.NORTH);
+    game.gameMap.addPath(1, 2, GameCaverns.EAST);
+    game.gameMap.addPath(1, 3, GameCaverns.WEST);
+    game.gameMap.addPath(1, 4, GameCaverns.SOUTH);
+    game.gameMap.addPath(1, 5, GameCaverns.NORTH);
     game.gameMap.putPlayerInCavern(1);
 
     Set<String> expected = (new HashSet<String>());
-    expected.add(GameMap.SOUTH);
-    expected.add(GameMap.EAST);
-    expected.add(GameMap.WEST);
-    expected.add(GameMap.NORTH);
+    expected.add(GameCaverns.SOUTH);
+    expected.add(GameCaverns.EAST);
+    expected.add(GameCaverns.WEST);
+    expected.add(GameCaverns.NORTH);
 
     Set<String> availableDirections = game.finalizeResponseModel().getAvailableDirections();
     assertEquals(expected, availableDirections);

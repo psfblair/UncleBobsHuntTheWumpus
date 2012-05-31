@@ -5,20 +5,94 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class GameMap {
+public class GameCaverns {
   public static final String EAST = "e";
   public static final String WEST = "w";
   public static final String NORTH = "n";
   public static final String SOUTH = "s";
 
-  public List<Path> paths = new ArrayList<Path>();
+  // * Moves to Player * //
   public int playerCavern = -1;
+
+  public void putPlayerInCavern(int cavern) {
+    playerCavern = cavern;
+  }
+
+  public int playerCavern(Game game) { //Also used in Game start
+    return playerCavern;
+  }
+
+  boolean isPlayerCavern(int nextCavern) {
+    return nextCavern == playerCavern;
+  }
+
+  void putPlayerInRandomCavern() {
+    Path selectedPath = paths.get((int) (Math.random() * paths.size()));
+    playerCavern = selectedPath.start;
+  }
+
+  boolean playerIsInWumpusCavern() {
+    return playerCavern == wumpusCavern;
+  }
+
+  boolean playerIsInCavernWithPit() {
+    return pits.contains(playerCavern);
+  }
+
+  boolean playerIsInCavernWithBats() {
+    return bats.contains(playerCavern);
+  }
+
+  boolean arrowIsInCavernWithPlayer() {
+    return arrowInCavern(playerCavern);
+  }
+
+  void roomNoLongerContainsArrow() {
+    removeArrowFrom(playerCavern);
+  }
+
+  public boolean playerIsInCavernNextToWumpus() {
+    return areAdjacent(playerCavern, wumpusCavern);
+  }
+
+  public boolean playerIsInCavernNextToPit() {
+    for (int pit : pits)
+      if (areAdjacent(playerCavern, pit))
+        return true;
+    return false;
+  }
+
+  public boolean playerIsInCavernNextToBats() {
+    return isCavernNextTo(playerCavern, bats);
+  }
+  // * End Player * //
+
+  // * Moves to Wumpus * //
   public int wumpusCavern = -1;
+
+  public int getWumpusCavern() {
+    return wumpusCavern;
+  }
+
+  public void putWumpusInCavern(int where) {
+    wumpusCavern = where;
+  }
+
+  boolean isWumpusCavern(int nextCavern) {
+    return nextCavern == wumpusCavern;
+  }
+
+  void moveWumpusTo(int selectedMove) {
+    wumpusCavern = selectedMove;
+  }
+  // * End Wumpus * //
+
+  public List<Path> paths = new ArrayList<Path>();
   private ArrayList<Integer> arrows = new ArrayList<Integer>();
   public ArrayList<Integer> pits = new ArrayList<Integer>();
   public ArrayList<Integer> bats = new ArrayList<Integer>();
 
-  public GameMap() {
+  public GameCaverns() {
   }
 
   public void addPath(int start, int end, String direction) throws Exception {
@@ -45,28 +119,40 @@ public class GameMap {
     paths.add(p);
   }
 
-  public void putPlayerInCavern(int cavern) {
-    playerCavern = cavern;
-  }
-
-  public void putWumpusInCavern(int where) {
-    wumpusCavern = where;
+  public int getRandomPathStart() {
+    Path selectedPath =  paths.get((int) (Math.random() * paths.size()));
+    return selectedPath.start;
   }
 
   public void putPitInCavern(int cavern) {
     pits.add(cavern);
   }
 
+  boolean isCavernWithPit(int cavern) {
+    return pits.contains(cavern);
+  }
+
+  boolean isCavernNextToPit(int cavern) {
+    return isCavernNextTo(cavern, pits);
+  }
+
   public void putBatsInCavern(int cavern) {
     bats.add(cavern);
   }
 
-  public int playerCavern(Game game) { //Also used in Game start
-    return playerCavern;
+  public boolean isCavernWithBats(int cavern) {
+    return bats.contains(cavern);
   }
 
-  public int getWumpusCavern() {
-    return wumpusCavern;
+  boolean isCavernNextToBats(int cavern) {
+    return isCavernNextTo(cavern, bats);
+  }
+
+  private boolean isCavernNextTo(int cavern, ArrayList<Integer> hazards) {
+    for (int hazard : hazards)
+      if (areAdjacent(hazard, cavern))
+        return true;
+    return false;
   }
 
   Set getAvailableDirections() {
@@ -78,26 +164,6 @@ public class GameMap {
       }
     }
     return directions;
-  }
-
-  boolean playerIsInWumpusCavern() {
-    return playerCavern == wumpusCavern;
-  }
-
-  boolean playerIsInCavernWithPit() {
-    return pits.contains(playerCavern);
-  }
-
-  boolean playerIsInCavernWithBats() {
-    return bats.contains(playerCavern);
-  }
-
-  boolean arrowIsInCavernWithPlayer() {
-    return arrowInCavern(playerCavern);
-  }
-
-  void roomNoLongerContainsArrow() {
-    removeArrowFrom(playerCavern);
   }
 
   boolean arrowInCavern(int cavern) {
@@ -119,6 +185,10 @@ public class GameMap {
     arrows.add(cavern);
   }
 
+  public boolean isInCavernWithArrow(int cavern) {
+    return arrowInCavern(cavern);
+  }
+
   void removeArrowFrom(int cavern) {
     for (int i = 0; i < arrows.size(); i++) {
       int c = arrows.get(i);
@@ -136,23 +206,6 @@ public class GameMap {
     return 0;
   }
 
-  public boolean playerIsInCavernNextToWumpus() {
-    return areAdjacent(playerCavern, wumpusCavern);
-  }
-
-  public boolean playerIsInCavernNextToPit() {
-    for (int pit : pits)
-      if (areAdjacent(playerCavern, pit))
-        return true;
-    return false;
-  }
-
-  public boolean playerIsInCavernNextToBats() {
-    for (int batCave : bats)
-      if (areAdjacent(batCave, playerCavern))
-        return true;
-    return false;
-  }
 
   boolean areAdjacent(int c1, int c2) {
     for (Path p : paths) {
@@ -162,25 +215,8 @@ public class GameMap {
     return false;
   }
 
-  void putPlayerInRandomCavern(Game game) {
-    Path selectedPath = paths.get((int) (Math.random() * paths.size()));
-    playerCavern = selectedPath.start;
-  }
-
   boolean thereIsAWallInDirection(String direction) {
     return adjacentTo(direction, playerCavern) == 0;
-  }
-
-  boolean isPlayerCavern(int nextCavern) {
-    return nextCavern == playerCavern;
-  }
-
-  boolean isWumpusCavern(int nextCavern) {
-    return nextCavern == wumpusCavern;
-  }
-
-  void moveWumpusTo(int selectedMove) {
-    wumpusCavern = selectedMove;
   }
 
   class Path {

@@ -1,6 +1,6 @@
 package HuntTheWumpus.Command;
 
-import HuntTheWumpus.GameMap;
+import HuntTheWumpus.GameCaverns;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -86,10 +86,10 @@ public abstract class CommandInterpreter {
   }
 
   private String directionFromName(String name) {
-    if (name.equals(east()) || name.equals(verboseEast())) return GameMap.EAST;
-    else if (name.equals(west()) || name.equals(verboseWest())) return GameMap.WEST;
-    else if (name.equals(north()) || name.equals(verboseNorth())) return GameMap.NORTH;
-    else if (name.equals(south()) || name.equals(verboseSouth())) return GameMap.SOUTH;
+    if (name.equals(east()) || name.equals(verboseEast())) return GameCaverns.EAST;
+    else if (name.equals(west()) || name.equals(verboseWest())) return GameCaverns.WEST;
+    else if (name.equals(north()) || name.equals(verboseNorth())) return GameCaverns.NORTH;
+    else if (name.equals(south()) || name.equals(verboseSouth())) return GameCaverns.SOUTH;
     else return null;
   }
 

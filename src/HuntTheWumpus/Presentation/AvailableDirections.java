@@ -1,6 +1,6 @@
 package HuntTheWumpus.Presentation;
 
-import HuntTheWumpus.GameMap;
+import HuntTheWumpus.GameCaverns;
 
 import java.util.Set;
 
@@ -26,7 +26,7 @@ class AvailableDirections {
     available = new StringBuffer();
     nDirections = directions.size();
     directionsPlaced = 0;
-    for (String dir : new String[]{GameMap.NORTH, GameMap.SOUTH, GameMap.EAST, GameMap.WEST}) {
+    for (String dir : new String[]{GameCaverns.NORTH, GameCaverns.SOUTH, GameCaverns.EAST, GameCaverns.WEST}) {
       if (directions.contains(dir)) {
         placeDirection(dir);
       }

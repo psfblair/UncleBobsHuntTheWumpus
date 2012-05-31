@@ -12,7 +12,7 @@ public class Game {
   private boolean wumpusFrozen = false;
   private boolean batTransport = false;
   private ResponseModel responseModel;
-  public final GameMap gameMap = new GameMap();
+  public final GameCaverns gameMap = new GameCaverns();
 
   public void invoke(MovePlayer theCommand, Presentation presenter) {
     initializeResponseModel();
@@ -93,7 +93,7 @@ public class Game {
   }
 
   private void transportPlayer() {
-    gameMap.putPlayerInRandomCavern(this);
+    gameMap.putPlayerInRandomCavern();
   }
 
   private void pickUpArrow() {
@@ -109,7 +109,7 @@ public class Game {
 
   // FOR TESTING
 
-  public GameMap getGameMap() {
+  public GameCaverns getGameMap() {
     return gameMap;
   }
 
@@ -176,10 +176,10 @@ public class Game {
     if (wumpusFrozen)
       return;
     List<Integer> moves = new ArrayList<Integer>();
-    addPossibleMove(GameMap.EAST, moves);
-    addPossibleMove(GameMap.WEST, moves);
-    addPossibleMove(GameMap.NORTH, moves);
-    addPossibleMove(GameMap.SOUTH, moves);
+    addPossibleMove(GameCaverns.EAST, moves);
+    addPossibleMove(GameCaverns.WEST, moves);
+    addPossibleMove(GameCaverns.NORTH, moves);
+    addPossibleMove(GameCaverns.SOUTH, moves);
     moves.add(0); // rest;
 
     int selection = (int) (Math.random() * moves.size());
