@@ -1,4 +1,4 @@
-package HuntTheWumpus;
+package HuntTheWumpus.Core;
 
 import HuntTheWumpus.Command.EnglishCommandInterpreter;
 import HuntTheWumpus.Command.GameController;

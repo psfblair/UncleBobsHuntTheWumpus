@@ -1,4 +1,4 @@
-package HuntTheWumpus;
+package HuntTheWumpus.Core;
 
 public class Player {
   public int playerCavern = -1;

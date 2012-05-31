@@ -1,2 +1,2 @@
-java -cp classes HuntTheWumpus.Runner
+java -cp classes HuntTheWumpus.Core.Runner
 

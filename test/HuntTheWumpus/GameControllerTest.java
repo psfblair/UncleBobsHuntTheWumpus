@@ -2,10 +2,11 @@ package HuntTheWumpus;
 
 import HuntTheWumpus.Command.EnglishCommandInterpreter;
 import HuntTheWumpus.Command.GameController;
-import HuntTheWumpus.Presentation.GamePresenter;
+import HuntTheWumpus.Core.Game;
+import HuntTheWumpus.Core.GameCaverns;
 import HuntTheWumpus.Presentation.Presentation;
-import junit.framework.TestCase;
 import HuntTheWumpus.fixtures.MockConsole;
+import junit.framework.TestCase;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -15,14 +16,17 @@ public class GameControllerTest extends TestCase {
   private MockConsole mc;
   private Game game;
   private Presentation presenter;
+  private GameCaverns caverns;
 
   protected void setUp() throws Exception {
     mc = new MockConsole();
     controller = new GameController(mc, new EnglishCommandInterpreter());
     game = controller.getGame();
-    presenter = new GamePresenter(mc);
+    presenter = controller.getPresenter();
+    caverns = new GameCaverns();
   }
 
+  // TODO - This is presentation layer test - move
   public void testDirectionErrorMessages() throws Exception {
     game.getPlayer().putPlayerInCavern(1);
     controller.execute(GameCaverns.EAST);
@@ -36,44 +40,36 @@ public class GameControllerTest extends TestCase {
   }
 
   public void testAvailableDirectionsWithNoPlaceToGo() {
-    game.initializeResponseModel();
-    game.getPlayer().putPlayerInCavern(1);
     Set<String> expected = (new HashSet<String>());
-    Set<String> availableDirections = game.finalizeResponseModel().getAvailableDirections();
+    Set<String> availableDirections = caverns.getAvailableDirectionsFrom(1);
     assertEquals(expected, availableDirections);
   }
 
   public void testSouthIsAvailable() throws Exception {
-    game.initializeResponseModel();
-    game.gameCaverns.addPath(1, 2, GameCaverns.SOUTH);
-    game.getPlayer().putPlayerInCavern(1);
+    caverns.addPath(1, 2, GameCaverns.SOUTH);
     Set<String> expected = (new HashSet<String>());
     expected.add(GameCaverns.SOUTH);
-    Set<String> availableDirections = game.finalizeResponseModel().getAvailableDirections();
+    Set<String> availableDirections = caverns.getAvailableDirectionsFrom(1);
     assertEquals(expected, availableDirections);
   }
 
   public void testNorthAndSouthAvailable() throws Exception {
-    game.initializeResponseModel();
-    game.gameCaverns.addPath(1, 2, GameCaverns.SOUTH);
-    game.gameCaverns.addPath(1, 3, GameCaverns.NORTH);
-    game.getPlayer().putPlayerInCavern(1);
+    caverns.addPath(1, 2, GameCaverns.SOUTH);
+    caverns.addPath(1, 3, GameCaverns.NORTH);
 
     Set<String> expected = (new HashSet<String>());
     expected.add(GameCaverns.SOUTH);
     expected.add(GameCaverns.NORTH);
 
-    Set<String>  availableDirections = game.finalizeResponseModel().getAvailableDirections();
+    Set<String>  availableDirections = caverns.getAvailableDirectionsFrom(1);
     assertEquals(expected, availableDirections);
   }
 
   public void testFourDirections() throws Exception {
-    game.initializeResponseModel();
-    game.gameCaverns.addPath(1, 2, GameCaverns.EAST);
-    game.gameCaverns.addPath(1, 3, GameCaverns.WEST);
-    game.gameCaverns.addPath(1, 4, GameCaverns.SOUTH);
-    game.gameCaverns.addPath(1, 5, GameCaverns.NORTH);
-    game.getPlayer().putPlayerInCavern(1);
+    caverns.addPath(1, 2, GameCaverns.EAST);
+    caverns.addPath(1, 3, GameCaverns.WEST);
+    caverns.addPath(1, 4, GameCaverns.SOUTH);
+    caverns.addPath(1, 5, GameCaverns.NORTH);
 
     Set<String> expected = (new HashSet<String>());
     expected.add(GameCaverns.SOUTH);
@@ -81,7 +77,7 @@ public class GameControllerTest extends TestCase {
     expected.add(GameCaverns.WEST);
     expected.add(GameCaverns.NORTH);
 
-    Set<String> availableDirections = game.finalizeResponseModel().getAvailableDirections();
+    Set<String> availableDirections = caverns.getAvailableDirectionsFrom(1);
     assertEquals(expected, availableDirections);
   }
 }

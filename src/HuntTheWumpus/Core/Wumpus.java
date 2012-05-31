@@ -1,4 +1,4 @@
-package HuntTheWumpus;
+package HuntTheWumpus.Core;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,8 @@
 package HuntTheWumpus.Command;
 
-import HuntTheWumpus.GameCaverns;
+import HuntTheWumpus.Core.Game;
+import HuntTheWumpus.Core.GameCaverns;
+import HuntTheWumpus.Presentation.Presentation;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,23 +26,23 @@ public abstract class CommandInterpreter {
   
   protected Map<Commands, String> commandTranslations = new HashMap();
 
-  public Command getCommand(String commandString) {
-    Command command = new UnknownCommand(commandString);
+  public Command getCommand(String commandString, Game game, Presentation presenter) {
+    Command command = new UnknownCommand(game, presenter, commandString);
     String[] tokens = tokenizeInput(commandString);
 
     if (isRestCommand(tokens))
-      command = new Rest();
+      command = new Rest(game, presenter);
     else if (isShootCommand(tokens)) {
-      command = createShootCommand(command, tokens[1]);
+      command = createShootCommand(command, tokens[1], game, presenter);
     }
     else if (isSingleWordShootCommand(tokens)) {
-      command = createShootCommand(command, tokens[0].substring(1));
+      command = createShootCommand(command, tokens[0].substring(1), game, presenter);
     }
     else if (isGoCommand(tokens)) {
-      command = createGoCommand(command, tokens[1]);
+      command = createGoCommand(command, tokens[1], game, presenter);
     }
     else if (isImplicitGoCommand(tokens)) {
-      command = createGoCommand(command, tokens[0]);
+      command = createGoCommand(command, tokens[0], game, presenter);
     }
 
     return command;
@@ -63,10 +65,10 @@ public abstract class CommandInterpreter {
     return tokens[0].charAt(0) == shootChar() && directionFromName(tokens[0].substring(1)) != null;
   }
 
-  private Command createShootCommand(Command command, String token) {
+  private Command createShootCommand(Command command, String token, Game game, Presentation presenter) {
     String direction = directionFromName(token);
     if (direction != null)
-      command = new ShootArrow(direction);
+      command = new ShootArrow(game, presenter, direction);
     return command;
   }
 
@@ -78,10 +80,10 @@ public abstract class CommandInterpreter {
     return tokens.length == 1 && directionFromName(tokens[0]) != null;
   }
 
-  private Command createGoCommand(Command command, String token) {
+  private Command createGoCommand(Command command, String token, Game game, Presentation presenter) {
     String direction = directionFromName(token);
     if (direction != null)
-      command = new MovePlayer(direction);
+      command = new MovePlayer(game, presenter,direction);
     return command;
   }
 

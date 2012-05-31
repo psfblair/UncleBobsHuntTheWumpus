@@ -1,6 +1,6 @@
 package HuntTheWumpus;
 
-import HuntTheWumpus.Presentation.ResponseModel;
+import HuntTheWumpus.Core.*;
 import HuntTheWumpus.fixtures.MockConsole;
 import junit.framework.TestCase;
 
@@ -77,7 +77,6 @@ public class GameTest extends TestCase {
   }
 
   public void testPlayerDiesIfShootsAtWall() throws Exception {
-    g.initializeResponseModel();
     g.getPlayer().putPlayerInCavern(1);
     g.getPlayer().setQuiver(1);
     g.shoot(GameCaverns.EAST);
@@ -85,14 +84,12 @@ public class GameTest extends TestCase {
   }
 
   public void testFallInPit() throws Exception {
-    g.initializeResponseModel();
     g.gameCaverns.addPath(1, 2, GameCaverns.EAST);
     g.getPlayer().putPlayerInCavern(1);
     g.gameCaverns.putPitInCavern(2);
     g.move(GameCaverns.EAST);
-    ResponseModel responseModel = g.finalizeResponseModel();
-    assertTrue(responseModel.isGameTerminated());
-    assertEquals(GameOverReasons.FELL_IN_PIT, responseModel.getGameTerminationReason());
+    assertTrue(g.gameTerminated());
+    assertEquals(GameOverReasons.FELL_IN_PIT, g.gameTerminationReason());
   }
 
   public void testHearPit() throws Exception {
@@ -107,28 +104,24 @@ public class GameTest extends TestCase {
   }
 
   public void testKillWumpusAtDistance() throws Exception {
-    g.initializeResponseModel();
     g.gameCaverns.addPath(1, 2, GameCaverns.EAST);
     g.gameCaverns.addPath(2, 3, GameCaverns.EAST);
     g.getWumpus().putWumpusInCavern(3);
     g.getPlayer().putPlayerInCavern(1);
     g.getPlayer().setQuiver(1);
     g.shoot(GameCaverns.EAST);
-    ResponseModel responseModel = g.finalizeResponseModel();
     assertTrue(g.gameTerminated());
-    assertEquals(GameOverReasons.WUMPUS_HIT_BY_ARROW, responseModel.getGameTerminationReason());
+    assertEquals(GameOverReasons.WUMPUS_HIT_BY_ARROW, g.gameTerminationReason());
   }
 
   public void testKillWumpusUpClose() throws Exception {
-    g.initializeResponseModel();
     g.gameCaverns.addPath(1, 2, GameCaverns.EAST);
     g.getWumpus().putWumpusInCavern(2);
     g.getPlayer().putPlayerInCavern(1);
     g.getPlayer().setQuiver(1);
     g.shoot(GameCaverns.EAST);
-    ResponseModel responseModel = g.finalizeResponseModel();
     assertTrue(g.gameTerminated());
-    assertEquals(GameOverReasons.WUMPUS_HIT_BY_ARROW, responseModel.getGameTerminationReason());
+    assertEquals(GameOverReasons.WUMPUS_HIT_BY_ARROW, g.gameTerminationReason());
   }
 
   public void testRandomWumpusMovement() throws Exception {
@@ -153,13 +146,11 @@ public class GameTest extends TestCase {
   }
 
   public void testBatsCarryYouAway() throws Exception {
-    g.initializeResponseModel();
     g.gameCaverns.addPath(1, 2, GameCaverns.EAST);
     g.getPlayer().putPlayerInCavern(1);
     g.gameCaverns.putBatsInCavern(2);
     g.move(GameCaverns.EAST);
-    ResponseModel responseModel = g.finalizeResponseModel();
-    assertTrue(responseModel.isTransportedByBats());
+    assertTrue(g.isTransportedByBats());
     //Also used in Game start
     assertEquals(1, g.getPlayer().getPlayerCavern());
   }

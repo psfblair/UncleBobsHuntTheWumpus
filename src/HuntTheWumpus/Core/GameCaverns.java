@@ -1,4 +1,4 @@
-package HuntTheWumpus;
+package HuntTheWumpus.Core;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -48,7 +48,7 @@ public class GameCaverns {
     return selectedPath.start;
   }
 
-  Set getAvailableDirectionsFrom(double cavern) {
+  public Set getAvailableDirectionsFrom(double cavern) {
     Set directions = new HashSet();
 
     for (Path p : paths) {

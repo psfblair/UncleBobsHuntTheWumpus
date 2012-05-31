@@ -1,14 +1,21 @@
 package HuntTheWumpus.Command;
 
-public class MovePlayer implements Command {
+import HuntTheWumpus.Core.Game;
+import HuntTheWumpus.Presentation.Presentation;
+
+public class MovePlayer extends Command {
   private String direction;
 
-  public MovePlayer(String direction) {
+  public MovePlayer(Game game, Presentation presenter, String direction) {
+    super(game, presenter);
     this.direction = direction;
   }
 
-  public void Dispatch(GameController controller) {
-    controller.invoke(this);
+  public void Invoke() {
+    String direction = getDirection();
+    if (game.move(direction) == false)
+      presenter.printCannotMove(direction);
+    super.Invoke();
   }
 
   public String getDirection() {

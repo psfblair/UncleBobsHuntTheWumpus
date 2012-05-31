@@ -1,7 +1,7 @@
 package HuntTheWumpus.Presentation;
 
-import HuntTheWumpus.GameCaverns;
-import HuntTheWumpus.GameOverReasons;
+import HuntTheWumpus.Core.GameCaverns;
+import HuntTheWumpus.Core.GameOverReasons;
 
 public class GamePresenter implements Presentation {
   private Console console;

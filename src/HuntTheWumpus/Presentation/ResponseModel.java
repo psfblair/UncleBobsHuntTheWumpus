@@ -1,6 +1,6 @@
 package HuntTheWumpus.Presentation;
 
-import HuntTheWumpus.GameOverReasons;
+import HuntTheWumpus.Core.GameOverReasons;
 
 import java.util.Set;
 

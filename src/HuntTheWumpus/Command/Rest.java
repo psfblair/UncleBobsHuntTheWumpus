@@ -1,8 +1,16 @@
 package HuntTheWumpus.Command;
 
-public class Rest implements Command {
+import HuntTheWumpus.Core.Game;
+import HuntTheWumpus.Presentation.Presentation;
 
-  public void Dispatch(GameController controller) {
-    controller.invoke(this);
+public class Rest extends Command {
+
+  public Rest(Game game, Presentation presenter) {
+    super(game, presenter);
+  }
+
+  public void Invoke() {
+    game.rest();
+    super.Invoke();
   }
 }

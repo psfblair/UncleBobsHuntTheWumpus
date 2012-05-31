@@ -1,8 +1,8 @@
 package HuntTheWumpus.fixtures;
 
-import HuntTheWumpus.*;
 import HuntTheWumpus.Command.EnglishCommandInterpreter;
 import HuntTheWumpus.Command.GameController;
+import HuntTheWumpus.Core.Game;
 
 public class GameDriver {
   public static GameController gameController;

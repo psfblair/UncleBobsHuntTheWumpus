@@ -1,7 +1,7 @@
 package HuntTheWumpus.Command;
 
+import HuntTheWumpus.Core.Game;
 import HuntTheWumpus.Presentation.Console;
-import HuntTheWumpus.Game;
 import HuntTheWumpus.Presentation.GamePresenter;
 import HuntTheWumpus.Presentation.Presentation;
 
@@ -17,24 +17,8 @@ public class GameController {
   }
 
   public void execute(String commandString) {
-    Command command = interpreter.getCommand(commandString);
-    command.Dispatch(this);
-  }
-
-  void invoke(MovePlayer theCommand) {
-    game.invoke(theCommand, presenter);
-  }
-
-  void invoke(ShootArrow theCommand) {
-    game.invoke(theCommand, presenter);
-  }
-
-  void invoke(Rest theCommand) {
-    game.invoke(theCommand, presenter);
-  }
-
-  void invoke(UnknownCommand theCommand) {
-    game.invoke(theCommand, presenter);
+    Command command = interpreter.getCommand(commandString, game, presenter);
+    command.Invoke();
   }
 
   // TODO - shouldn't need this.
@@ -42,5 +26,8 @@ public class GameController {
     return game;
   }
 
+  public Presentation getPresenter() {
+    return presenter;
+  }
 }
 

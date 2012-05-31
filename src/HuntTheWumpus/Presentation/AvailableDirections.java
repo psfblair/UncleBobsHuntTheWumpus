@@ -1,6 +1,6 @@
 package HuntTheWumpus.Presentation;
 
-import HuntTheWumpus.GameCaverns;
+import HuntTheWumpus.Core.GameCaverns;
 
 import java.util.Set;
 
