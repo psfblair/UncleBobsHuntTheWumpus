@@ -26,31 +26,31 @@ public class Player {
     playerCavern = caverns.getRandomPathStart();
   }
 
-  boolean playerIsInWumpusCavern() {
+  boolean isInWumpusCavern() {
     return wumpus.isWumpusCavern(playerCavern);
   }
 
-  public boolean playerIsInCavernNextToWumpus() {
+  public boolean isInCavernNextToWumpus() {
     return wumpus.isAdjacentTo(playerCavern);
   }
 
-  boolean playerIsInCavernWithPit() {
+  public boolean isInCavernWithPit() {
     return caverns.isCavernWithPit(playerCavern);
   }
 
-  public boolean playerIsInCavernNextToPit() {
+  public boolean isInCavernNextToPit() {
     return caverns.isCavernNextToPit(playerCavern);
   }
 
-  boolean playerIsInCavernWithBats() {
+  public boolean isInCavernWithBats() {
     return caverns.isCavernWithBats(playerCavern);
   }
 
-  public boolean playerIsInCavernNextToBats() {
+  public boolean isInCavernNextToBats() {
     return caverns.isCavernNextToBats(playerCavern);
   }
 
-  boolean playerIsInCavernWithArrow() {
+  public boolean playerIsInCavernWithArrow() {
     return caverns.isInCavernWithArrow(playerCavern);
   }
 

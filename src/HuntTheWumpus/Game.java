@@ -7,16 +7,25 @@ import HuntTheWumpus.Presentation.ResponseModel;
 import java.util.*;
 
 public class Game {
-  /* TODO Move to Player */
-  private int quiver = 0;
   private boolean gameTerminated = false;
-
-  /* TODO Move to Wumpus */
-  private boolean wumpusFrozen = false;
 
   private boolean batTransport = false;
   private ResponseModel responseModel;
   public final GameCaverns gameCaverns = new GameCaverns();
+  public final Wumpus wumpus = new Wumpus(gameCaverns);
+  public final Player player = new Player(gameCaverns, wumpus);
+
+  /* TODO remove - just for refactoring */
+  public Game() {
+    gameCaverns.setPlayer(player);
+    gameCaverns.setWumpus(wumpus);
+  }
+
+  /* TODO Move to Wumpus */
+  private boolean wumpusFrozen = false;
+
+  /* TODO Move to Player */
+  private int quiver = 0;
 
   public void invoke(MovePlayer theCommand, Presentation presenter) {
     initializeResponseModel();
@@ -62,9 +71,9 @@ public class Game {
   }
 
   public boolean move(String direction) {
-    int destination = gameCaverns.adjacentTo(direction, gameCaverns.playerCavern);
+    int destination = gameCaverns.adjacentTo(direction, player.getPlayerCavern());
     if (destination != 0) {
-      gameCaverns.playerCavern = destination;
+      player.putPlayerInCavern(destination);
       checkIfWumpusEatsPlayer();
       checkIfPlayerFallsIntoPit();
       checkIfPlayerIsTransportedByBats();
@@ -76,28 +85,28 @@ public class Game {
   }
 
   private void checkIfWumpusEatsPlayer() {
-    if (gameCaverns.playerIsInWumpusCavern()) {
+    if (player.isInWumpusCavern()) {
       gameTerminated = true;
       responseModel.setReasonGameTerminated(GameOverReasons.EATEN_BY_WUMPUS);
     }
   }
 
   private void checkIfPlayerFallsIntoPit() {
-    if (gameCaverns.playerIsInCavernWithPit()) {
+    if (player.isInCavernWithPit()) {
       gameTerminated = true;
       responseModel.setReasonGameTerminated(GameOverReasons.FELL_IN_PIT);
     }
   }
 
   private void checkIfPlayerIsTransportedByBats() {
-    while (gameCaverns.playerIsInCavernWithBats()) {
+    while (player.isInCavernWithBats()) {
       transportPlayer();
       batTransport = true;
     }
   }
 
   private void transportPlayer() {
-    gameCaverns.putPlayerInRandomCavern();
+    player.putPlayerInRandomCavern();
   }
 
   private void pickUpArrow() {
@@ -149,7 +158,7 @@ public class Game {
       return true;
     }
 
-    int endCavern = shootAsFarAsPossible(direction, gameCaverns.playerCavern);
+    int endCavern = shootAsFarAsPossible(direction, player.getPlayerCavern());
     if (!gameTerminated) {
       gameCaverns.putArrowInCavern(endCavern);
       moveWumpus();
@@ -196,7 +205,7 @@ public class Game {
 
   private void addPossibleMove(String direction, List<Integer> moves) {
     int possibleMove;
-    possibleMove = gameCaverns.adjacentTo(direction, gameCaverns.wumpusCavern);
+    possibleMove = gameCaverns.adjacentTo(direction, gameCaverns.getWumpusCavern());
     if (possibleMove != 0)
       moves.add(possibleMove);
   }

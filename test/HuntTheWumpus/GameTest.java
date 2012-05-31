@@ -6,6 +6,8 @@ import junit.framework.TestCase;
 
 public class GameTest extends TestCase {
   private Game g;
+  private Player p;
+  private Wumpus w;
   private MockConsole mc;
 
   protected void setUp() throws Exception {
