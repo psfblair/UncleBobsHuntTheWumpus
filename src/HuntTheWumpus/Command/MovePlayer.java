@@ -1,4 +1,4 @@
-package HuntTheWumpus.Commands;
+package HuntTheWumpus.Command;
 
 public class MovePlayer implements Command {
   private String direction;

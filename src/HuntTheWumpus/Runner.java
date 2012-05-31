@@ -1,13 +1,13 @@
 package HuntTheWumpus;
 
-import HuntTheWumpus.CommandInterpreter.EnglishCommandInterpreter;
-import HuntTheWumpus.Commands.GameController;
+import HuntTheWumpus.Command.EnglishCommandInterpreter;
+import HuntTheWumpus.Command.GameController;
 
 import java.io.*;
 import static HuntTheWumpus.Game.*;
 public class Runner {
   public static void main(String[] args) throws Exception {
-    GameController p = new GameController(new Console() {
+    GameController p = new GameController(new HuntTheWumpus.Presentation.Console() {
       public void print(String message) {
         System.out.println(message);
       }

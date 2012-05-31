@@ -1,4 +1,4 @@
-package HuntTheWumpus.Commands;
+package HuntTheWumpus.Command;
 
 public interface Command {
   public void Dispatch(GameController controller);

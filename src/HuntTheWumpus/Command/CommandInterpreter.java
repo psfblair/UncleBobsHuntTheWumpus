@@ -1,6 +1,5 @@
-package HuntTheWumpus.CommandInterpreter;
+package HuntTheWumpus.Command;
 
-import HuntTheWumpus.Commands.*;
 import HuntTheWumpus.Game;
 
 import java.util.HashMap;

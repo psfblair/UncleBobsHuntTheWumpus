@@ -1,4 +1,4 @@
-package HuntTheWumpus.Commands;
+package HuntTheWumpus.Command;
 
 public class UnknownCommand implements Command {
   private String command;

@@ -1,6 +1,6 @@
 package HuntTheWumpus.fixtures;
 
-import HuntTheWumpus.Console;
+import HuntTheWumpus.Presentation.Console;
 
 import java.util.*;
 

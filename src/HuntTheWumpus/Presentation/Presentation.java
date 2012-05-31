@@ -1,10 +1,10 @@
-package HuntTheWumpus;
+package HuntTheWumpus.Presentation;
 
-public interface PresentationBoundary {
+public interface Presentation {
 
   void printUnknownCommand(String command);
 
-  void printEndOfTurnMessages(Game.ResponseModel responseModel);
+  void printEndOfTurnMessages(ResponseModel responseModel);
 
   void printShotArrow();
 

@@ -1,4 +1,4 @@
-package HuntTheWumpus.CommandInterpreter;
+package HuntTheWumpus.Command;
 
 public class EnglishCommandInterpreter extends CommandInterpreter {
 

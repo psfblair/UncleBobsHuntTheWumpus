@@ -1,4 +1,4 @@
-package HuntTheWumpus.Commands;
+package HuntTheWumpus.Command;
 
 public class ShootArrow implements Command {
   private String direction;

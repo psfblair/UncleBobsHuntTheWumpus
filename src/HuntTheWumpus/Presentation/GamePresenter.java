@@ -1,6 +1,9 @@
-package HuntTheWumpus;
+package HuntTheWumpus.Presentation;
 
-public class GamePresenter implements PresentationBoundary {
+import HuntTheWumpus.Game;
+import HuntTheWumpus.GameOverReasons;
+
+public class GamePresenter implements Presentation {
   private Console console;
 
   public GamePresenter(Console console) {
@@ -11,7 +14,7 @@ public class GamePresenter implements PresentationBoundary {
     console.print("I don't know how to " + command + ".");
   }
 
-  public void printEndOfTurnMessages(Game.ResponseModel responseModel) {
+  public void printEndOfTurnMessages(ResponseModel responseModel) {
     if (responseModel.isGameTerminated()) {
       printCauseOfTermination(responseModel);
       console.print("Game over.");
@@ -38,28 +41,28 @@ public class GamePresenter implements PresentationBoundary {
     console.print("You can't go " + GamePresenter.directionName(direction) + " from here.");
   }
 
-  private void printTransportMessage(Game.ResponseModel responseModel) {
+  private void printTransportMessage(ResponseModel responseModel) {
     if (responseModel.isTransportedByBats())
       console.print("A swarm of angry bats has carried you off.");
   }
 
-  private void printBatSounds(Game.ResponseModel responseModel) {
+  private void printBatSounds(ResponseModel responseModel) {
     if (responseModel.canHearBats())
       console.print("You hear chirping.");
   }
 
-  private void printPitSounds(Game.ResponseModel responseModel) {
+  private void printPitSounds(ResponseModel responseModel) {
     if (responseModel.canHearPit())
       console.print("You hear wind.");
   }
 
-  private void printWumpusOdor(Game.ResponseModel responseModel) {
+  private void printWumpusOdor(ResponseModel responseModel) {
     if (responseModel.canSmellWumpus()) {
       console.print("You smell the Wumpus.");
     }
   }
 
-  private void printQuiverStatus(Game.ResponseModel responseModel) {
+  private void printQuiverStatus(ResponseModel responseModel) {
     int quiver = responseModel.getQuiver();
     if (quiver == 0)
       console.print("You have no arrows.");
@@ -69,26 +72,27 @@ public class GamePresenter implements PresentationBoundary {
       console.print("You have " + quiver + " arrows.");
   }
 
-  private void printArrowsFound(Game.ResponseModel responseModel) {
+  private void printArrowsFound(ResponseModel responseModel) {
     if (responseModel.getQuiver() > responseModel.getArrowsInQuiverBeforeTurn())
       console.print("You found an arrow.");
   }
 
-  private void printCauseOfTermination(Game.ResponseModel responseModel) {
-    if (responseModel.getGameTerminationReason() == Game.ReasonsGameOver.KILLED_BY_ARROW_BOUNCE)
+  private void printCauseOfTermination(ResponseModel responseModel) {
+    if (responseModel.getGameTerminationReason() == GameOverReasons.KILLED_BY_ARROW_BOUNCE)
       console.print("The arrow bounced off the wall and killed you.");
-    else if (responseModel.getGameTerminationReason() == Game.ReasonsGameOver.FELL_IN_PIT)
+    else if (responseModel.getGameTerminationReason() == GameOverReasons.FELL_IN_PIT)
       console.print("You fall into a pit and die.");
-    else if (responseModel.getGameTerminationReason() == Game.ReasonsGameOver.WUMPUS_HIT_BY_ARROW)
+    else if (responseModel.getGameTerminationReason() == GameOverReasons.WUMPUS_HIT_BY_ARROW)
       console.print("You have killed the Wumpus.");
-    else if (responseModel.getGameTerminationReason() == Game.ReasonsGameOver.EATEN_BY_WUMPUS)
+    else if (responseModel.getGameTerminationReason() == GameOverReasons.EATEN_BY_WUMPUS)
       console.print("The ravenous snarling Wumpus gobbles you down.");
-    else if (responseModel.getGameTerminationReason() == Game.ReasonsGameOver.HIT_BY_OWN_ARROW)
+    else if (responseModel.getGameTerminationReason() == GameOverReasons.HIT_BY_OWN_ARROW)
       console.print("You were hit by your own arrow.");
   }
 
-  private void printAvailableDirections(Game.ResponseModel responseModel) {
-    console.print(responseModel.getAvailableDirections());
+  public void printAvailableDirections(ResponseModel responseModel) {
+    AvailableDirections availableDirections = new AvailableDirections(responseModel.getAvailableDirections());
+    console.print(availableDirections.toString());
   }
 
   static String directionName(String direction) {

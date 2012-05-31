@@ -1,13 +1,20 @@
-package HuntTheWumpus;
+package HuntTheWumpus.Presentation;
+
+import HuntTheWumpus.Game;
+import HuntTheWumpus.Presentation.GamePresenter;
 
 import java.util.HashSet;
 import java.util.Set;
 
 class AvailableDirections {
-  private Set<String> directions = new HashSet<String>();
+  private Set<String> directions;
   private int nDirections;
   private StringBuffer available;
   private int directionsPlaced;
+
+  AvailableDirections(Set<String> directions) {
+    this.directions = directions;
+  }
 
   public String toString() {
     if (directions.isEmpty())

@@ -1,15 +1,14 @@
-package HuntTheWumpus.Commands;
+package HuntTheWumpus.Command;
 
-import HuntTheWumpus.CommandInterpreter.CommandInterpreter;
-import HuntTheWumpus.Console;
+import HuntTheWumpus.Presentation.Console;
 import HuntTheWumpus.Game;
-import HuntTheWumpus.GamePresenter;
-import HuntTheWumpus.PresentationBoundary;
+import HuntTheWumpus.Presentation.GamePresenter;
+import HuntTheWumpus.Presentation.Presentation;
 
 public class GameController {
 
   private final Game game = new Game();
-  private PresentationBoundary presenter;
+  private Presentation presenter;
   private CommandInterpreter interpreter;
 
   public GameController(Console console, CommandInterpreter interpreter) {

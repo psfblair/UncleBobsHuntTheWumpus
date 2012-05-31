@@ -2,6 +2,8 @@ package HuntTheWumpus;
 
 import static HuntTheWumpus.Game.EAST;
 import static HuntTheWumpus.Game.WEST;
+
+import HuntTheWumpus.Presentation.ResponseModel;
 import HuntTheWumpus.fixtures.MockConsole;
 import junit.framework.TestCase;
 
@@ -89,9 +91,9 @@ public class GameTest extends TestCase {
     g.putPlayerInCavern(1);
     g.putPitInCavern(2);
     g.move(EAST);
-    Game.ResponseModel responseModel = g.finalizeResponseModel();
+    ResponseModel responseModel = g.finalizeResponseModel();
     assertTrue(responseModel.isGameTerminated());
-    assertEquals(Game.ReasonsGameOver.FELL_IN_PIT, responseModel.getGameTerminationReason());
+    assertEquals(GameOverReasons.FELL_IN_PIT, responseModel.getGameTerminationReason());
   }
 
   public void testHearPit() throws Exception {
@@ -113,9 +115,9 @@ public class GameTest extends TestCase {
     g.putPlayerInCavern(1);
     g.setQuiver(1);
     g.shoot(EAST);
-    Game.ResponseModel responseModel = g.finalizeResponseModel();
+    ResponseModel responseModel = g.finalizeResponseModel();
     assertTrue(g.gameTerminated());
-    assertEquals(Game.ReasonsGameOver.WUMPUS_HIT_BY_ARROW, responseModel.getGameTerminationReason());
+    assertEquals(GameOverReasons.WUMPUS_HIT_BY_ARROW, responseModel.getGameTerminationReason());
   }
 
   public void testKillWumpusUpClose() throws Exception {
@@ -125,9 +127,9 @@ public class GameTest extends TestCase {
     g.putPlayerInCavern(1);
     g.setQuiver(1);
     g.shoot(EAST);
-    Game.ResponseModel responseModel = g.finalizeResponseModel();
+    ResponseModel responseModel = g.finalizeResponseModel();
     assertTrue(g.gameTerminated());
-    assertEquals(Game.ReasonsGameOver.WUMPUS_HIT_BY_ARROW, responseModel.getGameTerminationReason());
+    assertEquals(GameOverReasons.WUMPUS_HIT_BY_ARROW, responseModel.getGameTerminationReason());
   }
 
   public void testRandomWumpusMovement() throws Exception {
@@ -157,7 +159,7 @@ public class GameTest extends TestCase {
     g.putPlayerInCavern(1);
     g.putBatsInCavern(2);
     g.move(EAST);
-    Game.ResponseModel responseModel = g.finalizeResponseModel();
+    ResponseModel responseModel = g.finalizeResponseModel();
     assertTrue(responseModel.isTransportedByBats());
     assertEquals(1, g.playerCavern());
   }
