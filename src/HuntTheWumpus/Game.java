@@ -15,49 +15,50 @@ public class Game {
   private int quiver = 0;
   private ArrayList<Integer> arrows = new ArrayList<Integer>();
   private boolean gameTerminated = false;
-  private boolean killedByArrowBounce = false;
   private ArrayList<Integer> pits = new ArrayList<Integer>();
-  private boolean fellInPit = false;
-  private boolean wumpusHitByArrow = false;
   private boolean wumpusFrozen = false;
-  private boolean eatenByWumpus = false;
-  private boolean hitByOwnArrow = false;
   private ArrayList<Integer> bats = new ArrayList<Integer>();
   private boolean batTransport = false;
   private Game.ResponseModel responseModel;
 
   public void invoke(MovePlayer theCommand, PresentationBoundary presenter) {
-    this.responseModel = new ResponseModel();
-    int arrowsInQuiverBeforeTurn = getQuiver();
+    initializeResponseModel();
     String direction = theCommand.getDirection();
     if (move(direction) == false)
       presenter.printCannotMove(direction);
-    ResponseModel responseModel = createResponseModel(arrowsInQuiverBeforeTurn);
-    presenter.printEndOfTurnMessages(responseModel);
+    output(presenter);
   }
 
   public void invoke(ShootArrow theCommand, PresentationBoundary presenter) {
-    int arrowsInQuiverBeforeTurn = getQuiver();
+    initializeResponseModel();
     if (shoot(theCommand.getDirection()) == false)
       presenter.printNoArrows();
     else
       presenter.printShotArrow();
-    ResponseModel responseModel = createResponseModel(arrowsInQuiverBeforeTurn);
-    presenter.printEndOfTurnMessages(responseModel);
+    output(presenter);
   }
 
   public void invoke(Rest theCommand, PresentationBoundary presenter) {
+    initializeResponseModel();
     rest();
-    ResponseModel responseModel = createResponseModel(getQuiver());
-    presenter.printEndOfTurnMessages(responseModel);
+    output(presenter);
   }
 
   public void invoke(UnknownCommand theCommand, PresentationBoundary presenter) {
+    initializeResponseModel();
     presenter.printUnknownCommand(theCommand.getCommandString());
-    ResponseModel responseModel = createResponseModel(getQuiver());
-    presenter.printEndOfTurnMessages(responseModel);
+    output(presenter);
   }
 
+  public void initializeResponseModel() {
+    responseModel = new ResponseModel();
+    responseModel.setArrowsInQuiverBeforeTurn(this.quiver);
+  }
+
+  private void output(PresentationBoundary presenter) {
+    ResponseModel responseModel = finalizeResponseModel();
+    presenter.printEndOfTurnMessages(responseModel);
+  }
 
 // ************************ INITIALIZATION CODE ****************************** //
 
@@ -125,7 +126,7 @@ public class Game {
   private void checkWumpusEatsPlayer() {
     if (playerCavern == wumpusCavern) {
       gameTerminated = true;
-      eatenByWumpus = true;
+      responseModel.setReasonGameTerminated(ReasonsGameOver.EATEN_BY_WUMPUS);
     }
   }
   // EATEN BY WUMPUS SCENARIO
@@ -134,7 +135,7 @@ public class Game {
   private void checkForPit() {
     if (pits.contains(playerCavern)) {
       gameTerminated = true;
-      fellInPit = true;
+      responseModel.setReasonGameTerminated(ReasonsGameOver.FELL_IN_PIT);
     }
   }
   // PIT SCENARIO
@@ -178,32 +179,9 @@ public class Game {
   }
   // PICK UP ARROW SCENARIO
 
-  // GAME OVER REASONS
   public boolean gameTerminated() {
     return gameTerminated;
   }
-
-  public boolean fellInPit() {
-    return fellInPit;
-  }
-
-  public boolean wumpusHitByArrow() {
-    return wumpusHitByArrow;
-  }
-
-  public boolean eatenByWumpus() {
-    return eatenByWumpus;
-  }
-
-  public boolean hitByOwnArrow(){
-    return hitByOwnArrow;
-  }
-
-  public boolean wasKilledByArrowBounce() {
-    return killedByArrowBounce;
-  }
-  // END GAME OVER REASONS
-
 
   // FOR TESTING
   public int playerCavern() { //Also used in Game start
@@ -222,13 +200,12 @@ public class Game {
     wumpusFrozen = true;
   }
 
+  public ResponseModel getResponseModel() {
+    return responseModel;
+  }
+
   public void reset() {
     gameTerminated = false;
-    wumpusHitByArrow = false;
-    fellInPit = false;
-    killedByArrowBounce = false;
-    eatenByWumpus = false;
-    hitByOwnArrow = false;
     batTransport = false;
   }
   // END FOR TESTING
@@ -277,19 +254,21 @@ public class Game {
 
   // SHOOTING SCENARIO //
   public boolean shoot(String direction) {
-    if (quiver > 0) {
-      quiver--;
-      if (adjacentTo(direction, playerCavern) == 0) {
-        gameTerminated = true;
-        killedByArrowBounce = true;
-      } else {
-        int endCavern = shootAsFarAsPossible(direction, playerCavern);
-        putArrowInCavern(endCavern);
-        moveWumpus();
-      }
-      return true;
-    } else
+    if (quiver <=  0)
       return false;
+    quiver--;
+    if (adjacentTo(direction, playerCavern) == 0) {
+      gameTerminated = true;
+      responseModel.setReasonGameTerminated(ReasonsGameOver.KILLED_BY_ARROW_BOUNCE);
+      return true;
+    }
+
+    int endCavern = shootAsFarAsPossible(direction, playerCavern);
+    if (! gameTerminated()) {
+      putArrowInCavern(endCavern);
+      moveWumpus();
+    }
+    return true;
   }
 
   private int adjacentTo(String direction, int cavern) {
@@ -310,12 +289,12 @@ public class Game {
       return cavern;
     else {
       if (nextCavern == wumpusCavern) {
-        wumpusHitByArrow = true;
+        responseModel.setReasonGameTerminated(ReasonsGameOver.WUMPUS_HIT_BY_ARROW);
         gameTerminated = true;
         return nextCavern;
       } else if (nextCavern == playerCavern) {
         gameTerminated = true;
-        hitByOwnArrow = true;
+        responseModel.setReasonGameTerminated(ReasonsGameOver.HIT_BY_OWN_ARROW);
         return nextCavern;
       }
       return shootAsFarAsPossible(direction, nextCavern);
@@ -371,17 +350,19 @@ public class Game {
     }
   }
 
-  public ResponseModel createResponseModel(int arrowsInQuiverBeforeTurn) {
-    ResponseModel model = new ResponseModel();
-    model.setGameTerminated(gameTerminated);
-    model.setFellInPit(fellInPit);
-    model.setEatenByWumpus(eatenByWumpus);
-    model.setWumpusHitByArrow(wumpusHitByArrow);
-    model.setHitByOwnArrow(hitByOwnArrow);
-    model.setKilledByArrowBounce(killedByArrowBounce);
+  enum ReasonsGameOver {
+    FELL_IN_PIT,
+    EATEN_BY_WUMPUS,
+    WUMPUS_HIT_BY_ARROW,
+    HIT_BY_OWN_ARROW,
+    KILLED_BY_ARROW_BOUNCE
+  }
 
+  public ResponseModel finalizeResponseModel() {
+    ResponseModel model = this.responseModel;
+
+    model.setGameTerminated(gameTerminated);
     model.setQuiver(quiver);
-    model.setArrowsInQuiverBeforeTurn(arrowsInQuiverBeforeTurn);
 
     model.setBatTransport(batTransport);
     batTransport = false;
@@ -399,16 +380,12 @@ public class Game {
     private int quiver = 0;
     private int arrowsInQuiverBeforeTurn = 0;
     private boolean gameTerminated = false;
-    private boolean killedByArrowBounce = false;
-    private boolean fellInPit = false;
-    private boolean wumpusHitByArrow = false;
-    private boolean eatenByWumpus = false;
-    private boolean hitByOwnArrow = false;
     private boolean batTransport = false;
     private boolean canSmellWumpus;
     private boolean canHearPit;
     private boolean canHearBats;
     private String availableDirections;
+    private ReasonsGameOver gameTerminationReason;
 
     public int getQuiver() {
       return quiver;
@@ -432,46 +409,6 @@ public class Game {
 
     public void setGameTerminated(boolean gameTerminated) {
       this.gameTerminated = gameTerminated;
-    }
-
-    public boolean isKilledByArrowBounce() {
-      return killedByArrowBounce;
-    }
-
-    public void setKilledByArrowBounce(boolean killedByArrowBounce) {
-      this.killedByArrowBounce = killedByArrowBounce;
-    }
-
-    public boolean isFallenIntoPit() {
-      return fellInPit;
-    }
-
-    public void setFellInPit(boolean fellInPit) {
-      this.fellInPit = fellInPit;
-    }
-
-    public boolean isWumpusHitByArrow() {
-      return wumpusHitByArrow;
-    }
-
-    public void setWumpusHitByArrow(boolean wumpusHitByArrow) {
-      this.wumpusHitByArrow = wumpusHitByArrow;
-    }
-
-    public boolean isEatenByWumpus() {
-      return eatenByWumpus;
-    }
-
-    public void setEatenByWumpus(boolean eatenByWumpus) {
-      this.eatenByWumpus = eatenByWumpus;
-    }
-
-    public boolean isHitByOwnArrow() {
-      return hitByOwnArrow;
-    }
-
-    public void setHitByOwnArrow(boolean hitByOwnArrow) {
-      this.hitByOwnArrow = hitByOwnArrow;
     }
 
     public boolean isTransportedByBats() {
@@ -512,6 +449,14 @@ public class Game {
 
     public String getAvailableDirections() {
       return availableDirections;
+    }
+
+    public void setReasonGameTerminated(ReasonsGameOver gameTerminationReason) {
+      this.gameTerminationReason = gameTerminationReason;
+    }
+
+    public ReasonsGameOver getGameTerminationReason() {
+      return gameTerminationReason;
     }
   }
 

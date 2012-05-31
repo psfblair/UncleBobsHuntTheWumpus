@@ -75,15 +75,15 @@ public class GamePresenter implements PresentationBoundary {
   }
 
   private void printCauseOfTermination(Game.ResponseModel responseModel) {
-    if (responseModel.isKilledByArrowBounce())
+    if (responseModel.getGameTerminationReason() == Game.ReasonsGameOver.KILLED_BY_ARROW_BOUNCE)
       console.print("The arrow bounced off the wall and killed you.");
-    else if (responseModel.isFallenIntoPit())
+    else if (responseModel.getGameTerminationReason() == Game.ReasonsGameOver.FELL_IN_PIT)
       console.print("You fall into a pit and die.");
-    else if (responseModel.isWumpusHitByArrow())
+    else if (responseModel.getGameTerminationReason() == Game.ReasonsGameOver.WUMPUS_HIT_BY_ARROW)
       console.print("You have killed the Wumpus.");
-    else if (responseModel.isEatenByWumpus())
+    else if (responseModel.getGameTerminationReason() == Game.ReasonsGameOver.EATEN_BY_WUMPUS)
       console.print("The ravenous snarling Wumpus gobbles you down.");
-    else if (responseModel.isHitByOwnArrow())
+    else if (responseModel.getGameTerminationReason() == Game.ReasonsGameOver.HIT_BY_OWN_ARROW)
       console.print("You were hit by your own arrow.");
   }
 

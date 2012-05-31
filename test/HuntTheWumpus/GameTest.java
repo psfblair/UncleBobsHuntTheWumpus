@@ -76,6 +76,7 @@ public class GameTest extends TestCase {
   }
 
   public void testPlayerDiesIfShootsAtWall() throws Exception {
+    g.initializeResponseModel();
     g.putPlayerInCavern(1);
     g.setQuiver(1);
     g.shoot(EAST);
@@ -83,12 +84,14 @@ public class GameTest extends TestCase {
   }
 
   public void testFallInPit() throws Exception {
+    g.initializeResponseModel();
     g.addPath(1, 2, EAST);
     g.putPlayerInCavern(1);
     g.putPitInCavern(2);
     g.move(EAST);
-    assertTrue(g.gameTerminated());
-    assertTrue(g.fellInPit());
+    Game.ResponseModel responseModel = g.finalizeResponseModel();
+    assertTrue(responseModel.isGameTerminated());
+    assertEquals(Game.ReasonsGameOver.FELL_IN_PIT, responseModel.getGameTerminationReason());
   }
 
   public void testHearPit() throws Exception {
@@ -103,24 +106,28 @@ public class GameTest extends TestCase {
   }
 
   public void testKillWumpusAtDistance() throws Exception {
+    g.initializeResponseModel();
     g.addPath(1, 2, EAST);
     g.addPath(2, 3, EAST);
     g.putWumpusInCavern(3);
     g.putPlayerInCavern(1);
     g.setQuiver(1);
     g.shoot(EAST);
-    assertTrue(g.wumpusHitByArrow());
+    Game.ResponseModel responseModel = g.finalizeResponseModel();
     assertTrue(g.gameTerminated());
+    assertEquals(Game.ReasonsGameOver.WUMPUS_HIT_BY_ARROW, responseModel.getGameTerminationReason());
   }
 
   public void testKillWumpusUpClose() throws Exception {
+    g.initializeResponseModel();
     g.addPath(1, 2, EAST);
     g.putWumpusInCavern(2);
     g.putPlayerInCavern(1);
     g.setQuiver(1);
     g.shoot(EAST);
-    assertTrue(g.wumpusHitByArrow());
+    Game.ResponseModel responseModel = g.finalizeResponseModel();
     assertTrue(g.gameTerminated());
+    assertEquals(Game.ReasonsGameOver.WUMPUS_HIT_BY_ARROW, responseModel.getGameTerminationReason());
   }
 
   public void testRandomWumpusMovement() throws Exception {
@@ -145,11 +152,12 @@ public class GameTest extends TestCase {
   }
 
   public void testBatsCarryYouAway() throws Exception {
+    g.initializeResponseModel();
     g.addPath(1,2, EAST);
     g.putPlayerInCavern(1);
     g.putBatsInCavern(2);
     g.move(EAST);
-    Game.ResponseModel responseModel = g.createResponseModel(0);
+    Game.ResponseModel responseModel = g.finalizeResponseModel();
     assertTrue(responseModel.isTransportedByBats());
     assertEquals(1, g.playerCavern());
   }

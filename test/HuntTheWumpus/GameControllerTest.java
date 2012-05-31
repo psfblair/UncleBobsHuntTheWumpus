@@ -32,37 +32,41 @@ public class GameControllerTest extends TestCase {
   }
 
   public void testAvailableDirectionsWithNoPlaceToGo() {
+    game.initializeResponseModel();
     game.putPlayerInCavern(1);
     String expected = "There are no exits!";
-    String availableDirections = game.createResponseModel(0).getAvailableDirections();
+    String availableDirections = game.finalizeResponseModel().getAvailableDirections();
     assertEquals(expected, availableDirections);
   }
 
   public void testSouthIsAvailable() throws Exception {
+    game.initializeResponseModel();
     game.addPath(1, 2, SOUTH);
     game.putPlayerInCavern(1);
     String expected = "You can go south from here.";
-    String availableDirections = game.createResponseModel(0).getAvailableDirections();
+    String availableDirections = game.finalizeResponseModel().getAvailableDirections();
     assertEquals(expected, availableDirections);
   }
 
   public void testNortAndSouthAvailable() throws Exception {
+    game.initializeResponseModel();
     game.addPath(1, 2, SOUTH);
     game.addPath(1, 3, NORTH);
     game.putPlayerInCavern(1);
     String expected = "You can go north and south from here.";
-    String availableDirections = game.createResponseModel(0).getAvailableDirections();
+    String availableDirections = game.finalizeResponseModel().getAvailableDirections();
     assertEquals(expected, availableDirections);
   }
 
   public void testFourDirections() throws Exception {
+    game.initializeResponseModel();
     game.addPath(1, 2, EAST);
     game.addPath(1, 3, WEST);
     game.addPath(1, 4, SOUTH);
     game.addPath(1, 5, NORTH);
     game.putPlayerInCavern(1);
     String expected = "You can go north, south, east and west from here.";
-    String availableDirections = game.createResponseModel(0).getAvailableDirections();
+    String availableDirections = game.finalizeResponseModel().getAvailableDirections();
     assertEquals(expected, availableDirections);
   }
 }

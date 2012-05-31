@@ -16,13 +16,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="491d0f11-ba0b-4738-8f8e-2cbee03d1a20" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WAAT Exercises.iml" afterPath="$PROJECT_DIR$/WAAT Exercises.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HuntTheWumpus/Commands/GameController.java" afterPath="$PROJECT_DIR$/src/HuntTheWumpus/Commands/GameController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HuntTheWumpus/Game.java" afterPath="$PROJECT_DIR$/src/HuntTheWumpus/Game.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HuntTheWumpus/GamePresenter.java" afterPath="$PROJECT_DIR$/src/HuntTheWumpus/GamePresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HuntTheWumpus/PresentationBoundary.java" afterPath="$PROJECT_DIR$/src/HuntTheWumpus/PresentationBoundary.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/HuntTheWumpus/GameControllerTest.java" afterPath="$PROJECT_DIR$/test/HuntTheWumpus/GameControllerTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/HuntTheWumpus/GameTest.java" afterPath="$PROJECT_DIR$/test/HuntTheWumpus/GameTest.java" />
     </list>
@@ -87,17 +82,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Game.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Game.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="2" selection-start="459" selection-end="459" vertical-scroll-proportion="0.075187966">
+            <state line="412" column="0" selection-start="10487" selection-end="10487" vertical-scroll-proportion="-67.76923">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#299#305#0" expanded="true" />
                 <element signature="e#444#453#0" expanded="true" />
-                <element signature="e#595#604#0" expanded="true" />
-                <element signature="e#860#869#0" expanded="true" />
-                <element signature="e#8376#8385#0" expanded="true" />
+                <element signature="e#548#557#0" expanded="true" />
+                <element signature="e#650#659#0" expanded="true" />
+                <element signature="e#7855#7864#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -106,7 +101,7 @@
       <file leaf-file-name="GameTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/HuntTheWumpus/GameTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="152" column="50" selection-start="3895" selection-end="3895" vertical-scroll-proportion="0.0">
+            <state line="78" column="32" selection-start="2043" selection-end="2043" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -121,10 +116,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GamePresenter.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="GamePresenter.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/GamePresenter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="38" selection-start="151" selection-end="151" vertical-scroll-proportion="0.0">
+            <state line="85" column="94" selection-start="3100" selection-end="3100" vertical-scroll-proportion="1.5977443">
               <folding />
             </state>
           </provider>
@@ -133,7 +128,7 @@
       <file leaf-file-name="GameControllerTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/HuntTheWumpus/GameControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="51" selection-start="1548" selection-end="1548" vertical-scroll-proportion="0.0">
+            <state line="61" column="35" selection-start="2249" selection-end="2249" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -163,11 +158,11 @@
         <option value="$PROJECT_DIR$/src/HuntTheWumpus/Commands/Rest.java" />
         <option value="$PROJECT_DIR$/src/HuntTheWumpus/Commands/UnknownCommand.java" />
         <option value="$PROJECT_DIR$/src/HuntTheWumpus/Commands/GameController.java" />
-        <option value="$PROJECT_DIR$/test/HuntTheWumpus/GameControllerTest.java" />
         <option value="$PROJECT_DIR$/src/HuntTheWumpus/PresentationBoundary.java" />
-        <option value="$PROJECT_DIR$/src/HuntTheWumpus/GamePresenter.java" />
+        <option value="$PROJECT_DIR$/test/HuntTheWumpus/GameControllerTest.java" />
         <option value="$PROJECT_DIR$/test/HuntTheWumpus/GameTest.java" />
         <option value="$PROJECT_DIR$/src/HuntTheWumpus/Game.java" />
+        <option value="$PROJECT_DIR$/src/HuntTheWumpus/GamePresenter.java" />
       </list>
     </option>
   </component>
@@ -910,7 +905,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16969697" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31878787" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23030303" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -918,7 +913,7 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32969698" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32848486" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2278788" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32969698" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1091,13 +1086,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/HuntTheWumpus/GameControllerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="51" selection-start="1548" selection-end="1548" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/PresentationBoundary.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="0" selection-start="64" selection-end="64" vertical-scroll-proportion="0.0">
@@ -1105,31 +1093,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/GamePresenter.java">
+    <entry file="file://$PROJECT_DIR$/test/HuntTheWumpus/GameControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="38" selection-start="151" selection-end="151" vertical-scroll-proportion="0.0">
+        <state line="61" column="35" selection-start="2249" selection-end="2249" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/HuntTheWumpus/GameTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="152" column="50" selection-start="3895" selection-end="3895" vertical-scroll-proportion="0.0">
+        <state line="78" column="32" selection-start="2043" selection-end="2043" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="2" selection-start="459" selection-end="459" vertical-scroll-proportion="0.075187966">
+        <state line="412" column="0" selection-start="10487" selection-end="10487" vertical-scroll-proportion="-67.76923">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#299#305#0" expanded="true" />
             <element signature="e#444#453#0" expanded="true" />
-            <element signature="e#595#604#0" expanded="true" />
-            <element signature="e#860#869#0" expanded="true" />
-            <element signature="e#8376#8385#0" expanded="true" />
+            <element signature="e#548#557#0" expanded="true" />
+            <element signature="e#650#659#0" expanded="true" />
+            <element signature="e#7855#7864#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/GamePresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="85" column="94" selection-start="3100" selection-end="3100" vertical-scroll-proportion="1.5977443">
+          <folding />
         </state>
       </provider>
     </entry>
