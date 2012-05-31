@@ -14,7 +14,7 @@ public class GameController {
 
   public GameController(Console console, CommandInterpreter interpreter) {
     this.interpreter = interpreter;
-    presenter = new GamePresenter(console, game);
+    presenter = new GamePresenter(console);
   }
 
   public void execute(String commandString) {
@@ -22,35 +22,23 @@ public class GameController {
     command.Dispatch(this);
   }
 
-  void invoke(UnknownCommand theCommand) {
-    int quiver = game.getQuiver();
-    presenter.printUnknownCommand(theCommand.getCommandString());
-    presenter.printEndOfTurnMessages(quiver);
-  }
-
-  void invoke(Rest theCommand) {
-    int quiver = game.getQuiver();
-    game.rest();
-    presenter.printEndOfTurnMessages(quiver);
-  }
-
   void invoke(MovePlayer theCommand) {
-    int quiver = game.getQuiver();
-    String direction = theCommand.getDirection();
-    if (game.move(direction) == false)
-      presenter.printCannotMove(direction);
-    presenter.printEndOfTurnMessages(quiver);
+    game.invoke(theCommand, presenter);
   }
 
   void invoke(ShootArrow theCommand) {
-    int quiver = game.getQuiver();
-    if (game.shoot(theCommand.getDirection()) == false)
-      presenter.printNoArrows();
-    else
-      presenter.printShotArrow();
-    presenter.printEndOfTurnMessages(quiver);
+    game.invoke(theCommand, presenter);
   }
 
+  void invoke(Rest theCommand) {
+    game.invoke(theCommand, presenter);
+  }
+
+  void invoke(UnknownCommand theCommand) {
+    game.invoke(theCommand, presenter);
+  }
+
+  // TODO - shouldn't need this.
   public Game getGame() {
     return game;
   }

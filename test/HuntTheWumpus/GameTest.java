@@ -149,7 +149,8 @@ public class GameTest extends TestCase {
     g.putPlayerInCavern(1);
     g.putBatsInCavern(2);
     g.move(EAST);
-    assertTrue(g.batTransport());
+    Game.ResponseModel responseModel = g.createResponseModel(0);
+    assertTrue(responseModel.isTransportedByBats());
     assertEquals(1, g.playerCavern());
   }
 }

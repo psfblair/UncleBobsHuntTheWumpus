@@ -1,5 +1,7 @@
 package HuntTheWumpus;
 
+import HuntTheWumpus.Commands.*;
+
 import java.util.*;
 
 public class Game {
@@ -22,6 +24,42 @@ public class Game {
   private boolean hitByOwnArrow = false;
   private ArrayList<Integer> bats = new ArrayList<Integer>();
   private boolean batTransport = false;
+  private Game.ResponseModel responseModel;
+
+  public void invoke(MovePlayer theCommand, PresentationBoundary presenter) {
+    this.responseModel = new ResponseModel();
+    int arrowsInQuiverBeforeTurn = getQuiver();
+    String direction = theCommand.getDirection();
+    if (move(direction) == false)
+      presenter.printCannotMove(direction);
+    ResponseModel responseModel = createResponseModel(arrowsInQuiverBeforeTurn);
+    presenter.printEndOfTurnMessages(responseModel);
+  }
+
+  public void invoke(ShootArrow theCommand, PresentationBoundary presenter) {
+    int arrowsInQuiverBeforeTurn = getQuiver();
+    if (shoot(theCommand.getDirection()) == false)
+      presenter.printNoArrows();
+    else
+      presenter.printShotArrow();
+    ResponseModel responseModel = createResponseModel(arrowsInQuiverBeforeTurn);
+    presenter.printEndOfTurnMessages(responseModel);
+  }
+
+  public void invoke(Rest theCommand, PresentationBoundary presenter) {
+    rest();
+    ResponseModel responseModel = createResponseModel(getQuiver());
+    presenter.printEndOfTurnMessages(responseModel);
+  }
+
+  public void invoke(UnknownCommand theCommand, PresentationBoundary presenter) {
+    presenter.printUnknownCommand(theCommand.getCommandString());
+    ResponseModel responseModel = createResponseModel(getQuiver());
+    presenter.printEndOfTurnMessages(responseModel);
+  }
+
+
+// ************************ INITIALIZATION CODE ****************************** //
 
   public void addPath(int start, int end, String direction) throws Exception {
     direction = direction.toLowerCase();
@@ -51,20 +89,19 @@ public class Game {
     playerCavern = cavern;
   }
 
-  private void removeArrowFrom(int cavern) {
-    for (int i = 0; i < arrows.size(); i++) {
-      int c = arrows.get(i);
-      if (c == cavern) {
-        arrows.remove(i);
-      }
-    }
+  public void putPitInCavern(int cavern) {
+    pits.add(cavern);
   }
 
-  private boolean arrowInCavern(int cavern) {
-    for (int c : arrows)
-      if (c == cavern) return true;
-    return false;
+  public void putBatsInCavern(int cavern) {
+    bats.add(cavern);
   }
+
+  public void putWumpusInCavern(int where) {
+    wumpusCavern = where;
+  }
+// ************************ END INITIALIZATION CODE ****************************** //
+
 
   public void rest() {
     moveWumpus();
@@ -84,6 +121,25 @@ public class Game {
     return false;
   }
 
+  // EATEN BY WUMPUS SCENARIO
+  private void checkWumpusEatsPlayer() {
+    if (playerCavern == wumpusCavern) {
+      gameTerminated = true;
+      eatenByWumpus = true;
+    }
+  }
+  // EATEN BY WUMPUS SCENARIO
+
+  // PIT SCENARIO
+  private void checkForPit() {
+    if (pits.contains(playerCavern)) {
+      gameTerminated = true;
+      fellInPit = true;
+    }
+  }
+  // PIT SCENARIO
+
+  // BATS SCENARIO
   private void checkForBats() {
     while (bats.contains(playerCavern)) {
       transportPlayer();
@@ -95,21 +151,10 @@ public class Game {
     Path selectedPath = paths.get((int)(Math.random() * paths.size()));
     playerCavern = selectedPath.start;
   }
+  // BATS SCENARIO
 
-  private void checkWumpusEatsPlayer() {
-    if (playerCavern == wumpusCavern) {
-      gameTerminated = true;
-      eatenByWumpus = true;
-    }
-  }
 
-  private void checkForPit() {
-    if (pits.contains(playerCavern)) {
-      gameTerminated = true;
-      fellInPit = true;
-    }
-  }
-
+  // PICK UP ARROW SCENARIO
   private void pickUpArrow() {
     if (arrowInCavern(playerCavern)) {
       removeArrowFrom(playerCavern);
@@ -117,16 +162,87 @@ public class Game {
     }
   }
 
-  public int playerCavern() {
+  private boolean arrowInCavern(int cavern) {
+    for (int c : arrows)
+      if (c == cavern) return true;
+    return false;
+  }
+
+  private void removeArrowFrom(int cavern) {
+    for (int i = 0; i < arrows.size(); i++) {
+      int c = arrows.get(i);
+      if (c == cavern) {
+        arrows.remove(i);
+      }
+    }
+  }
+  // PICK UP ARROW SCENARIO
+
+  // GAME OVER REASONS
+  public boolean gameTerminated() {
+    return gameTerminated;
+  }
+
+  public boolean fellInPit() {
+    return fellInPit;
+  }
+
+  public boolean wumpusHitByArrow() {
+    return wumpusHitByArrow;
+  }
+
+  public boolean eatenByWumpus() {
+    return eatenByWumpus;
+  }
+
+  public boolean hitByOwnArrow(){
+    return hitByOwnArrow;
+  }
+
+  public boolean wasKilledByArrowBounce() {
+    return killedByArrowBounce;
+  }
+  // END GAME OVER REASONS
+
+
+  // FOR TESTING
+  public int playerCavern() { //Also used in Game start
     return playerCavern;
   }
 
-  public void putWumpusInCavern(int where) {
-    wumpusCavern = where;
+  public void setQuiver(int arrows) { //Also used in Game start
+    quiver = arrows;
   }
 
+  public int getWumpusCavern() {
+    return wumpusCavern;
+  }
+
+  public void freezeWumpus() {
+    wumpusFrozen = true;
+  }
+
+  public void reset() {
+    gameTerminated = false;
+    wumpusHitByArrow = false;
+    fellInPit = false;
+    killedByArrowBounce = false;
+    eatenByWumpus = false;
+    hitByOwnArrow = false;
+    batTransport = false;
+  }
+  // END FOR TESTING
+
+  // ******************** DETECTION SCENARIOS ********************* //
   public boolean canSmellWumpus() {
     return areAdjacent(playerCavern, wumpusCavern);
+  }
+
+  public boolean canHearPit() {
+    for (int pit : pits)
+      if (areAdjacent(playerCavern, pit))
+        return true;
+    return false;
   }
 
   private boolean areAdjacent(int c1, int c2) {
@@ -137,13 +253,14 @@ public class Game {
     return false;
   }
 
-  public void setQuiver(int arrows) {
-    quiver = arrows;
+  public boolean canHearBats() {
+    for (int batCave : bats)
+      if (areAdjacent(batCave, playerCavern))
+        return true;
+    return false;
   }
 
-  public void putArrowInCavern(int cavern) {
-    arrows.add(cavern);
-  }
+  // ******************** END DETECTION SCENARIOS ********************* //
 
   public int getQuiver() {
     return quiver;
@@ -158,10 +275,7 @@ public class Game {
     return count;
   }
 
-  public boolean wasKilledByArrowBounce() {
-    return killedByArrowBounce;
-  }
-
+  // SHOOTING SCENARIO //
   public boolean shoot(String direction) {
     if (quiver > 0) {
       quiver--;
@@ -176,6 +290,18 @@ public class Game {
       return true;
     } else
       return false;
+  }
+
+  private int adjacentTo(String direction, int cavern) {
+    for (Path p : paths) {
+      if (p.start == cavern && p.direction.equals(direction))
+        return p.end;
+    }
+    return 0;
+  }
+
+  public void putArrowInCavern(int cavern) {
+    arrows.add(cavern);
   }
 
   private int shootAsFarAsPossible(String direction, int cavern) {
@@ -195,60 +321,7 @@ public class Game {
       return shootAsFarAsPossible(direction, nextCavern);
     }
   }
-
-  private int adjacentTo(String direction, int cavern) {
-    for (Path p : paths) {
-      if (p.start == cavern && p.direction.equals(direction))
-        return p.end;
-    }
-    return 0;
-  }
-
-  public boolean gameTerminated() {
-    return gameTerminated;
-  }
-
-  public void putPitInCavern(int cavern) {
-    pits.add(cavern);
-  }
-
-  public boolean fellInPit() {
-    return fellInPit;
-  }
-
-  public boolean canHearPit() {
-    for (int pit : pits)
-      if (areAdjacent(playerCavern, pit))
-        return true;
-    return false;
-  }
-
-  public boolean wumpusHitByArrow() {
-    return wumpusHitByArrow;
-  }
-
-  public void reset() {
-    gameTerminated = false;
-    wumpusHitByArrow = false;
-    fellInPit = false;
-    killedByArrowBounce = false;
-    eatenByWumpus = false;
-    hitByOwnArrow = false;
-    batTransport = false;
-  }
-
-  public int getWumpusCavern() {
-    return wumpusCavern;
-  }
-
-  public boolean eatenByWumpus() {
-    return eatenByWumpus;
-  }
-
-  public boolean hitByOwnArrow()
-  {
-    return hitByOwnArrow;
-  }
+ // END SHOOTING SCENARIO //
 
   public void moveWumpus() {
     if (wumpusFrozen)
@@ -275,27 +348,15 @@ public class Game {
       moves.add(possibleMove);
   }
 
-  public void freezeWumpus() {
-    wumpusFrozen = true;
-  }
+  private String getAvailableDirections() {
+    AvailableDirections directions = new AvailableDirections();
 
-  public void putBatsInCavern(int cavern) {
-    bats.add(cavern);
-  }
-
-  public boolean canHearBats() {
-    for (int batCave : bats)
-      if (areAdjacent(batCave, playerCavern))
-        return true;
-    return false;
-  }
-
-  public boolean batTransport() {
-    return batTransport;
-  }
-
-  public void resetBatTransport() {
-    batTransport = false;
+    for (Game.Path p : paths) {
+      if (p.start == playerCavern()) {
+        directions.addDirection(p.direction);
+      }
+    }
+    return directions.toString();
   }
 
   class Path {
@@ -308,5 +369,150 @@ public class Game {
       this.end = end;
       this.direction = direction;
     }
-  }// private class Path
+  }
+
+  public ResponseModel createResponseModel(int arrowsInQuiverBeforeTurn) {
+    ResponseModel model = new ResponseModel();
+    model.setGameTerminated(gameTerminated);
+    model.setFellInPit(fellInPit);
+    model.setEatenByWumpus(eatenByWumpus);
+    model.setWumpusHitByArrow(wumpusHitByArrow);
+    model.setHitByOwnArrow(hitByOwnArrow);
+    model.setKilledByArrowBounce(killedByArrowBounce);
+
+    model.setQuiver(quiver);
+    model.setArrowsInQuiverBeforeTurn(arrowsInQuiverBeforeTurn);
+
+    model.setBatTransport(batTransport);
+    batTransport = false;
+
+    model.setAvailableDirections(getAvailableDirections());
+
+    model.setCanSmellWumpus(canSmellWumpus());
+    model.setCanHearPit(canHearPit());
+    model.setCanHearBats(canHearBats());
+    return model;
+  }
+
+
+  class ResponseModel {
+    private int quiver = 0;
+    private int arrowsInQuiverBeforeTurn = 0;
+    private boolean gameTerminated = false;
+    private boolean killedByArrowBounce = false;
+    private boolean fellInPit = false;
+    private boolean wumpusHitByArrow = false;
+    private boolean eatenByWumpus = false;
+    private boolean hitByOwnArrow = false;
+    private boolean batTransport = false;
+    private boolean canSmellWumpus;
+    private boolean canHearPit;
+    private boolean canHearBats;
+    private String availableDirections;
+
+    public int getQuiver() {
+      return quiver;
+    }
+
+    public void setQuiver(int quiver) {
+      this.quiver = quiver;
+    }
+
+    public int getArrowsInQuiverBeforeTurn() {
+      return arrowsInQuiverBeforeTurn;
+    }
+
+    public void setArrowsInQuiverBeforeTurn(int arrowsInQuiverBeforeTurn) {
+      this.arrowsInQuiverBeforeTurn = arrowsInQuiverBeforeTurn;
+    }
+
+    public boolean isGameTerminated() {
+      return gameTerminated;
+    }
+
+    public void setGameTerminated(boolean gameTerminated) {
+      this.gameTerminated = gameTerminated;
+    }
+
+    public boolean isKilledByArrowBounce() {
+      return killedByArrowBounce;
+    }
+
+    public void setKilledByArrowBounce(boolean killedByArrowBounce) {
+      this.killedByArrowBounce = killedByArrowBounce;
+    }
+
+    public boolean isFallenIntoPit() {
+      return fellInPit;
+    }
+
+    public void setFellInPit(boolean fellInPit) {
+      this.fellInPit = fellInPit;
+    }
+
+    public boolean isWumpusHitByArrow() {
+      return wumpusHitByArrow;
+    }
+
+    public void setWumpusHitByArrow(boolean wumpusHitByArrow) {
+      this.wumpusHitByArrow = wumpusHitByArrow;
+    }
+
+    public boolean isEatenByWumpus() {
+      return eatenByWumpus;
+    }
+
+    public void setEatenByWumpus(boolean eatenByWumpus) {
+      this.eatenByWumpus = eatenByWumpus;
+    }
+
+    public boolean isHitByOwnArrow() {
+      return hitByOwnArrow;
+    }
+
+    public void setHitByOwnArrow(boolean hitByOwnArrow) {
+      this.hitByOwnArrow = hitByOwnArrow;
+    }
+
+    public boolean isTransportedByBats() {
+      return batTransport;
+    }
+
+    public void setBatTransport(boolean batTransport) {
+      this.batTransport = batTransport;
+    }
+
+    public void setCanSmellWumpus(boolean canSmellWumpus) {
+      this.canSmellWumpus = canSmellWumpus;
+    }
+
+    public boolean canSmellWumpus() {
+      return canSmellWumpus;
+    }
+
+    public void setCanHearPit(boolean canHearPit) {
+      this.canHearPit = canHearPit;
+    }
+
+    public boolean canHearPit() {
+      return canHearPit;
+    }
+
+    public void setCanHearBats(boolean canHearBats) {
+      this.canHearBats = canHearBats;
+    }
+
+    public boolean canHearBats() {
+      return canHearBats;
+    }
+
+    public void setAvailableDirections(String availableDirections) {
+      this.availableDirections = availableDirections;
+    }
+
+    public String getAvailableDirections() {
+      return availableDirections;
+    }
+  }
+
 }

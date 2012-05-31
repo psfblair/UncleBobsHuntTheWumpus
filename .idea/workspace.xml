@@ -16,28 +16,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="491d0f11-ba0b-4738-8f8e-2cbee03d1a20" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/FitNesseRoot/HuntTheWumpus/AllRequirements/IterationOne/NavigatePlayer/TestInvalidCommand/48-20091014161620.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/FitNesseRoot/HuntTheWumpus/AllRequirements/IterationOne/NavigatePlayer/TestInvalidCommand/50-20091014161628.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/FitNesseRoot/HuntTheWumpus/AllRequirements/IterationOne/NavigatePlayer/TestInvalidCommand/52-20091014161654.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/FitNesseRoot/HuntTheWumpus/AllRequirements/IterationOne/NavigatePlayer/TestInvalidCommand/54-20091014161702.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/FitNesseRoot/HuntTheWumpus/AllRequirements/IterationOne/NavigatePlayer/TestInvalidCommand/56-20091014161715.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/FitNesseRoot/HuntTheWumpus/AllRequirements/IterationOne/NavigatePlayer/TestInvalidCommand/6-20091014161741.zip" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HuntTheWumpus/GameController.java" afterPath="$PROJECT_DIR$/src/HuntTheWumpus/Commands/GameController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FitNesseRoot/HuntTheWumpus/AllRequirements/IterationOne/NavigatePlayer/TestInvalidCommand/content.txt" afterPath="$PROJECT_DIR$/FitNesseRoot/HuntTheWumpus/AllRequirements/IterationOne/NavigatePlayer/TestInvalidCommand/content.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FitNesseRoot/RecentChanges/content.txt" afterPath="$PROJECT_DIR$/FitNesseRoot/RecentChanges/content.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HuntTheWumpus/CommandInterpreter/CommandInterpreter.java" afterPath="$PROJECT_DIR$/src/HuntTheWumpus/CommandInterpreter/CommandInterpreter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HuntTheWumpus/Commands/Command.java" afterPath="$PROJECT_DIR$/src/HuntTheWumpus/Commands/Command.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HuntTheWumpus/Commands/MovePlayer.java" afterPath="$PROJECT_DIR$/src/HuntTheWumpus/Commands/MovePlayer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HuntTheWumpus/Commands/Rest.java" afterPath="$PROJECT_DIR$/src/HuntTheWumpus/Commands/Rest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HuntTheWumpus/Commands/ShootArrow.java" afterPath="$PROJECT_DIR$/src/HuntTheWumpus/Commands/ShootArrow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HuntTheWumpus/Commands/UnknownCommand.java" afterPath="$PROJECT_DIR$/src/HuntTheWumpus/Commands/UnknownCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HuntTheWumpus/Runner.java" afterPath="$PROJECT_DIR$/src/HuntTheWumpus/Runner.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WAAT Exercises.iml" afterPath="$PROJECT_DIR$/WAAT Exercises.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HuntTheWumpus/Commands/GameController.java" afterPath="$PROJECT_DIR$/src/HuntTheWumpus/Commands/GameController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HuntTheWumpus/Game.java" afterPath="$PROJECT_DIR$/src/HuntTheWumpus/Game.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HuntTheWumpus/GamePresenter.java" afterPath="$PROJECT_DIR$/src/HuntTheWumpus/GamePresenter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HuntTheWumpus/PresentationBoundary.java" afterPath="$PROJECT_DIR$/src/HuntTheWumpus/PresentationBoundary.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/HuntTheWumpus/GameControllerTest.java" afterPath="$PROJECT_DIR$/test/HuntTheWumpus/GameControllerTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/HuntTheWumpus/fixtures/GameDriver.java" afterPath="$PROJECT_DIR$/test/HuntTheWumpus/fixtures/GameDriver.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/HuntTheWumpus/GameTest.java" afterPath="$PROJECT_DIR$/test/HuntTheWumpus/GameTest.java" />
     </list>
     <ignored path="HuntTheWumpus.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -100,61 +87,53 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="GameController.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/Commands/GameController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="10" selection-start="1365" selection-end="1365" vertical-scroll-proportion="1.08">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Game.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Game.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="164" column="17" selection-start="3957" selection-end="3957" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EnglishCommandInterpreter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/CommandInterpreter/EnglishCommandInterpreter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="0" selection-start="876" selection-end="876" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CommandInterpreter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/CommandInterpreter/CommandInterpreter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="54" selection-start="588" selection-end="588" vertical-scroll-proportion="0.0">
+            <state line="16" column="2" selection-start="459" selection-end="459" vertical-scroll-proportion="0.075187966">
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#299#305#0" expanded="true" />
+                <element signature="e#444#453#0" expanded="true" />
+                <element signature="e#595#604#0" expanded="true" />
+                <element signature="e#860#869#0" expanded="true" />
+                <element signature="e#8376#8385#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameDriver.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/HuntTheWumpus/fixtures/GameDriver.java">
+      <file leaf-file-name="GameTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/HuntTheWumpus/GameTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="4" selection-start="1134" selection-end="1134" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="152" column="50" selection-start="3895" selection-end="3895" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Runner.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/Runner.java">
+      <file leaf-file-name="PresentationBoundary.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/PresentationBoundary.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="31" selection-start="450" selection-end="450" vertical-scroll-proportion="0.0">
+            <state line="3" column="0" selection-start="64" selection-end="64" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GamePresenter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/GamePresenter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="38" selection-start="151" selection-end="151" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameControllerTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/HuntTheWumpus/GameControllerTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="43" column="51" selection-start="1548" selection-end="1548" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -173,13 +152,8 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/HuntTheWumpus/AvailableDirections.java" />
-        <option value="$PROJECT_DIR$/test/HuntTheWumpus/AvailableDirectionsTest.java" />
-        <option value="$PROJECT_DIR$/src/HuntTheWumpus/CommandInterpreter.java" />
         <option value="$PROJECT_DIR$/src/HuntTheWumpus/CommandInterpreter/EnglishCommandInterpreter.java" />
         <option value="$PROJECT_DIR$/src/HuntTheWumpus/Runner.java" />
-        <option value="$PROJECT_DIR$/test/HuntTheWumpus/GameControllerTest.java" />
-        <option value="$PROJECT_DIR$/src/HuntTheWumpus/GamePresenter.java" />
         <option value="$PROJECT_DIR$/test/HuntTheWumpus/fixtures/GameDriver.java" />
         <option value="$PROJECT_DIR$/src/HuntTheWumpus/CommandInterpreter/CommandInterpreter.java" />
         <option value="$PROJECT_DIR$/src/HuntTheWumpus/Commands/Command.java" />
@@ -189,6 +163,11 @@
         <option value="$PROJECT_DIR$/src/HuntTheWumpus/Commands/Rest.java" />
         <option value="$PROJECT_DIR$/src/HuntTheWumpus/Commands/UnknownCommand.java" />
         <option value="$PROJECT_DIR$/src/HuntTheWumpus/Commands/GameController.java" />
+        <option value="$PROJECT_DIR$/test/HuntTheWumpus/GameControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/HuntTheWumpus/PresentationBoundary.java" />
+        <option value="$PROJECT_DIR$/src/HuntTheWumpus/GamePresenter.java" />
+        <option value="$PROJECT_DIR$/test/HuntTheWumpus/GameTest.java" />
+        <option value="$PROJECT_DIR$/src/HuntTheWumpus/Game.java" />
       </list>
     </option>
   </component>
@@ -607,6 +586,16 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -635,134 +624,12 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HuntTheWumpus" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HTW" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HTW" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HuntTheWumpus" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fixtures" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HTW" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HTW" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="HuntTheWumpus" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HTW" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HTW" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HuntTheWumpus" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Commands" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HTW" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HTW" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HuntTheWumpus" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CommandInterpreter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HTW" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HTW" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HTW" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HTW" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FitNesseRoot" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -783,12 +650,12 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
+    <property name="FullScreen" value="false" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="ExtractSuperBase.RECENT_KEYS">
@@ -1037,13 +904,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32969698" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16969697" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27636364" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31878787" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1052,11 +919,11 @@
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32969698" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32848486" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32969698" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3994253" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14655173" sideWeight="0.67030305" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14655173" sideWeight="0.72242427" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27757576" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Dataflow to this" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Clojure REPL" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1165,120 +1032,103 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/AvailableDirections.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="35" selection-start="994" selection-end="994" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/HuntTheWumpus/GameControllerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="77" selection-start="2065" selection-end="2065" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/Console.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="17" selection-start="41" selection-end="41" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/GamePresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="36" selection-start="708" selection-end="730" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/HuntTheWumpus/fixtures/MakeMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="13" selection-start="47" selection-end="47" vertical-scroll-proportion="0.05798969">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/Runner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="31" selection-start="450" selection-end="450" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/HuntTheWumpus/fixtures/GameDriver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="4" selection-start="1134" selection-end="1134" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/CommandInterpreter/EnglishCommandInterpreter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="0" selection-start="876" selection-end="876" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/CommandInterpreter/CommandInterpreter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="54" selection-start="588" selection-end="588" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
+        <state line="3" column="13" selection-start="47" selection-end="47" vertical-scroll-proportion="0.05798969" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/Commands/ShootArrow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="26" selection-start="262" selection-end="262" vertical-scroll-proportion="0.19329897">
-          <folding />
-        </state>
+        <state line="10" column="26" selection-start="262" selection-end="262" vertical-scroll-proportion="0.19329897" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/Commands/Command.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="48" selection-start="108" selection-end="108" vertical-scroll-proportion="0.05798969">
-          <folding />
-        </state>
+        <state line="3" column="48" selection-start="108" selection-end="108" vertical-scroll-proportion="0.05798969" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/Commands/MovePlayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="26" selection-start="262" selection-end="262" vertical-scroll-proportion="0.19329897">
-          <folding />
-        </state>
+        <state line="10" column="26" selection-start="262" selection-end="262" vertical-scroll-proportion="0.19329897" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/Commands/Rest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="3" selection-start="157" selection-end="157" vertical-scroll-proportion="0.11597938">
-          <folding />
-        </state>
+        <state line="6" column="3" selection-start="157" selection-end="157" vertical-scroll-proportion="0.11597938" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/Commands/UnknownCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="36" selection-start="306" selection-end="306" vertical-scroll-proportion="0.24436091">
-          <folding />
-        </state>
+        <state line="13" column="36" selection-start="306" selection-end="306" vertical-scroll-proportion="0.24436091" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/Game.java">
+    <entry file="file://$PROJECT_DIR$/test/HuntTheWumpus/fixtures/GameDriver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="164" column="17" selection-start="3957" selection-end="3957" vertical-scroll-proportion="0.0">
+        <state line="44" column="4" selection-start="1134" selection-end="1134" vertical-scroll-proportion="0.40497336" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/CommandInterpreter/CommandInterpreter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="54" selection-start="588" selection-end="588" vertical-scroll-proportion="0.6660746" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/CommandInterpreter/EnglishCommandInterpreter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="0" selection-start="876" selection-end="876" vertical-scroll-proportion="0.51282054" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/Runner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="26" selection-start="1347" selection-end="1347" vertical-scroll-proportion="0.64285713">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/Commands/GameController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="10" selection-start="1365" selection-end="1365" vertical-scroll-proportion="1.08">
+        <state line="40" column="32" selection-start="1064" selection-end="1064" vertical-scroll-proportion="0.72644377">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/HuntTheWumpus/GameControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="51" selection-start="1548" selection-end="1548" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/PresentationBoundary.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="64" selection-end="64" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/GamePresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="38" selection-start="151" selection-end="151" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/HuntTheWumpus/GameTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="152" column="50" selection-start="3895" selection-end="3895" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="2" selection-start="459" selection-end="459" vertical-scroll-proportion="0.075187966">
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#299#305#0" expanded="true" />
+            <element signature="e#444#453#0" expanded="true" />
+            <element signature="e#595#604#0" expanded="true" />
+            <element signature="e#860#869#0" expanded="true" />
+            <element signature="e#8376#8385#0" expanded="true" />
           </folding>
         </state>
       </provider>

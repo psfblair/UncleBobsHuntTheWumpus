@@ -16,7 +16,7 @@ public class GameControllerTest extends TestCase {
     mc = new MockConsole();
     controller = new GameController(mc, new EnglishCommandInterpreter());
     game = controller.getGame();
-    presenter = new GamePresenter(mc, game);
+    presenter = new GamePresenter(mc);
   }
 
   public void testDirectionErrorMessages() throws Exception {
@@ -33,23 +33,26 @@ public class GameControllerTest extends TestCase {
 
   public void testAvailableDirectionsWithNoPlaceToGo() {
     game.putPlayerInCavern(1);
-    presenter.printAvailableDirections();
-    assertTrue(mc.check("There are no exits!"));
+    String expected = "There are no exits!";
+    String availableDirections = game.createResponseModel(0).getAvailableDirections();
+    assertEquals(expected, availableDirections);
   }
 
   public void testSouthIsAvailable() throws Exception {
     game.addPath(1, 2, SOUTH);
     game.putPlayerInCavern(1);
-    presenter.printAvailableDirections();
-    assertTrue(mc.check("You can go south from here."));
+    String expected = "You can go south from here.";
+    String availableDirections = game.createResponseModel(0).getAvailableDirections();
+    assertEquals(expected, availableDirections);
   }
 
   public void testNortAndSouthAvailable() throws Exception {
     game.addPath(1, 2, SOUTH);
     game.addPath(1, 3, NORTH);
     game.putPlayerInCavern(1);
-    presenter.printAvailableDirections();
-    assertTrue(mc.check("You can go north and south from here."));
+    String expected = "You can go north and south from here.";
+    String availableDirections = game.createResponseModel(0).getAvailableDirections();
+    assertEquals(expected, availableDirections);
   }
 
   public void testFourDirections() throws Exception {
@@ -58,7 +61,8 @@ public class GameControllerTest extends TestCase {
     game.addPath(1, 4, SOUTH);
     game.addPath(1, 5, NORTH);
     game.putPlayerInCavern(1);
-    presenter.printAvailableDirections();
-    assertTrue(mc.check("You can go north, south, east and west from here."));
+    String expected = "You can go north, south, east and west from here.";
+    String availableDirections = game.createResponseModel(0).getAvailableDirections();
+    assertEquals(expected, availableDirections);
   }
 }
