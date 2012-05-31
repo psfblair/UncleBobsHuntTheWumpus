@@ -1,4 +1,4 @@
-import HuntTheWumpus.Core.GameCaverns;
+import HuntTheWumpus.Core.Actors.GameCaverns;
 import HuntTheWumpus.Presentation.GamePresenter;
 import HuntTheWumpus.Presentation.ResponseModel;
 import HuntTheWumpus.fixtures.MockConsole;

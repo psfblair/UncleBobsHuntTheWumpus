@@ -1,6 +1,7 @@
 package HuntTheWumpus.Command;
 
 import HuntTheWumpus.Core.Game;
+import HuntTheWumpus.Core.Scenarios.Command;
 import HuntTheWumpus.Presentation.Console;
 import HuntTheWumpus.Presentation.GamePresenter;
 import HuntTheWumpus.Presentation.Presentation;

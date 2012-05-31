@@ -2,6 +2,7 @@ package HuntTheWumpus.Core;
 
 import HuntTheWumpus.Command.EnglishCommandInterpreter;
 import HuntTheWumpus.Command.GameController;
+import HuntTheWumpus.Core.Actors.GameCaverns;
 
 import java.io.*;
 

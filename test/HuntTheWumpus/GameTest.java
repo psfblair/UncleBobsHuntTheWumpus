@@ -1,6 +1,9 @@
 package HuntTheWumpus;
 
 import HuntTheWumpus.Core.*;
+import HuntTheWumpus.Core.Actors.GameCaverns;
+import HuntTheWumpus.Core.Actors.Player;
+import HuntTheWumpus.Core.Actors.Wumpus;
 import HuntTheWumpus.fixtures.MockConsole;
 import junit.framework.TestCase;
 

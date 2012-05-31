@@ -1,4 +1,4 @@
-package HuntTheWumpus.Core;
+package HuntTheWumpus.Core.Actors;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -59,11 +59,11 @@ public class GameCaverns {
     return directions;
   }
 
-  boolean thereIsAWallInDirectionFromCavern(String direction, int cavern) {
+  public boolean thereIsAWallInDirectionFromCavern(String direction, int cavern) {
     return adjacentTo(direction, cavern) == 0;
   }
 
-  int adjacentTo(String direction, int cavern) {
+  public int adjacentTo(String direction, int cavern) {
     for (Path p : paths) {
       if (p.start == cavern && p.direction.equals(direction))
         return p.end;

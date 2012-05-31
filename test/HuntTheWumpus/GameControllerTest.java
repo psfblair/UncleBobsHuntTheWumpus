@@ -3,7 +3,7 @@ package HuntTheWumpus;
 import HuntTheWumpus.Command.EnglishCommandInterpreter;
 import HuntTheWumpus.Command.GameController;
 import HuntTheWumpus.Core.Game;
-import HuntTheWumpus.Core.GameCaverns;
+import HuntTheWumpus.Core.Actors.GameCaverns;
 import HuntTheWumpus.Presentation.Presentation;
 import HuntTheWumpus.fixtures.MockConsole;
 import junit.framework.TestCase;

@@ -1,21 +1,20 @@
-package HuntTheWumpus.Command;
+package HuntTheWumpus.Core.Scenarios;
 
 import HuntTheWumpus.Core.Game;
 import HuntTheWumpus.Presentation.Presentation;
 
-public class ShootArrow extends Command {
+public class MovePlayer extends Command {
   private String direction;
 
-  public ShootArrow(Game game, Presentation presenter, String direction) {
+  public MovePlayer(Game game, Presentation presenter, String direction) {
     super(game, presenter);
     this.direction = direction;
   }
 
   public void Invoke() {
-    if (game.shoot(getDirection()) == false)
-      presenter.printNoArrows();
-    else
-      presenter.printShotArrow();
+    String direction = getDirection();
+    if (game.move(direction) == false)
+      presenter.printCannotMove(direction);
     super.Invoke();
   }
 

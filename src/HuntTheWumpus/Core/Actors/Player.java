@@ -1,4 +1,4 @@
-package HuntTheWumpus.Core;
+package HuntTheWumpus.Core.Actors;
 
 public class Player {
   public int playerCavern = -1;
@@ -19,15 +19,15 @@ public class Player {
     playerCavern = cavern;
   }
 
-  boolean isPlayerCavern(int nextCavern) {
+  public boolean isPlayerCavern(int nextCavern) {
     return nextCavern == playerCavern;
   }
 
-  void putPlayerInRandomCavern() {
+  public void putPlayerInRandomCavern() {
     playerCavern = caverns.getRandomPathStart();
   }
 
-  boolean isInWumpusCavern() {
+  public boolean isInWumpusCavern() {
     return wumpus.isWumpusCavern(playerCavern);
   }
 
@@ -67,7 +67,7 @@ public class Player {
     quiver--;
   }
 
-  void pickUpArrow() {
+  public void pickUpArrow() {
     caverns.removeArrowFrom(playerCavern);
     quiver++;
   }

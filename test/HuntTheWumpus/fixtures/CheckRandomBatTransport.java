@@ -1,6 +1,6 @@
 package HuntTheWumpus.fixtures;
 
-import HuntTheWumpus.Core.GameCaverns;
+import HuntTheWumpus.Core.Actors.GameCaverns;
 
 import static HuntTheWumpus.fixtures.GameDriver.g;
 

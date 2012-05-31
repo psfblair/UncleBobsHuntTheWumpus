@@ -1,5 +1,9 @@
 package HuntTheWumpus.Core;
 
+import HuntTheWumpus.Core.Actors.GameCaverns;
+import HuntTheWumpus.Core.Actors.Player;
+import HuntTheWumpus.Core.Actors.Wumpus;
+
 public class Game {
   public final GameCaverns gameCaverns = new GameCaverns();
   public final Wumpus wumpus = new Wumpus(gameCaverns);

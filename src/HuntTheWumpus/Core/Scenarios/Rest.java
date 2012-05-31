@@ -1,4 +1,4 @@
-package HuntTheWumpus.Command;
+package HuntTheWumpus.Core.Scenarios;
 
 import HuntTheWumpus.Core.Game;
 import HuntTheWumpus.Presentation.Presentation;

@@ -1,8 +1,8 @@
-package HuntTheWumpus.Command;
+package HuntTheWumpus.Core.Scenarios;
 
 import HuntTheWumpus.Core.Game;
-import HuntTheWumpus.Core.GameCaverns;
-import HuntTheWumpus.Core.Player;
+import HuntTheWumpus.Core.Actors.GameCaverns;
+import HuntTheWumpus.Core.Actors.Player;
 import HuntTheWumpus.Presentation.Presentation;
 import HuntTheWumpus.Presentation.ResponseModel;
 

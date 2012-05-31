@@ -1,6 +1,6 @@
 package HuntTheWumpus.Presentation;
 
-import HuntTheWumpus.Core.GameCaverns;
+import HuntTheWumpus.Core.Actors.GameCaverns;
 import HuntTheWumpus.Core.GameOverReasons;
 
 public class GamePresenter implements Presentation {

@@ -1,4 +1,4 @@
-package HuntTheWumpus.Core;
+package HuntTheWumpus.Core.Actors;
 
 import java.util.ArrayList;
 import java.util.List;

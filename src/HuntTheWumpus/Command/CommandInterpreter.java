@@ -1,7 +1,8 @@
 package HuntTheWumpus.Command;
 
-import HuntTheWumpus.Core.Game;
-import HuntTheWumpus.Core.GameCaverns;
+import HuntTheWumpus.Core.*;
+import HuntTheWumpus.Core.Actors.GameCaverns;
+import HuntTheWumpus.Core.Scenarios.*;
 import HuntTheWumpus.Presentation.Presentation;
 
 import java.util.HashMap;
