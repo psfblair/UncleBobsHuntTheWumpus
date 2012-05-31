@@ -1,7 +1,7 @@
 package HuntTheWumpus.Core.Scenarios;
 
 import HuntTheWumpus.Core.Game;
-import HuntTheWumpus.Presentation.Output;
+import HuntTheWumpus.Core.Output;
 
 public class ShootArrow extends Scenario {
   private String direction;

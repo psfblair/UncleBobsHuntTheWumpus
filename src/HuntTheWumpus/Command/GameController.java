@@ -4,7 +4,7 @@ import HuntTheWumpus.Core.Game;
 import HuntTheWumpus.Core.Scenarios.Scenario;
 import HuntTheWumpus.Presentation.Console;
 import HuntTheWumpus.Presentation.GamePresenter;
-import HuntTheWumpus.Presentation.Output;
+import HuntTheWumpus.Core.Output;
 
 public class GameController {
 

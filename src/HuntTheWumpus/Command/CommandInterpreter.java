@@ -3,7 +3,7 @@ package HuntTheWumpus.Command;
 import HuntTheWumpus.Core.*;
 import HuntTheWumpus.Core.Actors.GameCaverns;
 import HuntTheWumpus.Core.Scenarios.*;
-import HuntTheWumpus.Presentation.Output;
+import HuntTheWumpus.Core.Output;
 
 import java.util.HashMap;
 import java.util.Map;
