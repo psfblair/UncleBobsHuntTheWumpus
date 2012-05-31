@@ -12,13 +12,13 @@ public abstract class Scenario {
   protected ResponseModel responseModel;
   protected Player player;
   protected Game game;
-  protected Output presenter;
+  protected Output output;
   private GameCaverns caverns;
   private int arrowsInQuiverBeforeTurn;
 
-  protected Scenario(Game game, Output presenter) {
+  protected Scenario(Game game, Output output) {
     this.game = game;
-    this.presenter = presenter;
+    this.output = output;
     this.player = game.getPlayer();
     this.caverns = game.getGameCaverns();
 
@@ -27,7 +27,7 @@ public abstract class Scenario {
     initializeResponseModel();
   }
 
-  public void Invoke() {
+  public void invoke() {
     output();
   }
 
@@ -37,10 +37,9 @@ public abstract class Scenario {
 
   protected void output() {
     ResponseModel responseModel = prepareResponseModel();
-    presenter.outputResponse(responseModel);
+    output.outputResponse(responseModel);
   }
 
-  // TODO - Remove? This is public b/c of tests
   public ResponseModel prepareResponseModel() {
     responseModel.setGameTerminated(game.gameTerminated());
     responseModel.setReasonGameTerminated(game.gameTerminationReason());

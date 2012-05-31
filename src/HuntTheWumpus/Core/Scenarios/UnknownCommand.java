@@ -2,6 +2,7 @@ package HuntTheWumpus.Core.Scenarios;
 
 import HuntTheWumpus.Core.Game;
 import HuntTheWumpus.Core.Output.Output;
+import HuntTheWumpus.Core.Output.ResponseModel;
 
 public class UnknownCommand extends Scenario {
   private String command;
@@ -11,12 +12,9 @@ public class UnknownCommand extends Scenario {
     this.command = command;
   }
 
-  public void Invoke() {
-    responseModel.setUnknownCommand(getCommandString());
-    super.Invoke();
-  }
-
-  public String getCommandString() {
-    return command;
+  @Override
+  public ResponseModel prepareResponseModel() {
+    responseModel.setUnknownCommand(command);
+    return super.prepareResponseModel();
   }
 }

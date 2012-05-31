@@ -19,7 +19,7 @@ public class GameController {
 
   public void execute(String commandString) {
     Scenario command = interpreter.getCommand(commandString, game, presenter);
-    command.Invoke();
+    command.invoke();
   }
 
   // TODO - shouldn't need this.

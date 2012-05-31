@@ -9,8 +9,9 @@ public class Rest extends Scenario {
     super(game, presenter);
   }
 
-  public void Invoke() {
+  @Override
+  public void invoke() {
     game.rest();
-    super.Invoke();
+    super.invoke();
   }
 }
