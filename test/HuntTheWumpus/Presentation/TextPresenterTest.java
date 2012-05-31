@@ -1,18 +1,19 @@
+package HuntTheWumpus.Presentation;
+
 import HuntTheWumpus.Core.Actors.GameCaverns;
-import HuntTheWumpus.Presentation.GamePresenter;
 import HuntTheWumpus.Core.Output.ResponseModel;
 import HuntTheWumpus.fixtures.MockConsole;
 import junit.framework.TestCase;
 
 import java.util.HashSet;
 
-public class GamePresenterTest extends TestCase {
-  private GamePresenter presenter;
+public class TextPresenterTest extends TestCase {
+  private TextPresenter presenter;
   private MockConsole mc;
 
   protected void setUp() throws Exception {
     mc = new MockConsole();
-    presenter = new GamePresenter(mc);
+    presenter = new TextPresenter(mc);
   }
   public void testNoAvailableDirections(){
     ResponseModel responseModel = new ResponseModel();

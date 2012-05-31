@@ -1,4 +1,4 @@
-package HuntTheWumpus;
+package HuntTheWumpus.Core;
 
 import HuntTheWumpus.Core.*;
 import HuntTheWumpus.Core.Actors.GameCaverns;

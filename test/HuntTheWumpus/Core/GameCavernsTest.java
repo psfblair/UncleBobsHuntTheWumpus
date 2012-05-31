@@ -1,28 +1,24 @@
-package HuntTheWumpus;
+package HuntTheWumpus.Core;
 
 import HuntTheWumpus.Command.EnglishCommandInterpreter;
 import HuntTheWumpus.Command.GameController;
-import HuntTheWumpus.Core.Game;
 import HuntTheWumpus.Core.Actors.GameCaverns;
-import HuntTheWumpus.Core.Output.Output;
 import HuntTheWumpus.fixtures.MockConsole;
 import junit.framework.TestCase;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class GameControllerTest extends TestCase {
+public class GameCavernsTest extends TestCase {
   private GameController controller;
   private MockConsole mc;
   private Game game;
-  private Output presenter;
   private GameCaverns caverns;
 
   protected void setUp() throws Exception {
     mc = new MockConsole();
     controller = new GameController(mc, new EnglishCommandInterpreter());
     game = controller.getGame();
-    presenter = controller.getPresenter();
     caverns = new GameCaverns();
   }
 

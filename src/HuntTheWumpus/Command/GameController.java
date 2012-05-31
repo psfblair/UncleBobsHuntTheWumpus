@@ -3,7 +3,7 @@ package HuntTheWumpus.Command;
 import HuntTheWumpus.Core.Game;
 import HuntTheWumpus.Core.Scenarios.Scenario;
 import HuntTheWumpus.Presentation.Console;
-import HuntTheWumpus.Presentation.GamePresenter;
+import HuntTheWumpus.Presentation.TextPresenter;
 import HuntTheWumpus.Core.Output.Output;
 
 public class GameController {
@@ -14,7 +14,7 @@ public class GameController {
 
   public GameController(Console console, CommandInterpreter interpreter) {
     this.interpreter = interpreter;
-    presenter = new GamePresenter(console);
+    presenter = new TextPresenter(console);
   }
 
   public void execute(String commandString) {

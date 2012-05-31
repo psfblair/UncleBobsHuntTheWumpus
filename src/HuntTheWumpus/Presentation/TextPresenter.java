@@ -7,10 +7,10 @@ import HuntTheWumpus.Core.Output.ResponseModel;
 
 import java.util.Set;
 
-public class GamePresenter implements Output {
+public class TextPresenter implements Output {
   private Console console;
 
-  public GamePresenter(Console console) {
+  public TextPresenter(Console console) {
     this.console = console;
   }
 
@@ -51,7 +51,7 @@ public class GamePresenter implements Output {
   public void printCannotMove(ResponseModel responseModel) {
     if (responseModel.cannotMoveInRequestedDirection()) {
       String direction = responseModel.requestedDirection();
-      console.print("You can't go " + GamePresenter.directionName(direction) + " from here.");
+      console.print("You can't go " + TextPresenter.directionName(direction) + " from here.");
     }
   }
 
