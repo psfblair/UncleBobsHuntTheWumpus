@@ -2,9 +2,9 @@ package HuntTheWumpus.Presentation;
 
 public interface Presentation {
 
-  void printUnknownCommand(String command);
+  void outputResponse(ResponseModel responseModel);
 
-  void printEndOfTurnMessages(ResponseModel responseModel);
+  void printUnknownCommand(String command);
 
   void printShotArrow();
 

@@ -14,7 +14,21 @@ public class GamePresenter implements Presentation {
     console.print("I don't know how to " + command + ".");
   }
 
-  public void printEndOfTurnMessages(ResponseModel responseModel) {
+  public void outputResponse(ResponseModel responseModel) {
+    if (responseModel.unknownCommand() != null) {
+      printUnknownCommand(responseModel.unknownCommand());
+    }
+    if (responseModel.arrowWasShot()) {
+      printShotArrow();
+    }
+    if (responseModel.triedShootingWithNoArrows()) {
+      printNoArrows();
+    }
+    if (responseModel.cannotMoveInRequestedDirection()) {
+      printCannotMove(responseModel.requestedDirection());
+    }
+
+
     if (responseModel.isGameTerminated()) {
       printCauseOfTermination(responseModel);
       console.print("Game over.");

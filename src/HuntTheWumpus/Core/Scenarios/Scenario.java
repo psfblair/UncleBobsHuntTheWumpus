@@ -9,7 +9,7 @@ import HuntTheWumpus.Presentation.ResponseModel;
 import java.util.Set;
 
 public abstract class Scenario {
-  private ResponseModel responseModel;
+  protected ResponseModel responseModel;
   protected Player player;
   protected Game game;
   protected Presentation presenter;
@@ -37,7 +37,7 @@ public abstract class Scenario {
 
   protected void output() {
     ResponseModel responseModel = prepareResponseModel();
-    presenter.printEndOfTurnMessages(responseModel);
+    presenter.outputResponse(responseModel);
   }
 
   // TODO - Remove? This is public b/c of tests

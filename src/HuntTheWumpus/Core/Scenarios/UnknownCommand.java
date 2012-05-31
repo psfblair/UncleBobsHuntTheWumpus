@@ -12,7 +12,7 @@ public class UnknownCommand extends Scenario {
   }
 
   public void Invoke() {
-    presenter.printUnknownCommand(getCommandString());
+    responseModel.setUnknownCommand(getCommandString());
     super.Invoke();
   }
 

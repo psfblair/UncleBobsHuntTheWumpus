@@ -12,13 +12,10 @@ public class MovePlayer extends Scenario {
   }
 
   public void Invoke() {
-    String direction = getDirection();
-    if (game.move(direction) == false)
-      presenter.printCannotMove(direction);
+    responseModel.setRequestedDirection(direction);
+    if (game.move(direction) == false) {
+      responseModel.setCannotMoveInRequestedDirection(true);
+    }
     super.Invoke();
-  }
-
-  public String getDirection() {
-    return direction;
   }
 }

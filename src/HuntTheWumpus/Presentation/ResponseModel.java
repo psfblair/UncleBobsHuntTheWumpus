@@ -14,6 +14,11 @@ public class ResponseModel {
   private boolean canHearBats;
   private Set availableDirections;
   private GameOverReasons gameTerminationReason;
+  private String unknownCommand;
+  private boolean arrowWasShot;
+  private boolean triedShootingWithNoArrows;
+  private boolean cannotMoveInRequestedDirection;
+  private String requestedDirection;
 
   public int getQuiver() {
     return quiver;
@@ -85,5 +90,45 @@ public class ResponseModel {
 
   public GameOverReasons getGameTerminationReason() {
     return gameTerminationReason;
+  }
+
+  public String unknownCommand() {
+    return unknownCommand;
+  }
+
+  public void setUnknownCommand(String unknownCommand) {
+    this.unknownCommand = unknownCommand;
+  }
+
+  public boolean arrowWasShot() {
+    return arrowWasShot;
+  }
+
+  public void setArrowWasShot(boolean arrowWasShot) {
+    this.arrowWasShot = arrowWasShot;
+  }
+
+  public boolean triedShootingWithNoArrows() {
+    return triedShootingWithNoArrows;
+  }
+
+  public void setTriedShootingWithNoArrows(boolean triedShootingWithNoArrows) {
+    this.triedShootingWithNoArrows = triedShootingWithNoArrows;
+  }
+
+  public boolean cannotMoveInRequestedDirection() {
+    return cannotMoveInRequestedDirection;
+  }
+
+  public void setCannotMoveInRequestedDirection(boolean cannotMoveInRequestedDirection) {
+    this.cannotMoveInRequestedDirection = cannotMoveInRequestedDirection;
+  }
+
+  public String requestedDirection() {
+    return requestedDirection;
+  }
+
+  public void setRequestedDirection(String requestedDirection) {
+    this.requestedDirection = requestedDirection;
   }
 }

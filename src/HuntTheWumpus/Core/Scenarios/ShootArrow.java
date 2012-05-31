@@ -13,9 +13,9 @@ public class ShootArrow extends Scenario {
 
   public void Invoke() {
     if (game.shoot(getDirection()) == false)
-      presenter.printNoArrows();
+      responseModel.setTriedShootingWithNoArrows(true);
     else
-      presenter.printShotArrow();
+      responseModel.setArrowWasShot(true);
     super.Invoke();
   }
 
