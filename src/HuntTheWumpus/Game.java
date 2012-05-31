@@ -15,8 +15,6 @@ public class Game {
   public final Wumpus wumpus = new Wumpus(gameCaverns);
   public final Player player = new Player(gameCaverns, wumpus);
 
-  /* TODO Move to Player */
-  private int quiver = 0;
 
   //TODO - Remove this later
   public Player getPlayer() {
@@ -60,7 +58,7 @@ public class Game {
 
   public void initializeResponseModel() {
     responseModel = new ResponseModel();
-    responseModel.setArrowsInQuiverBeforeTurn(this.quiver);
+    responseModel.setArrowsInQuiverBeforeTurn(player.getQuiver());
   }
 
   private void output(Presentation presenter) {
@@ -114,7 +112,7 @@ public class Game {
   private void pickUpArrow() {
     if (player.playerIsInCavernWithArrow()) {
       player.pickUpArrow();
-      quiver++;
+
     }
   }
 
@@ -128,10 +126,6 @@ public class Game {
     return gameCaverns;
   }
 
-  public void setQuiver(int arrows) { //Also used in Game start
-    quiver = arrows;
-  }
-
   public ResponseModel getResponseModel() {
     return responseModel;
   }
@@ -140,16 +134,12 @@ public class Game {
     gameTerminated = false;
     batTransport = false;
   }
-
-  public int getQuiver() {
-    return quiver;
-  }
   // END FOR TESTING
 
   public boolean shoot(String direction) {
-    if (quiver <= 0)
+    if (player.getQuiver() <= 0)
       return false;
-    quiver--;
+    player.shootArrow();
     if (gameCaverns.thereIsAWallInDirectionFromCavern(direction, player.getPlayerCavern())) {
       gameTerminated = true;
       responseModel.setReasonGameTerminated(GameOverReasons.KILLED_BY_ARROW_BOUNCE);
@@ -209,7 +199,7 @@ public class Game {
 
   public ResponseModel finalizeResponseModel() {
     responseModel.setGameTerminated(gameTerminated);
-    responseModel.setQuiver(quiver);
+    responseModel.setQuiver(player.getQuiver());
 
     responseModel.setBatTransport(batTransport);
     batTransport = false;

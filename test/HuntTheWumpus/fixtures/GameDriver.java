@@ -66,7 +66,7 @@ public class GameDriver {
   }
 
   public void setQuiverTo(int arrows) {
-    g.setQuiver(arrows);
+    g.getPlayer().setQuiver(arrows);
   }
 
   public int arrowsInCavern(int cavern) {
@@ -74,7 +74,7 @@ public class GameDriver {
   }
 
   public int arrowsInQuiver() {
-    return g.getQuiver();
+    return g.getPlayer().getQuiver();
   }
 
   public boolean gameTerminated() {

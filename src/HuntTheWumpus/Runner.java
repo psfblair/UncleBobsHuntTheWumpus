@@ -54,8 +54,8 @@ public class Runner {
     g.gameCaverns.putBatsInCavern(8);
 
     g.getPlayer().putPlayerInCavern(1);
+    g.getPlayer().setQuiver(5);
     g.getWumpus().putWumpusInCavern(15);
-    g.setQuiver(5);
 
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     p.execute("r");

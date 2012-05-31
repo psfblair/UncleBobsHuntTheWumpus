@@ -50,10 +50,10 @@ public class GameTest extends TestCase {
   public void testPickUpArrows() throws Exception {
     g.gameCaverns.addPath(1, 2, GameCaverns.EAST);
     g.getPlayer().putPlayerInCavern(1);
-    g.setQuiver(0);
+    g.getPlayer().setQuiver(0);
     g.gameCaverns.putArrowInCavern(2);
     g.move(GameCaverns.EAST);
-    assertEquals(1, g.getQuiver());
+    assertEquals(1, g.getPlayer().getQuiver());
     assertEquals(0, g.gameCaverns.arrowsInCavern(2));
   }
 
@@ -61,9 +61,9 @@ public class GameTest extends TestCase {
     g.gameCaverns.addPath(1, 2, GameCaverns.EAST);
     g.gameCaverns.addPath(2, 3, GameCaverns.EAST);
     g.getPlayer().putPlayerInCavern(1);
-    g.setQuiver(1);
+    g.getPlayer().setQuiver(1);
     assertTrue(g.shoot(GameCaverns.EAST));
-    assertEquals(0, g.getQuiver());
+    assertEquals(0, g.getPlayer().getQuiver());
     assertEquals(1, g.gameCaverns.arrowsInCavern(3));
     assertEquals(0, g.gameCaverns.arrowsInCavern(2));
     assertFalse(g.gameTerminated());
@@ -72,16 +72,16 @@ public class GameTest extends TestCase {
   public void testShootArrowWhenQuiverEmpty() throws Exception {
     g.gameCaverns.addPath(1, 2, GameCaverns.EAST);
     g.getPlayer().putPlayerInCavern(1);
-    g.setQuiver(0);
+    g.getPlayer().setQuiver(0);
     assertFalse(g.shoot(GameCaverns.EAST));
-    assertEquals(0, g.getQuiver());
+    assertEquals(0, g.getPlayer().getQuiver());
     assertEquals(0, g.gameCaverns.arrowsInCavern(2));
   }
 
   public void testPlayerDiesIfShootsAtWall() throws Exception {
     g.initializeResponseModel();
     g.getPlayer().putPlayerInCavern(1);
-    g.setQuiver(1);
+    g.getPlayer().setQuiver(1);
     g.shoot(GameCaverns.EAST);
     assertTrue(g.gameTerminated());
   }
@@ -114,7 +114,7 @@ public class GameTest extends TestCase {
     g.gameCaverns.addPath(2, 3, GameCaverns.EAST);
     g.getWumpus().putWumpusInCavern(3);
     g.getPlayer().putPlayerInCavern(1);
-    g.setQuiver(1);
+    g.getPlayer().setQuiver(1);
     g.shoot(GameCaverns.EAST);
     ResponseModel responseModel = g.finalizeResponseModel();
     assertTrue(g.gameTerminated());
@@ -126,7 +126,7 @@ public class GameTest extends TestCase {
     g.gameCaverns.addPath(1, 2, GameCaverns.EAST);
     g.getWumpus().putWumpusInCavern(2);
     g.getPlayer().putPlayerInCavern(1);
-    g.setQuiver(1);
+    g.getPlayer().setQuiver(1);
     g.shoot(GameCaverns.EAST);
     ResponseModel responseModel = g.finalizeResponseModel();
     assertTrue(g.gameTerminated());

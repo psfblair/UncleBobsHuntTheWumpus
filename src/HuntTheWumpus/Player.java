@@ -4,6 +4,7 @@ public class Player {
   public int playerCavern = -1;
   private final GameCaverns caverns;
   private final Wumpus wumpus;
+  private int quiver = 0;
 
   public Player(GameCaverns caverns, Wumpus wumpus) {
     this.caverns = caverns;
@@ -54,8 +55,20 @@ public class Player {
     return caverns.isInCavernWithArrow(playerCavern);
   }
 
-  // TODO - want to add to player's quiver too here, not just remove from room
+  public int getQuiver() {
+    return quiver;
+  }
+
+  public void setQuiver(int quiver) {
+    this.quiver = quiver;
+  }
+
+  public void shootArrow() {
+    quiver--;
+  }
+
   void pickUpArrow() {
     caverns.removeArrowFrom(playerCavern);
+    quiver++;
   }
 }
