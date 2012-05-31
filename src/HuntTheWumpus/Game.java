@@ -15,18 +15,6 @@ public class Game {
   public final Wumpus wumpus = new Wumpus(gameCaverns);
   public final Player player = new Player(gameCaverns, wumpus);
 
-
-  //TODO - Remove this later
-  public Player getPlayer() {
-    return player;
-  }
-
-  //TODO - Remove this later
-  public Wumpus getWumpus() {
-    return wumpus;
-  }
-
-
   public void invoke(MovePlayer theCommand, Presentation presenter) {
     initializeResponseModel();
     String direction = theCommand.getDirection();
@@ -120,21 +108,6 @@ public class Game {
     return gameTerminated;
   }
 
-  // FOR TESTING
-
-  public GameCaverns getGameCaverns() {
-    return gameCaverns;
-  }
-
-  public ResponseModel getResponseModel() {
-    return responseModel;
-  }
-
-  public void reset() {
-    gameTerminated = false;
-    batTransport = false;
-  }
-  // END FOR TESTING
 
   public boolean shoot(String direction) {
     if (player.getQuiver() <= 0)
@@ -212,4 +185,24 @@ public class Game {
     responseModel.setCanHearBats(player.isInCavernNextToBats());
     return responseModel;
   }
+
+  // FOR TESTING
+  public GameCaverns getGameCaverns() {
+    return gameCaverns;
+  }
+
+  public Player getPlayer() {
+    return player;
+  }
+
+  public Wumpus getWumpus() {
+    return wumpus;
+  }
+
+  public void reset() {
+    gameTerminated = false;
+    batTransport = false;
+  }
+  // END FOR TESTING
+
 }

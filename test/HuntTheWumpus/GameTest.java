@@ -18,7 +18,6 @@ public class GameTest extends TestCase {
     g.gameCaverns.addPath(1, 2, GameCaverns.EAST);
     g.getPlayer().putPlayerInCavern(1);
     g.move(GameCaverns.EAST);
-    //Also used in Game start
     assertEquals(2, g.getPlayer().getPlayerCavern());
   }
 
@@ -28,7 +27,6 @@ public class GameTest extends TestCase {
     g.getPlayer().putPlayerInCavern(1);
     g.move(GameCaverns.EAST);
     g.move(GameCaverns.EAST);
-    //Also used in Game start
     assertEquals(3, g.getPlayer().getPlayerCavern());
   }
 
