@@ -1,5 +1,8 @@
 package HuntTheWumpus;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Wumpus {
   public int wumpusCavern = -1;
   private boolean wumpusFrozen = false;
@@ -34,7 +37,27 @@ public class Wumpus {
     wumpusFrozen = true;
   }
 
-  public boolean isWumpusFrozen() {
-    return wumpusFrozen;
+  public void move() {
+    if (wumpusFrozen)
+      return;
+    List<Integer> moves = new ArrayList<Integer>();
+    addPossibleMove(GameCaverns.EAST, moves);
+    addPossibleMove(GameCaverns.WEST, moves);
+    addPossibleMove(GameCaverns.NORTH, moves);
+    addPossibleMove(GameCaverns.SOUTH, moves);
+    moves.add(0); // rest;
+
+    int selection = (int) (Math.random() * moves.size());
+    int selectedMove = moves.get(selection);
+    if (selectedMove != 0) {
+      moveWumpusTo(selectedMove);
+    }
+  }
+
+  private void addPossibleMove(String direction, List<Integer> moves) {
+    int possibleMove;
+    possibleMove = gameCaverns.adjacentTo(direction, wumpusCavern);
+    if (possibleMove != 0)
+      moves.add(possibleMove);
   }
 }

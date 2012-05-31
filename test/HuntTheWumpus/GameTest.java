@@ -136,7 +136,7 @@ public class GameTest extends TestCase {
     g.gameCaverns.addPath(1, 2, GameCaverns.EAST);
     g.getWumpus().putWumpusInCavern(1);
     for (int i = 0; i < 100; i++) {
-      g.moveWumpus();
+      g.wumpusMoves();
       if (g.getWumpus().getWumpusCavern() == 2) {
         moved = true;
         break;

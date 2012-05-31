@@ -55,7 +55,12 @@ public class Game {
   }
 
   public void rest() {
-    moveWumpus();
+    wumpusMoves();
+  }
+
+  public void wumpusMoves() {
+    wumpus.move();
+    checkIfWumpusEatsPlayer();
   }
 
   public boolean move(String direction) {
@@ -66,7 +71,7 @@ public class Game {
       checkIfPlayerFallsIntoPit();
       checkIfPlayerIsTransportedByBats();
       pickUpArrow();
-      moveWumpus();
+      wumpusMoves();
       return true;
     }
     return false;
@@ -108,7 +113,6 @@ public class Game {
     return gameTerminated;
   }
 
-
   public boolean shoot(String direction) {
     if (player.getQuiver() <= 0)
       return false;
@@ -122,7 +126,7 @@ public class Game {
     int endCavern = shootAsFarAsPossible(direction, player.getPlayerCavern());
     if (!gameTerminated) {
       gameCaverns.putArrowInCavern(endCavern);
-      moveWumpus();
+      wumpusMoves();
     }
     return true;
   }
@@ -143,31 +147,6 @@ public class Game {
       }
       return shootAsFarAsPossible(direction, nextCavern);
     }
-  }
-
-  public void moveWumpus() {
-    if (wumpus.isWumpusFrozen())
-      return;
-    List<Integer> moves = new ArrayList<Integer>();
-    addPossibleMove(GameCaverns.EAST, moves);
-    addPossibleMove(GameCaverns.WEST, moves);
-    addPossibleMove(GameCaverns.NORTH, moves);
-    addPossibleMove(GameCaverns.SOUTH, moves);
-    moves.add(0); // rest;
-
-    int selection = (int) (Math.random() * moves.size());
-    int selectedMove = moves.get(selection);
-    if (selectedMove != 0) {
-      wumpus.moveWumpusTo(selectedMove);
-      checkIfWumpusEatsPlayer();
-    }
-  }
-
-  private void addPossibleMove(String direction, List<Integer> moves) {
-    int possibleMove;
-    possibleMove = gameCaverns.adjacentTo(direction, wumpus.getWumpusCavern());
-    if (possibleMove != 0)
-      moves.add(possibleMove);
   }
 
   public ResponseModel finalizeResponseModel() {
