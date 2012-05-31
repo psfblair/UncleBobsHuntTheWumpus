@@ -11,20 +11,6 @@ public class GameCaverns {
   public static final String NORTH = "n";
   public static final String SOUTH = "s";
 
-  /* TODO remove after refactoring is done */
-  Player player;
-  Wumpus wumpus;
-
-  public void setPlayer(Player player) {
-    this.player = player;
-  }
-
-  public void setWumpus(Wumpus wumpus) {
-    this.wumpus = wumpus;
-  }
-
-
-
   public List<Path> paths = new ArrayList<Path>();
   private ArrayList<Integer> arrows = new ArrayList<Integer>();
   public ArrayList<Integer> pits = new ArrayList<Integer>();
@@ -93,11 +79,11 @@ public class GameCaverns {
     return false;
   }
 
-  Set getAvailableDirections() {
+  Set getAvailableDirectionsFrom(double cavern) {
     Set directions = new HashSet();
 
     for (Path p : paths) {
-      if (p.start == player.getPlayerCavern()) {
+      if (p.start == cavern) {
         directions.add(p.direction);
       }
     }
@@ -153,9 +139,8 @@ public class GameCaverns {
     return false;
   }
 
-  // TODO - does this go here?
-  boolean thereIsAWallInDirection(String direction) {
-    return adjacentTo(direction, player.getPlayerCavern()) == 0;
+  boolean thereIsAWallInDirectionFromCavern(String direction, int cavern) {
+    return adjacentTo(direction, cavern) == 0;
   }
 
   class Path {

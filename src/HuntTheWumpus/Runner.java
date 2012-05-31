@@ -49,11 +49,12 @@ public class Runner {
     g.gameCaverns.addPath(8, 18, GameCaverns.EAST);
     g.gameCaverns.addPath(21, 9, GameCaverns.SOUTH);
 
-    g.gameCaverns.player.putPlayerInCavern(1);
-    g.gameCaverns.wumpus.putWumpusInCavern(15);
     g.gameCaverns.putPitInCavern(22);
     g.gameCaverns.putPitInCavern(17);
     g.gameCaverns.putBatsInCavern(8);
+
+    g.getPlayer().putPlayerInCavern(1);
+    g.getWumpus().putWumpusInCavern(15);
     g.setQuiver(5);
 
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
