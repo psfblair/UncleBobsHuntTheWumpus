@@ -16,27 +16,27 @@ public class GameDriver {
 
 
   public void putPlayerInCavern(int cavern) {
-    g.getGameMap().putPlayerInCavern(cavern);
+    g.getGameCaverns().putPlayerInCavern(cavern);
   }
   public boolean putInCavern(String what, int where) {
     if (what.equals("player")) {
-      g.getGameMap().putPlayerInCavern(where);
+      g.getGameCaverns().putPlayerInCavern(where);
       return true;
     }
     else if (what.equals("wumpus")) {
-      g.gameMap.putWumpusInCavern(where);
+      g.gameCaverns.putWumpusInCavern(where);
       return true;
     }
     else if (what.equals("arrow")) {
-      g.gameMap.putArrowInCavern(where);
+      g.gameCaverns.putArrowInCavern(where);
       return true;
     }
     else if (what.equals("pit")) {
-      g.getGameMap().putPitInCavern(where);
+      g.getGameCaverns().putPitInCavern(where);
       return true;
     }
     else if (what.equals("bats")) {
-      g.getGameMap().putBatsInCavern(where);
+      g.getGameCaverns().putBatsInCavern(where);
       return true;
     }
     return false;
@@ -47,7 +47,7 @@ public class GameDriver {
 
   public boolean cavernHas(int cavern, String what) {
     if (what.equals("player")) {
-      return g.gameMap.playerCavern(g) == cavern;
+      return g.gameCaverns.playerCavern(g) == cavern;
     }
     return false;
   }
@@ -57,7 +57,7 @@ public class GameDriver {
   }
 
   public void clearMap() {
-    g.getGameMap().clearMap();
+    g.getGameCaverns().clearMap();
   }
 
   public void freezeWumpus(boolean freeze) {
@@ -69,7 +69,7 @@ public class GameDriver {
   }
 
   public int arrowsInCavern(int cavern) {
-    return g.gameMap.arrowsInCavern(cavern);
+    return g.gameCaverns.arrowsInCavern(cavern);
   }
 
   public int arrowsInQuiver() {

@@ -7,12 +7,16 @@ import HuntTheWumpus.Presentation.ResponseModel;
 import java.util.*;
 
 public class Game {
+  /* TODO Move to Player */
   private int quiver = 0;
   private boolean gameTerminated = false;
+
+  /* TODO Move to Wumpus */
   private boolean wumpusFrozen = false;
+
   private boolean batTransport = false;
   private ResponseModel responseModel;
-  public final GameCaverns gameMap = new GameCaverns();
+  public final GameCaverns gameCaverns = new GameCaverns();
 
   public void invoke(MovePlayer theCommand, Presentation presenter) {
     initializeResponseModel();
@@ -58,9 +62,9 @@ public class Game {
   }
 
   public boolean move(String direction) {
-    int destination = gameMap.adjacentTo(direction, gameMap.playerCavern);
+    int destination = gameCaverns.adjacentTo(direction, gameCaverns.playerCavern);
     if (destination != 0) {
-      gameMap.playerCavern = destination;
+      gameCaverns.playerCavern = destination;
       checkIfWumpusEatsPlayer();
       checkIfPlayerFallsIntoPit();
       checkIfPlayerIsTransportedByBats();
@@ -72,33 +76,33 @@ public class Game {
   }
 
   private void checkIfWumpusEatsPlayer() {
-    if (gameMap.playerIsInWumpusCavern()) {
+    if (gameCaverns.playerIsInWumpusCavern()) {
       gameTerminated = true;
       responseModel.setReasonGameTerminated(GameOverReasons.EATEN_BY_WUMPUS);
     }
   }
 
   private void checkIfPlayerFallsIntoPit() {
-    if (gameMap.playerIsInCavernWithPit()) {
+    if (gameCaverns.playerIsInCavernWithPit()) {
       gameTerminated = true;
       responseModel.setReasonGameTerminated(GameOverReasons.FELL_IN_PIT);
     }
   }
 
   private void checkIfPlayerIsTransportedByBats() {
-    while (gameMap.playerIsInCavernWithBats()) {
+    while (gameCaverns.playerIsInCavernWithBats()) {
       transportPlayer();
       batTransport = true;
     }
   }
 
   private void transportPlayer() {
-    gameMap.putPlayerInRandomCavern();
+    gameCaverns.putPlayerInRandomCavern();
   }
 
   private void pickUpArrow() {
-    if (gameMap.arrowIsInCavernWithPlayer()) {
-      gameMap.roomNoLongerContainsArrow();
+    if (gameCaverns.arrowIsInCavernWithPlayer()) {
+      gameCaverns.roomNoLongerContainsArrow();
       quiver++;
     }
   }
@@ -109,8 +113,8 @@ public class Game {
 
   // FOR TESTING
 
-  public GameCaverns getGameMap() {
-    return gameMap;
+  public GameCaverns getGameCaverns() {
+    return gameCaverns;
   }
 
   public void setQuiver(int arrows) { //Also used in Game start
@@ -139,30 +143,30 @@ public class Game {
     if (quiver <= 0)
       return false;
     quiver--;
-    if (gameMap.thereIsAWallInDirection(direction)) {
+    if (gameCaverns.thereIsAWallInDirection(direction)) {
       gameTerminated = true;
       responseModel.setReasonGameTerminated(GameOverReasons.KILLED_BY_ARROW_BOUNCE);
       return true;
     }
 
-    int endCavern = shootAsFarAsPossible(direction, gameMap.playerCavern);
+    int endCavern = shootAsFarAsPossible(direction, gameCaverns.playerCavern);
     if (!gameTerminated) {
-      gameMap.putArrowInCavern(endCavern);
+      gameCaverns.putArrowInCavern(endCavern);
       moveWumpus();
     }
     return true;
   }
 
   private int shootAsFarAsPossible(String direction, int cavern) {
-    int nextCavern = gameMap.adjacentTo(direction, cavern);
+    int nextCavern = gameCaverns.adjacentTo(direction, cavern);
     if (nextCavern == 0)
       return cavern;
     else {
-      if (gameMap.isWumpusCavern(nextCavern)) {
+      if (gameCaverns.isWumpusCavern(nextCavern)) {
         responseModel.setReasonGameTerminated(GameOverReasons.WUMPUS_HIT_BY_ARROW);
         gameTerminated = true;
         return nextCavern;
-      } else if (gameMap.isPlayerCavern(nextCavern)) {
+      } else if (gameCaverns.isPlayerCavern(nextCavern)) {
         gameTerminated = true;
         responseModel.setReasonGameTerminated(GameOverReasons.HIT_BY_OWN_ARROW);
         return nextCavern;
@@ -185,14 +189,14 @@ public class Game {
     int selection = (int) (Math.random() * moves.size());
     int selectedMove = moves.get(selection);
     if (selectedMove != 0) {
-      gameMap.moveWumpusTo(selectedMove);
+      gameCaverns.moveWumpusTo(selectedMove);
       checkIfWumpusEatsPlayer();
     }
   }
 
   private void addPossibleMove(String direction, List<Integer> moves) {
     int possibleMove;
-    possibleMove = gameMap.adjacentTo(direction, gameMap.wumpusCavern);
+    possibleMove = gameCaverns.adjacentTo(direction, gameCaverns.wumpusCavern);
     if (possibleMove != 0)
       moves.add(possibleMove);
   }
@@ -204,11 +208,11 @@ public class Game {
     responseModel.setBatTransport(batTransport);
     batTransport = false;
 
-    responseModel.setAvailableDirections(gameMap.getAvailableDirections());
+    responseModel.setAvailableDirections(gameCaverns.getAvailableDirections());
 
-    responseModel.setCanSmellWumpus(gameMap.playerIsInCavernNextToWumpus());
-    responseModel.setCanHearPit(gameMap.playerIsInCavernNextToPit());
-    responseModel.setCanHearBats(gameMap.playerIsInCavernNextToBats());
+    responseModel.setCanSmellWumpus(gameCaverns.playerIsInCavernNextToWumpus());
+    responseModel.setCanHearPit(gameCaverns.playerIsInCavernNextToPit());
+    responseModel.setCanHearBats(gameCaverns.playerIsInCavernNextToBats());
     return responseModel;
   }
 

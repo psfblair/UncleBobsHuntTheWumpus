@@ -13,70 +13,70 @@ public class GameTest extends TestCase {
   }
 
   public void testGoEast() throws Exception {
-    g.gameMap.addPath(1, 2, GameCaverns.EAST);
-    g.gameMap.putPlayerInCavern(1);
+    g.gameCaverns.addPath(1, 2, GameCaverns.EAST);
+    g.gameCaverns.putPlayerInCavern(1);
     g.move(GameCaverns.EAST);
-    assertEquals(2, g.gameMap.playerCavern(g));
+    assertEquals(2, g.gameCaverns.playerCavern(g));
   }
 
   public void testGoEastTwice() throws Exception {
-    g.gameMap.addPath(1, 2, GameCaverns.EAST);
-    g.gameMap.addPath(2, 3, GameCaverns.EAST);
-    g.gameMap.putPlayerInCavern(1);
+    g.gameCaverns.addPath(1, 2, GameCaverns.EAST);
+    g.gameCaverns.addPath(2, 3, GameCaverns.EAST);
+    g.gameCaverns.putPlayerInCavern(1);
     g.move(GameCaverns.EAST);
     g.move(GameCaverns.EAST);
-    assertEquals(3, g.gameMap.playerCavern(g));
+    assertEquals(3, g.gameCaverns.playerCavern(g));
   }
 
   public void testSmellWumpus() throws Exception {
-    g.gameMap.addPath(1, 2, GameCaverns.EAST);
-    g.gameMap.putPlayerInCavern(1);
-    g.gameMap.putWumpusInCavern(2);
-    assertTrue(g.gameMap.playerIsInCavernNextToWumpus());
+    g.gameCaverns.addPath(1, 2, GameCaverns.EAST);
+    g.gameCaverns.putPlayerInCavern(1);
+    g.gameCaverns.putWumpusInCavern(2);
+    assertTrue(g.gameCaverns.playerIsInCavernNextToWumpus());
   }
 
   public void testCantSmellWumpus() throws Exception {
-    g.gameMap.addPath(1, 2, GameCaverns.EAST);
-    g.gameMap.addPath(2, 3, GameCaverns.EAST);
-    g.gameMap.putPlayerInCavern(1);
-    g.gameMap.putWumpusInCavern(3);
-    assertFalse(g.gameMap.playerIsInCavernNextToWumpus());
+    g.gameCaverns.addPath(1, 2, GameCaverns.EAST);
+    g.gameCaverns.addPath(2, 3, GameCaverns.EAST);
+    g.gameCaverns.putPlayerInCavern(1);
+    g.gameCaverns.putWumpusInCavern(3);
+    assertFalse(g.gameCaverns.playerIsInCavernNextToWumpus());
   }
 
   public void testPickUpArrows() throws Exception {
-    g.gameMap.addPath(1, 2, GameCaverns.EAST);
-    g.gameMap.putPlayerInCavern(1);
+    g.gameCaverns.addPath(1, 2, GameCaverns.EAST);
+    g.gameCaverns.putPlayerInCavern(1);
     g.setQuiver(0);
-    g.gameMap.putArrowInCavern(2);
+    g.gameCaverns.putArrowInCavern(2);
     g.move(GameCaverns.EAST);
     assertEquals(1, g.getQuiver());
-    assertEquals(0, g.gameMap.arrowsInCavern(2));
+    assertEquals(0, g.gameCaverns.arrowsInCavern(2));
   }
 
   public void testShootArrow() throws Exception {
-    g.gameMap.addPath(1, 2, GameCaverns.EAST);
-    g.gameMap.addPath(2, 3, GameCaverns.EAST);
-    g.gameMap.putPlayerInCavern(1);
+    g.gameCaverns.addPath(1, 2, GameCaverns.EAST);
+    g.gameCaverns.addPath(2, 3, GameCaverns.EAST);
+    g.gameCaverns.putPlayerInCavern(1);
     g.setQuiver(1);
     assertTrue(g.shoot(GameCaverns.EAST));
     assertEquals(0, g.getQuiver());
-    assertEquals(1, g.gameMap.arrowsInCavern(3));
-    assertEquals(0, g.gameMap.arrowsInCavern(2));
+    assertEquals(1, g.gameCaverns.arrowsInCavern(3));
+    assertEquals(0, g.gameCaverns.arrowsInCavern(2));
     assertFalse(g.gameTerminated());
   }
 
   public void testShootArrowWhenQuiverEmpty() throws Exception {
-    g.gameMap.addPath(1, 2, GameCaverns.EAST);
-    g.gameMap.putPlayerInCavern(1);
+    g.gameCaverns.addPath(1, 2, GameCaverns.EAST);
+    g.gameCaverns.putPlayerInCavern(1);
     g.setQuiver(0);
     assertFalse(g.shoot(GameCaverns.EAST));
     assertEquals(0, g.getQuiver());
-    assertEquals(0, g.gameMap.arrowsInCavern(2));
+    assertEquals(0, g.gameCaverns.arrowsInCavern(2));
   }
 
   public void testPlayerDiesIfShootsAtWall() throws Exception {
     g.initializeResponseModel();
-    g.gameMap.putPlayerInCavern(1);
+    g.gameCaverns.putPlayerInCavern(1);
     g.setQuiver(1);
     g.shoot(GameCaverns.EAST);
     assertTrue(g.gameTerminated());
@@ -84,9 +84,9 @@ public class GameTest extends TestCase {
 
   public void testFallInPit() throws Exception {
     g.initializeResponseModel();
-    g.gameMap.addPath(1, 2, GameCaverns.EAST);
-    g.gameMap.putPlayerInCavern(1);
-    g.gameMap.putPitInCavern(2);
+    g.gameCaverns.addPath(1, 2, GameCaverns.EAST);
+    g.gameCaverns.putPlayerInCavern(1);
+    g.gameCaverns.putPitInCavern(2);
     g.move(GameCaverns.EAST);
     ResponseModel responseModel = g.finalizeResponseModel();
     assertTrue(responseModel.isGameTerminated());
@@ -94,22 +94,22 @@ public class GameTest extends TestCase {
   }
 
   public void testHearPit() throws Exception {
-    g.gameMap.addPath(1, 2, GameCaverns.EAST);
-    g.gameMap.addPath(2, 3, GameCaverns.EAST);
-    g.gameMap.putPlayerInCavern(1);
-    g.gameMap.putPitInCavern(3);
+    g.gameCaverns.addPath(1, 2, GameCaverns.EAST);
+    g.gameCaverns.addPath(2, 3, GameCaverns.EAST);
+    g.gameCaverns.putPlayerInCavern(1);
+    g.gameCaverns.putPitInCavern(3);
     g.move(GameCaverns.EAST);
-    assertTrue(g.gameMap.playerIsInCavernNextToPit());
+    assertTrue(g.gameCaverns.playerIsInCavernNextToPit());
     g.move(GameCaverns.WEST);
-    assertFalse(g.gameMap.playerIsInCavernNextToPit());
+    assertFalse(g.gameCaverns.playerIsInCavernNextToPit());
   }
 
   public void testKillWumpusAtDistance() throws Exception {
     g.initializeResponseModel();
-    g.gameMap.addPath(1, 2, GameCaverns.EAST);
-    g.gameMap.addPath(2, 3, GameCaverns.EAST);
-    g.gameMap.putWumpusInCavern(3);
-    g.gameMap.putPlayerInCavern(1);
+    g.gameCaverns.addPath(1, 2, GameCaverns.EAST);
+    g.gameCaverns.addPath(2, 3, GameCaverns.EAST);
+    g.gameCaverns.putWumpusInCavern(3);
+    g.gameCaverns.putPlayerInCavern(1);
     g.setQuiver(1);
     g.shoot(GameCaverns.EAST);
     ResponseModel responseModel = g.finalizeResponseModel();
@@ -119,9 +119,9 @@ public class GameTest extends TestCase {
 
   public void testKillWumpusUpClose() throws Exception {
     g.initializeResponseModel();
-    g.gameMap.addPath(1, 2, GameCaverns.EAST);
-    g.gameMap.putWumpusInCavern(2);
-    g.gameMap.putPlayerInCavern(1);
+    g.gameCaverns.addPath(1, 2, GameCaverns.EAST);
+    g.gameCaverns.putWumpusInCavern(2);
+    g.gameCaverns.putPlayerInCavern(1);
     g.setQuiver(1);
     g.shoot(GameCaverns.EAST);
     ResponseModel responseModel = g.finalizeResponseModel();
@@ -131,11 +131,11 @@ public class GameTest extends TestCase {
 
   public void testRandomWumpusMovement() throws Exception {
     boolean moved = false;
-    g.gameMap.addPath(1, 2, GameCaverns.EAST);
-    g.gameMap.putWumpusInCavern(1);
+    g.gameCaverns.addPath(1, 2, GameCaverns.EAST);
+    g.gameCaverns.putWumpusInCavern(1);
     for (int i = 0; i < 100; i++) {
       g.moveWumpus();
-      if (g.gameMap.getWumpusCavern() == 2) {
+      if (g.gameCaverns.getWumpusCavern() == 2) {
         moved = true;
         break;
       }
@@ -144,20 +144,20 @@ public class GameTest extends TestCase {
   }
 
   public void testHearBats() throws Exception {
-    g.gameMap.addPath(1, 2, GameCaverns.EAST);
-    g.gameMap.putPlayerInCavern(1);
-    g.gameMap.putBatsInCavern(2);
-    assertTrue(g.gameMap.playerIsInCavernNextToBats());
+    g.gameCaverns.addPath(1, 2, GameCaverns.EAST);
+    g.gameCaverns.putPlayerInCavern(1);
+    g.gameCaverns.putBatsInCavern(2);
+    assertTrue(g.gameCaverns.playerIsInCavernNextToBats());
   }
 
   public void testBatsCarryYouAway() throws Exception {
     g.initializeResponseModel();
-    g.gameMap.addPath(1, 2, GameCaverns.EAST);
-    g.gameMap.putPlayerInCavern(1);
-    g.gameMap.putBatsInCavern(2);
+    g.gameCaverns.addPath(1, 2, GameCaverns.EAST);
+    g.gameCaverns.putPlayerInCavern(1);
+    g.gameCaverns.putBatsInCavern(2);
     g.move(GameCaverns.EAST);
     ResponseModel responseModel = g.finalizeResponseModel();
     assertTrue(responseModel.isTransportedByBats());
-    assertEquals(1, g.gameMap.playerCavern(g));
+    assertEquals(1, g.gameCaverns.playerCavern(g));
   }
 }

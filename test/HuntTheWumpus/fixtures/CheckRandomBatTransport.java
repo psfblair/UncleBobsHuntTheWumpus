@@ -9,12 +9,12 @@ public class CheckRandomBatTransport {
   private int counts[] = new int[6];
 
   public CheckRandomBatTransport() {
-    g.getGameMap().putBatsInCavern(2);
+    g.getGameCaverns().putBatsInCavern(2);
 
     for (int i=0; i<1000; i++) {
-      g.getGameMap().putPlayerInCavern(1);
+      g.getGameCaverns().putPlayerInCavern(1);
       g.move(GameCaverns.EAST);
-      counts[g.gameMap.playerCavern(g)]++;
+      counts[g.gameCaverns.playerCavern(g)]++;
     }
   }
 
