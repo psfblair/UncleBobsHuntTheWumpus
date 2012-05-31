@@ -1,38 +1,16 @@
 package HuntTheWumpus.Core;
 
-import HuntTheWumpus.Command.EnglishCommandInterpreter;
-import HuntTheWumpus.Command.GameController;
 import HuntTheWumpus.Core.Actors.GameCaverns;
-import HuntTheWumpus.fixtures.MockConsole;
 import junit.framework.TestCase;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public class GameCavernsTest extends TestCase {
-  private GameController controller;
-  private MockConsole mc;
-  private Game game;
   private GameCaverns caverns;
 
   protected void setUp() throws Exception {
-    mc = new MockConsole();
-    controller = new GameController(mc, new EnglishCommandInterpreter());
-    game = controller.getGame();
     caverns = new GameCaverns();
-  }
-
-  // TODO - This is presentation layer test - move
-  public void testDirectionErrorMessages() throws Exception {
-    game.getPlayer().putPlayerInCavern(1);
-    controller.execute(GameCaverns.EAST);
-    assertTrue(mc.check("You can't go east from here."));
-    controller.execute(GameCaverns.WEST);
-    assertTrue(mc.check("You can't go west from here."));
-    controller.execute(GameCaverns.SOUTH);
-    assertTrue(mc.check("You can't go south from here."));
-    controller.execute(GameCaverns.NORTH);
-    assertTrue(mc.check("You can't go north from here."));
   }
 
   public void testAvailableDirectionsWithNoPlaceToGo() {

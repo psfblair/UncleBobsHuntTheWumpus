@@ -53,4 +53,35 @@ public class TextPresenterTest extends TestCase {
     assertTrue(mc.check("You can go north, south, east and west from here."));
   }
 
+  public void testPrintCannotGoEast() {
+    ResponseModel responseModel = new ResponseModel();
+    responseModel.setCannotMoveInRequestedDirection(true);
+    responseModel.setRequestedDirection(GameCaverns.EAST);
+    presenter.printCannotMove(responseModel);
+    assertTrue(mc.check("You can't go east from here."));
+  }
+
+  public void testPrintCannotGoWest() {
+    ResponseModel responseModel = new ResponseModel();
+    responseModel.setCannotMoveInRequestedDirection(true);
+    responseModel.setRequestedDirection(GameCaverns.WEST);
+    presenter.printCannotMove(responseModel);
+    assertTrue(mc.check("You can't go west from here."));
+  }
+
+  public void testPrintCannotGoNorth() {
+    ResponseModel responseModel = new ResponseModel();
+    responseModel.setCannotMoveInRequestedDirection(true);
+    responseModel.setRequestedDirection(GameCaverns.NORTH);
+    presenter.printCannotMove(responseModel);
+    assertTrue(mc.check("You can't go north from here."));
+  }
+
+  public void testPrintCannotGoSouth() {
+    ResponseModel responseModel = new ResponseModel();
+    responseModel.setCannotMoveInRequestedDirection(true);
+    responseModel.setRequestedDirection(GameCaverns.SOUTH);
+    presenter.printCannotMove(responseModel);
+    assertTrue(mc.check("You can't go south from here."));
+  }
 }
