@@ -12,49 +12,45 @@ public class GamePresenter implements Output {
     this.console = console;
   }
 
-  public void printUnknownCommand(String command) {
-    console.print("I don't know how to " + command + ".");
-  }
-
   public void outputResponse(ResponseModel responseModel) {
-    if (responseModel.unknownCommand() != null) {
-      printUnknownCommand(responseModel.unknownCommand());
-    }
-    if (responseModel.arrowWasShot()) {
-      printShotArrow();
-    }
-    if (responseModel.triedShootingWithNoArrows()) {
-      printNoArrows();
-    }
-    if (responseModel.cannotMoveInRequestedDirection()) {
-      printCannotMove(responseModel.requestedDirection());
-    }
-
+    printShotArrow(responseModel);
+    printCannotMove(responseModel);
 
     if (responseModel.isGameTerminated()) {
       printCauseOfTermination(responseModel);
       console.print("Game over.");
-    } else {
-      printTransportMessage(responseModel);
-      printArrowsFound(responseModel);
-      printQuiverStatus(responseModel);
-      printWumpusOdor(responseModel);
-      printPitSounds(responseModel);
-      printBatSounds(responseModel);
-      printAvailableDirections(responseModel);
+      return;
+    }
+
+    printUnknownCommand(responseModel);
+    printTransportMessage(responseModel);
+    printArrowsFound(responseModel);
+    printQuiverStatus(responseModel);
+    printWumpusOdor(responseModel);
+    printPitSounds(responseModel);
+    printBatSounds(responseModel);
+    printAvailableDirections(responseModel);
+  }
+
+  public void printUnknownCommand(ResponseModel responseModel) {
+    String command = responseModel.unknownCommand();
+    if (command != null) {
+      console.print("I don't know how to " + command + ".");
+    }
+  }
+  public void printShotArrow(ResponseModel responseModel) {
+    if (responseModel.arrowWasShot()) {
+      console.print("The arrow flies away in silence.");
+    } else if (responseModel.triedShootingWithNoArrows()) {
+      console.print("You don't have any arrows.");
     }
   }
 
-  public void printShotArrow() {
-    console.print("The arrow flies away in silence.");
-  }
-
-  public void printNoArrows() {
-    console.print("You don't have any arrows.");
-  }
-
-  public void printCannotMove(String direction) {
-    console.print("You can't go " + GamePresenter.directionName(direction) + " from here.");
+  public void printCannotMove(ResponseModel responseModel) {
+    if (responseModel.cannotMoveInRequestedDirection()) {
+      String direction = responseModel.requestedDirection();
+      console.print("You can't go " + GamePresenter.directionName(direction) + " from here.");
+    }
   }
 
   private void printTransportMessage(ResponseModel responseModel) {
