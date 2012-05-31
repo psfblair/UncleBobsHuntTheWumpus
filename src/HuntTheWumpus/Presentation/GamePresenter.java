@@ -3,7 +3,7 @@ package HuntTheWumpus.Presentation;
 import HuntTheWumpus.Core.Actors.GameCaverns;
 import HuntTheWumpus.Core.GameOverReasons;
 
-public class GamePresenter implements Presentation {
+public class GamePresenter implements Output {
   private Console console;
 
   public GamePresenter(Console console) {

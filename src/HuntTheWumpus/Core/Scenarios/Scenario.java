@@ -3,7 +3,7 @@ package HuntTheWumpus.Core.Scenarios;
 import HuntTheWumpus.Core.Game;
 import HuntTheWumpus.Core.Actors.GameCaverns;
 import HuntTheWumpus.Core.Actors.Player;
-import HuntTheWumpus.Presentation.Presentation;
+import HuntTheWumpus.Presentation.Output;
 import HuntTheWumpus.Presentation.ResponseModel;
 
 import java.util.Set;
@@ -12,11 +12,11 @@ public abstract class Scenario {
   protected ResponseModel responseModel;
   protected Player player;
   protected Game game;
-  protected Presentation presenter;
+  protected Output presenter;
   private GameCaverns caverns;
   private int arrowsInQuiverBeforeTurn;
 
-  protected Scenario(Game game, Presentation presenter) {
+  protected Scenario(Game game, Output presenter) {
     this.game = game;
     this.presenter = presenter;
     this.player = game.getPlayer();

@@ -3,7 +3,7 @@ package HuntTheWumpus.Command;
 import HuntTheWumpus.Core.*;
 import HuntTheWumpus.Core.Actors.GameCaverns;
 import HuntTheWumpus.Core.Scenarios.*;
-import HuntTheWumpus.Presentation.Presentation;
+import HuntTheWumpus.Presentation.Output;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,7 +27,7 @@ public abstract class CommandInterpreter {
   
   protected Map<Commands, String> commandTranslations = new HashMap();
 
-  public Scenario getCommand(String commandString, Game game, Presentation presenter) {
+  public Scenario getCommand(String commandString, Game game, Output presenter) {
     Scenario command = new UnknownCommand(game, presenter, commandString);
     String[] tokens = tokenizeInput(commandString);
 
@@ -66,7 +66,7 @@ public abstract class CommandInterpreter {
     return tokens[0].charAt(0) == shootChar() && directionFromName(tokens[0].substring(1)) != null;
   }
 
-  private Scenario createShootCommand(Scenario command, String token, Game game, Presentation presenter) {
+  private Scenario createShootCommand(Scenario command, String token, Game game, Output presenter) {
     String direction = directionFromName(token);
     if (direction != null)
       command = new ShootArrow(game, presenter, direction);
@@ -81,7 +81,7 @@ public abstract class CommandInterpreter {
     return tokens.length == 1 && directionFromName(tokens[0]) != null;
   }
 
-  private Scenario createGoCommand(Scenario command, String token, Game game, Presentation presenter) {
+  private Scenario createGoCommand(Scenario command, String token, Game game, Output presenter) {
     String direction = directionFromName(token);
     if (direction != null)
       command = new MovePlayer(game, presenter,direction);

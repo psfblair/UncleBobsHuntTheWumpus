@@ -1,5 +1,5 @@
 package HuntTheWumpus.Presentation;
 
-public interface Presentation {
+public interface Output {
   void outputResponse(ResponseModel responseModel);
 }

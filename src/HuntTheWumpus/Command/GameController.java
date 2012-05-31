@@ -4,12 +4,12 @@ import HuntTheWumpus.Core.Game;
 import HuntTheWumpus.Core.Scenarios.Scenario;
 import HuntTheWumpus.Presentation.Console;
 import HuntTheWumpus.Presentation.GamePresenter;
-import HuntTheWumpus.Presentation.Presentation;
+import HuntTheWumpus.Presentation.Output;
 
 public class GameController {
 
   private final Game game = new Game();
-  private Presentation presenter;
+  private Output presenter;
   private CommandInterpreter interpreter;
 
   public GameController(Console console, CommandInterpreter interpreter) {
@@ -27,7 +27,7 @@ public class GameController {
     return game;
   }
 
-  public Presentation getPresenter() {
+  public Output getPresenter() {
     return presenter;
   }
 }

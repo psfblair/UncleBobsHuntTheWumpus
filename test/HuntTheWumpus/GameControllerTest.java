@@ -4,7 +4,7 @@ import HuntTheWumpus.Command.EnglishCommandInterpreter;
 import HuntTheWumpus.Command.GameController;
 import HuntTheWumpus.Core.Game;
 import HuntTheWumpus.Core.Actors.GameCaverns;
-import HuntTheWumpus.Presentation.Presentation;
+import HuntTheWumpus.Presentation.Output;
 import HuntTheWumpus.fixtures.MockConsole;
 import junit.framework.TestCase;
 
@@ -15,7 +15,7 @@ public class GameControllerTest extends TestCase {
   private GameController controller;
   private MockConsole mc;
   private Game game;
-  private Presentation presenter;
+  private Output presenter;
   private GameCaverns caverns;
 
   protected void setUp() throws Exception {

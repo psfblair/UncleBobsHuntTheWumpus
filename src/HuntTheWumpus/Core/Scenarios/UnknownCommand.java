@@ -1,12 +1,12 @@
 package HuntTheWumpus.Core.Scenarios;
 
 import HuntTheWumpus.Core.Game;
-import HuntTheWumpus.Presentation.Presentation;
+import HuntTheWumpus.Presentation.Output;
 
 public class UnknownCommand extends Scenario {
   private String command;
 
-  public UnknownCommand(Game game, Presentation presenter, String command) {
+  public UnknownCommand(Game game, Output presenter, String command) {
     super(game, presenter);
     this.command = command;
   }
