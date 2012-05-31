@@ -1,7 +1,7 @@
 package HuntTheWumpus.Command;
 
 import HuntTheWumpus.Core.Game;
-import HuntTheWumpus.Core.Scenarios.Command;
+import HuntTheWumpus.Core.Scenarios.Scenario;
 import HuntTheWumpus.Presentation.Console;
 import HuntTheWumpus.Presentation.GamePresenter;
 import HuntTheWumpus.Presentation.Presentation;
@@ -18,7 +18,7 @@ public class GameController {
   }
 
   public void execute(String commandString) {
-    Command command = interpreter.getCommand(commandString, game, presenter);
+    Scenario command = interpreter.getCommand(commandString, game, presenter);
     command.Invoke();
   }
 

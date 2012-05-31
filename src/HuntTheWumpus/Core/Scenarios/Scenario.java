@@ -8,18 +8,22 @@ import HuntTheWumpus.Presentation.ResponseModel;
 
 import java.util.Set;
 
-public abstract class Command {
+public abstract class Scenario {
   private ResponseModel responseModel;
   protected Player player;
   protected Game game;
   protected Presentation presenter;
   private GameCaverns caverns;
+  private int arrowsInQuiverBeforeTurn;
 
-  protected Command(Game game, Presentation presenter) {
+  protected Scenario(Game game, Presentation presenter) {
     this.game = game;
     this.presenter = presenter;
     this.player = game.getPlayer();
     this.caverns = game.getGameCaverns();
+
+    this.game.resetBatTransport();
+    this.arrowsInQuiverBeforeTurn = player.getQuiver();
     initializeResponseModel();
   }
 
@@ -29,7 +33,6 @@ public abstract class Command {
 
   private void initializeResponseModel() {
     responseModel = new ResponseModel();
-    responseModel.setArrowsInQuiverBeforeTurn(player.getQuiver());
   }
 
   protected void output() {
@@ -41,10 +44,9 @@ public abstract class Command {
   public ResponseModel prepareResponseModel() {
     responseModel.setGameTerminated(game.gameTerminated());
     responseModel.setReasonGameTerminated(game.gameTerminationReason());
+    responseModel.setArrowsInQuiverBeforeTurn(arrowsInQuiverBeforeTurn);
     responseModel.setQuiver(player.getQuiver());
-
     responseModel.setBatTransport(game.isTransportedByBats());
-    game.resetBatTransport();
 
     Set availableDirections = caverns.getAvailableDirectionsFrom(player.getPlayerCavern());
     responseModel.setAvailableDirections(availableDirections);

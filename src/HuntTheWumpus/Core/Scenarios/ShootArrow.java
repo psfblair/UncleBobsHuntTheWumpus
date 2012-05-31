@@ -3,7 +3,7 @@ package HuntTheWumpus.Core.Scenarios;
 import HuntTheWumpus.Core.Game;
 import HuntTheWumpus.Presentation.Presentation;
 
-public class ShootArrow extends Command {
+public class ShootArrow extends Scenario {
   private String direction;
 
   public ShootArrow(Game game, Presentation presenter, String direction) {

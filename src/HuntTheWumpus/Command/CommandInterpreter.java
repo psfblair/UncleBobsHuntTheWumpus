@@ -27,8 +27,8 @@ public abstract class CommandInterpreter {
   
   protected Map<Commands, String> commandTranslations = new HashMap();
 
-  public Command getCommand(String commandString, Game game, Presentation presenter) {
-    Command command = new UnknownCommand(game, presenter, commandString);
+  public Scenario getCommand(String commandString, Game game, Presentation presenter) {
+    Scenario command = new UnknownCommand(game, presenter, commandString);
     String[] tokens = tokenizeInput(commandString);
 
     if (isRestCommand(tokens))
@@ -66,7 +66,7 @@ public abstract class CommandInterpreter {
     return tokens[0].charAt(0) == shootChar() && directionFromName(tokens[0].substring(1)) != null;
   }
 
-  private Command createShootCommand(Command command, String token, Game game, Presentation presenter) {
+  private Scenario createShootCommand(Scenario command, String token, Game game, Presentation presenter) {
     String direction = directionFromName(token);
     if (direction != null)
       command = new ShootArrow(game, presenter, direction);
@@ -81,7 +81,7 @@ public abstract class CommandInterpreter {
     return tokens.length == 1 && directionFromName(tokens[0]) != null;
   }
 
-  private Command createGoCommand(Command command, String token, Game game, Presentation presenter) {
+  private Scenario createGoCommand(Scenario command, String token, Game game, Presentation presenter) {
     String direction = directionFromName(token);
     if (direction != null)
       command = new MovePlayer(game, presenter,direction);

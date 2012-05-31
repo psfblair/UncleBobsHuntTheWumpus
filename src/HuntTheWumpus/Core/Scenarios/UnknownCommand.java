@@ -3,7 +3,7 @@ package HuntTheWumpus.Core.Scenarios;
 import HuntTheWumpus.Core.Game;
 import HuntTheWumpus.Presentation.Presentation;
 
-public class UnknownCommand extends Command {
+public class UnknownCommand extends Scenario {
   private String command;
 
   public UnknownCommand(Game game, Presentation presenter, String command) {

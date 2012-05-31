@@ -3,7 +3,7 @@ package HuntTheWumpus.Core.Scenarios;
 import HuntTheWumpus.Core.Game;
 import HuntTheWumpus.Presentation.Presentation;
 
-public class MovePlayer extends Command {
+public class MovePlayer extends Scenario {
   private String direction;
 
   public MovePlayer(Game game, Presentation presenter, String direction) {
