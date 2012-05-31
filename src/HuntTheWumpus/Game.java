@@ -27,6 +27,17 @@ public class Game {
   /* TODO Move to Player */
   private int quiver = 0;
 
+  //TODO - Remove this later
+  public Player getPlayer() {
+    return player;
+  }
+
+  //TODO - Remove this later
+  public Wumpus getWumpus() {
+    return wumpus;
+  }
+
+
   public void invoke(MovePlayer theCommand, Presentation presenter) {
     initializeResponseModel();
     String direction = theCommand.getDirection();
@@ -110,8 +121,8 @@ public class Game {
   }
 
   private void pickUpArrow() {
-    if (gameCaverns.arrowIsInCavernWithPlayer()) {
-      gameCaverns.roomNoLongerContainsArrow();
+    if (gameCaverns.player.playerIsInCavernWithArrow()) {
+      gameCaverns.player.pickUpArrow();
       quiver++;
     }
   }
@@ -171,11 +182,11 @@ public class Game {
     if (nextCavern == 0)
       return cavern;
     else {
-      if (gameCaverns.isWumpusCavern(nextCavern)) {
+      if (nextCavern == gameCaverns.wumpus.getWumpusCavern()) {
         responseModel.setReasonGameTerminated(GameOverReasons.WUMPUS_HIT_BY_ARROW);
         gameTerminated = true;
         return nextCavern;
-      } else if (gameCaverns.isPlayerCavern(nextCavern)) {
+      } else if (gameCaverns.player.isPlayerCavern(nextCavern)) {
         gameTerminated = true;
         responseModel.setReasonGameTerminated(GameOverReasons.HIT_BY_OWN_ARROW);
         return nextCavern;
@@ -198,14 +209,14 @@ public class Game {
     int selection = (int) (Math.random() * moves.size());
     int selectedMove = moves.get(selection);
     if (selectedMove != 0) {
-      gameCaverns.moveWumpusTo(selectedMove);
+      gameCaverns.wumpus.moveWumpusTo(selectedMove);
       checkIfWumpusEatsPlayer();
     }
   }
 
   private void addPossibleMove(String direction, List<Integer> moves) {
     int possibleMove;
-    possibleMove = gameCaverns.adjacentTo(direction, gameCaverns.getWumpusCavern());
+    possibleMove = gameCaverns.adjacentTo(direction, gameCaverns.wumpus.getWumpusCavern());
     if (possibleMove != 0)
       moves.add(possibleMove);
   }
@@ -219,11 +230,9 @@ public class Game {
 
     responseModel.setAvailableDirections(gameCaverns.getAvailableDirections());
 
-    responseModel.setCanSmellWumpus(gameCaverns.playerIsInCavernNextToWumpus());
-    responseModel.setCanHearPit(gameCaverns.playerIsInCavernNextToPit());
-    responseModel.setCanHearBats(gameCaverns.playerIsInCavernNextToBats());
+    responseModel.setCanSmellWumpus(gameCaverns.player.isInCavernNextToWumpus());
+    responseModel.setCanHearPit(gameCaverns.player.isInCavernNextToPit());
+    responseModel.setCanHearBats(gameCaverns.player.isInCavernNextToBats());
     return responseModel;
   }
-
-
 }

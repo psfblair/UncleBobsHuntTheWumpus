@@ -49,8 +49,8 @@ public class Runner {
     g.gameCaverns.addPath(8, 18, GameCaverns.EAST);
     g.gameCaverns.addPath(21, 9, GameCaverns.SOUTH);
 
-    g.gameCaverns.putPlayerInCavern(1);
-    g.gameCaverns.putWumpusInCavern(15);
+    g.gameCaverns.player.putPlayerInCavern(1);
+    g.gameCaverns.wumpus.putWumpusInCavern(15);
     g.gameCaverns.putPitInCavern(22);
     g.gameCaverns.putPitInCavern(17);
     g.gameCaverns.putBatsInCavern(8);

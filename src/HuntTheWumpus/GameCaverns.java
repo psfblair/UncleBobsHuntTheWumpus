@@ -23,74 +23,7 @@ public class GameCaverns {
     this.wumpus = wumpus;
   }
 
-  // * Moves to Player * //
 
-  public void putPlayerInCavern(int cavern) {
-    player.putPlayerInCavern(cavern);
-  }
-
-  public int playerCavern(Game game) { //Also used in Game start
-    return player.getPlayerCavern();
-  }
-
-  boolean isPlayerCavern(int nextCavern) {
-    return player.isPlayerCavern(nextCavern);
-  }
-
-  void putPlayerInRandomCavern() {
-    player.putPlayerInRandomCavern();
-  }
-
-  boolean playerIsInWumpusCavern() {
-    return player.isInWumpusCavern();
-  }
-
-  boolean playerIsInCavernWithPit() {
-    return player.isInCavernWithPit();
-  }
-
-  boolean playerIsInCavernWithBats() {
-    return player.isInCavernWithBats();
-  }
-
-  boolean arrowIsInCavernWithPlayer() {
-    return player.playerIsInCavernWithArrow();
-  }
-
-  void roomNoLongerContainsArrow() {
-    player.pickUpArrow();
-  }
-
-  public boolean playerIsInCavernNextToWumpus() {
-    return player.isInCavernNextToWumpus();
-  }
-
-  public boolean playerIsInCavernNextToPit() {
-    return player.isInCavernNextToPit();
-  }
-
-  public boolean playerIsInCavernNextToBats() {
-    return player.isInCavernNextToBats();
-  }
-  // * End Player * //
-
-  // * Moves to Wumpus * //
-  public int getWumpusCavern() {
-    return wumpus.getWumpusCavern();
-  }
-
-  public void putWumpusInCavern(int where) {
-    wumpus.putWumpusInCavern(where);
-  }
-
-  boolean isWumpusCavern(int cavern) {
-    return cavern == wumpus.getWumpusCavern();
-  }
-
-  void moveWumpusTo(int selectedMove) {
-    wumpus.moveWumpusTo(selectedMove);
-  }
-  // * End Wumpus * //
 
   public List<Path> paths = new ArrayList<Path>();
   private ArrayList<Integer> arrows = new ArrayList<Integer>();

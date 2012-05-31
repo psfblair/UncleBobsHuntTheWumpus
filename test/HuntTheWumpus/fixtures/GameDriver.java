@@ -16,15 +16,15 @@ public class GameDriver {
 
 
   public void putPlayerInCavern(int cavern) {
-    g.getGameCaverns().putPlayerInCavern(cavern);
+    g.getPlayer().putPlayerInCavern(cavern);
   }
   public boolean putInCavern(String what, int where) {
     if (what.equals("player")) {
-      g.getGameCaverns().putPlayerInCavern(where);
+      g.getPlayer().putPlayerInCavern(where);
       return true;
     }
     else if (what.equals("wumpus")) {
-      g.gameCaverns.putWumpusInCavern(where);
+      g.getWumpus().putWumpusInCavern(where);
       return true;
     }
     else if (what.equals("arrow")) {
@@ -47,7 +47,8 @@ public class GameDriver {
 
   public boolean cavernHas(int cavern, String what) {
     if (what.equals("player")) {
-      return g.gameCaverns.playerCavern(g) == cavern;
+      //Also used in Game start
+      return g.getPlayer().getPlayerCavern() == cavern;
     }
     return false;
   }

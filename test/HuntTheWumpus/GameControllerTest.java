@@ -24,7 +24,7 @@ public class GameControllerTest extends TestCase {
   }
 
   public void testDirectionErrorMessages() throws Exception {
-    game.gameCaverns.putPlayerInCavern(1);
+    game.gameCaverns.player.putPlayerInCavern(1);
     controller.execute(GameCaverns.EAST);
     assertTrue(mc.check("You can't go east from here."));
     controller.execute(GameCaverns.WEST);
@@ -37,7 +37,7 @@ public class GameControllerTest extends TestCase {
 
   public void testAvailableDirectionsWithNoPlaceToGo() {
     game.initializeResponseModel();
-    game.gameCaverns.putPlayerInCavern(1);
+    game.gameCaverns.player.putPlayerInCavern(1);
     Set<String> expected = (new HashSet<String>());
     Set<String> availableDirections = game.finalizeResponseModel().getAvailableDirections();
     assertEquals(expected, availableDirections);
@@ -46,7 +46,7 @@ public class GameControllerTest extends TestCase {
   public void testSouthIsAvailable() throws Exception {
     game.initializeResponseModel();
     game.gameCaverns.addPath(1, 2, GameCaverns.SOUTH);
-    game.gameCaverns.putPlayerInCavern(1);
+    game.gameCaverns.player.putPlayerInCavern(1);
     Set<String> expected = (new HashSet<String>());
     expected.add(GameCaverns.SOUTH);
     Set<String> availableDirections = game.finalizeResponseModel().getAvailableDirections();
@@ -57,7 +57,7 @@ public class GameControllerTest extends TestCase {
     game.initializeResponseModel();
     game.gameCaverns.addPath(1, 2, GameCaverns.SOUTH);
     game.gameCaverns.addPath(1, 3, GameCaverns.NORTH);
-    game.gameCaverns.putPlayerInCavern(1);
+    game.gameCaverns.player.putPlayerInCavern(1);
 
     Set<String> expected = (new HashSet<String>());
     expected.add(GameCaverns.SOUTH);
@@ -73,7 +73,7 @@ public class GameControllerTest extends TestCase {
     game.gameCaverns.addPath(1, 3, GameCaverns.WEST);
     game.gameCaverns.addPath(1, 4, GameCaverns.SOUTH);
     game.gameCaverns.addPath(1, 5, GameCaverns.NORTH);
-    game.gameCaverns.putPlayerInCavern(1);
+    game.gameCaverns.player.putPlayerInCavern(1);
 
     Set<String> expected = (new HashSet<String>());
     expected.add(GameCaverns.SOUTH);
