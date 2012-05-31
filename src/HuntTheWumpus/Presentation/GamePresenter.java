@@ -2,8 +2,8 @@ package HuntTheWumpus.Presentation;
 
 import HuntTheWumpus.Core.Actors.GameCaverns;
 import HuntTheWumpus.Core.GameOverReasons;
-import HuntTheWumpus.Core.Output;
-import HuntTheWumpus.Core.ResponseModel;
+import HuntTheWumpus.Core.Output.Output;
+import HuntTheWumpus.Core.Output.ResponseModel;
 
 public class GamePresenter implements Output {
   private Console console;

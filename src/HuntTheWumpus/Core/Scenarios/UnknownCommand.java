@@ -1,7 +1,7 @@
 package HuntTheWumpus.Core.Scenarios;
 
 import HuntTheWumpus.Core.Game;
-import HuntTheWumpus.Core.Output;
+import HuntTheWumpus.Core.Output.Output;
 
 public class UnknownCommand extends Scenario {
   private String command;

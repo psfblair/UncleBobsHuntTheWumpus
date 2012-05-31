@@ -3,8 +3,8 @@ package HuntTheWumpus.Core.Scenarios;
 import HuntTheWumpus.Core.Game;
 import HuntTheWumpus.Core.Actors.GameCaverns;
 import HuntTheWumpus.Core.Actors.Player;
-import HuntTheWumpus.Core.Output;
-import HuntTheWumpus.Core.ResponseModel;
+import HuntTheWumpus.Core.Output.Output;
+import HuntTheWumpus.Core.Output.ResponseModel;
 
 import java.util.Set;
 

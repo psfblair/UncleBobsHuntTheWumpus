@@ -1,4 +1,4 @@
-package HuntTheWumpus.Core;
+package HuntTheWumpus.Core.Output;
 
 public interface Output {
   void outputResponse(ResponseModel responseModel);

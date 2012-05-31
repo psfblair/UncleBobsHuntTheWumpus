@@ -4,7 +4,7 @@ import HuntTheWumpus.Command.EnglishCommandInterpreter;
 import HuntTheWumpus.Command.GameController;
 import HuntTheWumpus.Core.Game;
 import HuntTheWumpus.Core.Actors.GameCaverns;
-import HuntTheWumpus.Core.Output;
+import HuntTheWumpus.Core.Output.Output;
 import HuntTheWumpus.fixtures.MockConsole;
 import junit.framework.TestCase;
 
