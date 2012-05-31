@@ -15,9 +15,6 @@ public class Game {
   public final Wumpus wumpus = new Wumpus(gameCaverns);
   public final Player player = new Player(gameCaverns, wumpus);
 
-  /* TODO Move to Wumpus */
-  private boolean wumpusFrozen = false;
-
   /* TODO Move to Player */
   private int quiver = 0;
 
@@ -135,10 +132,6 @@ public class Game {
     quiver = arrows;
   }
 
-  public void freezeWumpus() {
-    wumpusFrozen = true;
-  }
-
   public ResponseModel getResponseModel() {
     return responseModel;
   }
@@ -189,9 +182,8 @@ public class Game {
     }
   }
 
-
   public void moveWumpus() {
-    if (wumpusFrozen)
+    if (wumpus.isWumpusFrozen())
       return;
     List<Integer> moves = new ArrayList<Integer>();
     addPossibleMove(GameCaverns.EAST, moves);

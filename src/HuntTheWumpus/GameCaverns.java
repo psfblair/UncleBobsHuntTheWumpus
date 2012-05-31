@@ -19,14 +19,19 @@ public class GameCaverns {
   public GameCaverns() {
   }
 
+  public void clearMap() {
+    paths.clear();
+  }
+
   public void addPath(int start, int end, String direction) throws Exception {
     direction = direction.toLowerCase();
     addSinglePath(start, end, direction);
     addSinglePath(end, start, oppositeDirection(direction));
   }
 
-  public void clearMap() {
-    paths.clear();
+  public void addSinglePath(int start, int end, String direction) {
+    Path p = new Path(start, end, direction);
+    paths.add(p);
   }
 
   public String oppositeDirection(String direction) throws Exception {
@@ -38,14 +43,40 @@ public class GameCaverns {
       throw new Exception("No such direction: " + direction);
   }
 
-  public void addSinglePath(int start, int end, String direction) {
-    Path p = new Path(start, end, direction);
-    paths.add(p);
-  }
-
   public int getRandomPathStart() {
     Path selectedPath =  paths.get((int) (Math.random() * paths.size()));
     return selectedPath.start;
+  }
+
+  Set getAvailableDirectionsFrom(double cavern) {
+    Set directions = new HashSet();
+
+    for (Path p : paths) {
+      if (p.start == cavern) {
+        directions.add(p.direction);
+      }
+    }
+    return directions;
+  }
+
+  boolean thereIsAWallInDirectionFromCavern(String direction, int cavern) {
+    return adjacentTo(direction, cavern) == 0;
+  }
+
+  int adjacentTo(String direction, int cavern) {
+    for (Path p : paths) {
+      if (p.start == cavern && p.direction.equals(direction))
+        return p.end;
+    }
+    return 0;
+  }
+
+  boolean areAdjacent(int c1, int c2) {
+    for (Path p : paths) {
+      if (p.start == c1 && p.end == c2)
+        return true;
+    }
+    return false;
   }
 
   public void putPitInCavern(int cavern) {
@@ -79,17 +110,6 @@ public class GameCaverns {
     return false;
   }
 
-  Set getAvailableDirectionsFrom(double cavern) {
-    Set directions = new HashSet();
-
-    for (Path p : paths) {
-      if (p.start == cavern) {
-        directions.add(p.direction);
-      }
-    }
-    return directions;
-  }
-
   boolean arrowInCavern(int cavern) {
     for (int c : arrows)
       if (c == cavern) return true;
@@ -120,27 +140,6 @@ public class GameCaverns {
         arrows.remove(i);
       }
     }
-  }
-
-  int adjacentTo(String direction, int cavern) {
-    for (Path p : paths) {
-      if (p.start == cavern && p.direction.equals(direction))
-        return p.end;
-    }
-    return 0;
-  }
-
-
-  boolean areAdjacent(int c1, int c2) {
-    for (Path p : paths) {
-      if (p.start == c1 && p.end == c2)
-        return true;
-    }
-    return false;
-  }
-
-  boolean thereIsAWallInDirectionFromCavern(String direction, int cavern) {
-    return adjacentTo(direction, cavern) == 0;
   }
 
   class Path {

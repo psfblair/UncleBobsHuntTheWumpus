@@ -2,6 +2,8 @@ package HuntTheWumpus;
 
 public class Wumpus {
   public int wumpusCavern = -1;
+  private boolean wumpusFrozen = false;
+
   private GameCaverns gameCaverns;
 
   public Wumpus(GameCaverns gameCaverns) {
@@ -28,4 +30,11 @@ public class Wumpus {
     wumpusCavern = selectedMove;
   }
 
+  public void freeze() {
+    wumpusFrozen = true;
+  }
+
+  public boolean isWumpusFrozen() {
+    return wumpusFrozen;
+  }
 }

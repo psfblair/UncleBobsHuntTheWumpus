@@ -62,7 +62,7 @@ public class GameDriver {
   }
 
   public void freezeWumpus(boolean freeze) {
-    g.freezeWumpus();
+    g.getWumpus().freeze();
   }
 
   public void setQuiverTo(int arrows) {
