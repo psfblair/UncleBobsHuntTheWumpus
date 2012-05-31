@@ -1,6 +1,7 @@
 package HuntTheWumpus.fixtures;
 
-import static HuntTheWumpus.Game.EAST;
+import HuntTheWumpus.GameMap;
+
 import static HuntTheWumpus.fixtures.GameDriver.g;
 
 public class CheckRandomBatTransport {
@@ -8,12 +9,12 @@ public class CheckRandomBatTransport {
   private int counts[] = new int[6];
 
   public CheckRandomBatTransport() {
-    g.putBatsInCavern(2);
+    g.getGameMap().putBatsInCavern(2);
 
     for (int i=0; i<1000; i++) {
-      g.putPlayerInCavern(1);
-      g.move(EAST);
-      counts[g.playerCavern()]++;
+      g.getGameMap().putPlayerInCavern(1);
+      g.move(GameMap.EAST);
+      counts[g.gameMap.playerCavern(g)]++;
     }
   }
 

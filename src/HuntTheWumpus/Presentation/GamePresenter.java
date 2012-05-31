@@ -1,6 +1,6 @@
 package HuntTheWumpus.Presentation;
 
-import HuntTheWumpus.Game;
+import HuntTheWumpus.GameMap;
 import HuntTheWumpus.GameOverReasons;
 
 public class GamePresenter implements Presentation {
@@ -96,13 +96,13 @@ public class GamePresenter implements Presentation {
   }
 
   static String directionName(String direction) {
-    if (direction.equals(Game.NORTH))
+    if (direction.equals(GameMap.NORTH))
       return "north";
-    else if (direction.equals(Game.SOUTH))
+    else if (direction.equals(GameMap.SOUTH))
       return "south";
-    else if (direction.equals(Game.EAST))
+    else if (direction.equals(GameMap.EAST))
       return "east";
-    else if (direction.equals(Game.WEST))
+    else if (direction.equals(GameMap.WEST))
       return "west";
     else
       return "tilt";

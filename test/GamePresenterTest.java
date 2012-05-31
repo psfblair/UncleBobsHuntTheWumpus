@@ -1,9 +1,7 @@
-import HuntTheWumpus.Game;
+import HuntTheWumpus.GameMap;
 import HuntTheWumpus.Presentation.GamePresenter;
-import HuntTheWumpus.Presentation.Presentation;
 import HuntTheWumpus.Presentation.ResponseModel;
 import HuntTheWumpus.fixtures.MockConsole;
-import junit.framework.Assert;
 import junit.framework.TestCase;
 
 import java.util.HashSet;
@@ -26,7 +24,7 @@ public class GamePresenterTest extends TestCase {
   public void testPrintSouthIsAvailable() throws Exception {
     ResponseModel responseModel = new ResponseModel();
     HashSet<String> availableDirections1 = new HashSet<String>();
-    availableDirections1.add(Game.SOUTH);
+    availableDirections1.add(GameMap.SOUTH);
     responseModel.setAvailableDirections(availableDirections1);
     presenter.printAvailableDirections(responseModel);
     assertTrue(mc.check("You can go south from here."));
@@ -35,8 +33,8 @@ public class GamePresenterTest extends TestCase {
   public void testPrintNorthAndSouthAvailable() throws Exception {
     ResponseModel responseModel = new ResponseModel();
     HashSet<String> availableDirections1 = new HashSet<String>();
-    availableDirections1.add(Game.SOUTH);
-    availableDirections1.add(Game.NORTH);
+    availableDirections1.add(GameMap.SOUTH);
+    availableDirections1.add(GameMap.NORTH);
     responseModel.setAvailableDirections(availableDirections1);
     presenter.printAvailableDirections(responseModel);
     assertTrue(mc.check("You can go north and south from here."));
@@ -45,10 +43,10 @@ public class GamePresenterTest extends TestCase {
   public void testPrintFourDirectionsAvailable() throws Exception {
     ResponseModel responseModel = new ResponseModel();
     HashSet<String> availableDirections1 = new HashSet<String>();
-    availableDirections1.add(Game.SOUTH);
-    availableDirections1.add(Game.WEST);
-    availableDirections1.add(Game.NORTH);
-    availableDirections1.add(Game.EAST);
+    availableDirections1.add(GameMap.SOUTH);
+    availableDirections1.add(GameMap.WEST);
+    availableDirections1.add(GameMap.NORTH);
+    availableDirections1.add(GameMap.EAST);
     responseModel.setAvailableDirections(availableDirections1);
     presenter.printAvailableDirections(responseModel);
     assertTrue(mc.check("You can go north, south, east and west from here."));

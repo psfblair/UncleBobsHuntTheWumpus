@@ -10,9 +10,9 @@ public class CheckRandomWumpusMovement {
   public CheckRandomWumpusMovement() {
     int wumpusCavern = 2;
     for (int i = 0; i < 1000; i++) {
-      g.putWumpusInCavern(wumpusCavern);
+      g.gameMap.putWumpusInCavern(wumpusCavern);
       gameController.execute("R");
-      carvernCounts[g.getWumpusCavern()]++;
+      carvernCounts[g.gameMap.getWumpusCavern()]++;
     }
   }
 

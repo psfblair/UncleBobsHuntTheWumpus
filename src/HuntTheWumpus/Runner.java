@@ -4,7 +4,7 @@ import HuntTheWumpus.Command.EnglishCommandInterpreter;
 import HuntTheWumpus.Command.GameController;
 
 import java.io.*;
-import static HuntTheWumpus.Game.*;
+
 public class Runner {
   public static void main(String[] args) throws Exception {
     GameController p = new GameController(new HuntTheWumpus.Presentation.Console() {
@@ -14,46 +14,46 @@ public class Runner {
     }, new EnglishCommandInterpreter());
     Game g = p.getGame();
 
-    g.addPath(1,2,EAST);
-    g.addPath(2,3,EAST);
-    g.addPath(3,4,SOUTH);
-    g.addPath(4,5,SOUTH);
-    g.addPath(5,6,SOUTH);
-    g.addPath(5,7,EAST);
-    g.addPath(7,8,EAST);
-    g.addPath(8,9,NORTH);
-    g.addPath(9,10,EAST);
-    g.addPath(10,11,EAST);
-    g.addPath(11,12,NORTH);
-    g.addPath(12,13,NORTH);
-    g.addPath(8,14,SOUTH);
-    g.addPath(14,15,SOUTH);
-    g.addPath(14,16,EAST);
-    g.addPath(16,17,EAST);
-    g.addPath(17,18,NORTH);
-    g.addPath(18,11,NORTH);
-    g.addPath(3,19,NORTH);
-    g.addPath(19,20,NORTH);
-    g.addPath(20,21,EAST);
-    g.addPath(21,22,EAST);
-    g.addPath(22,23,EAST);
-    g.addPath(23,24,EAST);
-    g.addPath(24,13,SOUTH);
-    g.addPath(1,25,SOUTH);
-    g.addPath(25,26,SOUTH);
-    g.addPath(26,15,EAST);
-    g.addPath(15,27,EAST);
-    g.addPath(27,16,NORTH);
-    g.addPath(15,21,SOUTH);
-    g.addPath(25,20,EAST);
-    g.addPath(8,18,EAST);
-    g.addPath(21,9,SOUTH);
+    g.gameMap.addPath(1, 2, GameMap.EAST);
+    g.gameMap.addPath(2, 3, GameMap.EAST);
+    g.gameMap.addPath(3, 4, GameMap.SOUTH);
+    g.gameMap.addPath(4, 5, GameMap.SOUTH);
+    g.gameMap.addPath(5, 6, GameMap.SOUTH);
+    g.gameMap.addPath(5, 7, GameMap.EAST);
+    g.gameMap.addPath(7, 8, GameMap.EAST);
+    g.gameMap.addPath(8, 9, GameMap.NORTH);
+    g.gameMap.addPath(9, 10, GameMap.EAST);
+    g.gameMap.addPath(10, 11, GameMap.EAST);
+    g.gameMap.addPath(11, 12, GameMap.NORTH);
+    g.gameMap.addPath(12, 13, GameMap.NORTH);
+    g.gameMap.addPath(8, 14, GameMap.SOUTH);
+    g.gameMap.addPath(14, 15, GameMap.SOUTH);
+    g.gameMap.addPath(14, 16, GameMap.EAST);
+    g.gameMap.addPath(16, 17, GameMap.EAST);
+    g.gameMap.addPath(17, 18, GameMap.NORTH);
+    g.gameMap.addPath(18, 11, GameMap.NORTH);
+    g.gameMap.addPath(3, 19, GameMap.NORTH);
+    g.gameMap.addPath(19, 20, GameMap.NORTH);
+    g.gameMap.addPath(20, 21, GameMap.EAST);
+    g.gameMap.addPath(21, 22, GameMap.EAST);
+    g.gameMap.addPath(22, 23, GameMap.EAST);
+    g.gameMap.addPath(23, 24, GameMap.EAST);
+    g.gameMap.addPath(24, 13, GameMap.SOUTH);
+    g.gameMap.addPath(1, 25, GameMap.SOUTH);
+    g.gameMap.addPath(25, 26, GameMap.SOUTH);
+    g.gameMap.addPath(26, 15, GameMap.EAST);
+    g.gameMap.addPath(15, 27, GameMap.EAST);
+    g.gameMap.addPath(27, 16, GameMap.NORTH);
+    g.gameMap.addPath(15, 21, GameMap.SOUTH);
+    g.gameMap.addPath(25, 20, GameMap.EAST);
+    g.gameMap.addPath(8, 18, GameMap.EAST);
+    g.gameMap.addPath(21, 9, GameMap.SOUTH);
 
-    g.putPlayerInCavern(1);
-    g.putWumpusInCavern(15);
-    g.putPitInCavern(22);
-    g.putPitInCavern(17);
-    g.putBatsInCavern(8);
+    g.gameMap.putPlayerInCavern(1);
+    g.gameMap.putWumpusInCavern(15);
+    g.gameMap.putPitInCavern(22);
+    g.gameMap.putPitInCavern(17);
+    g.gameMap.putBatsInCavern(8);
     g.setQuiver(5);
 
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

@@ -7,7 +7,7 @@ public class MakeMap {
   private String direction;
 
   public void execute() throws Exception {
-    GameDriver.gameController.getGame().addPath(start, end, direction);
+    GameDriver.gameController.getGame().getGameMap().addPath(start, end, direction);
   }
 
   public void setStart(int start) {
