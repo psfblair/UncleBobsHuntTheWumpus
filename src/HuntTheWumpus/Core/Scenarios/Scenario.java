@@ -4,7 +4,7 @@ import HuntTheWumpus.Core.Game;
 import HuntTheWumpus.Core.Actors.GameCaverns;
 import HuntTheWumpus.Core.Actors.Player;
 import HuntTheWumpus.Core.Output;
-import HuntTheWumpus.Presentation.ResponseModel;
+import HuntTheWumpus.Core.ResponseModel;
 
 import java.util.Set;
 

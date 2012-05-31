@@ -1,4 +1,4 @@
-package HuntTheWumpus.Presentation;
+package HuntTheWumpus.Core;
 
 import HuntTheWumpus.Core.GameOverReasons;
 

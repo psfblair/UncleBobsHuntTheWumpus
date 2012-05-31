@@ -1,6 +1,6 @@
 import HuntTheWumpus.Core.Actors.GameCaverns;
 import HuntTheWumpus.Presentation.GamePresenter;
-import HuntTheWumpus.Presentation.ResponseModel;
+import HuntTheWumpus.Core.ResponseModel;
 import HuntTheWumpus.fixtures.MockConsole;
 import junit.framework.TestCase;
 
