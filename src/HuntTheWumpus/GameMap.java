@@ -69,7 +69,7 @@ public class GameMap {
     return wumpusCavern;
   }
 
-  Set getAvailableDirections(Game game) {
+  Set getAvailableDirections() {
     Set directions = new HashSet();
 
     for (Path p : paths) {
@@ -136,18 +136,18 @@ public class GameMap {
     return 0;
   }
 
-  public boolean playerCanSmellWumpus() {
+  public boolean playerIsInCavernNextToWumpus() {
     return areAdjacent(playerCavern, wumpusCavern);
   }
 
-  public boolean playerCanHearPit() {
+  public boolean playerIsInCavernNextToPit() {
     for (int pit : pits)
       if (areAdjacent(playerCavern, pit))
         return true;
     return false;
   }
 
-  public boolean playerCanHearBats() {
+  public boolean playerIsInCavernNextToBats() {
     for (int batCave : bats)
       if (areAdjacent(batCave, playerCavern))
         return true;
@@ -165,6 +165,22 @@ public class GameMap {
   void putPlayerInRandomCavern(Game game) {
     Path selectedPath = paths.get((int) (Math.random() * paths.size()));
     playerCavern = selectedPath.start;
+  }
+
+  boolean thereIsAWallInDirection(String direction) {
+    return adjacentTo(direction, playerCavern) == 0;
+  }
+
+  boolean isPlayerCavern(int nextCavern) {
+    return nextCavern == playerCavern;
+  }
+
+  boolean isWumpusCavern(int nextCavern) {
+    return nextCavern == wumpusCavern;
+  }
+
+  void moveWumpusTo(int selectedMove) {
+    wumpusCavern = selectedMove;
   }
 
   class Path {

@@ -32,7 +32,7 @@ public class GameTest extends TestCase {
     g.gameMap.addPath(1, 2, GameMap.EAST);
     g.gameMap.putPlayerInCavern(1);
     g.gameMap.putWumpusInCavern(2);
-    assertTrue(g.gameMap.playerCanSmellWumpus());
+    assertTrue(g.gameMap.playerIsInCavernNextToWumpus());
   }
 
   public void testCantSmellWumpus() throws Exception {
@@ -40,7 +40,7 @@ public class GameTest extends TestCase {
     g.gameMap.addPath(2, 3, GameMap.EAST);
     g.gameMap.putPlayerInCavern(1);
     g.gameMap.putWumpusInCavern(3);
-    assertFalse(g.gameMap.playerCanSmellWumpus());
+    assertFalse(g.gameMap.playerIsInCavernNextToWumpus());
   }
 
   public void testPickUpArrows() throws Exception {
@@ -99,9 +99,9 @@ public class GameTest extends TestCase {
     g.gameMap.putPlayerInCavern(1);
     g.gameMap.putPitInCavern(3);
     g.move(GameMap.EAST);
-    assertTrue(g.gameMap.playerCanHearPit());
+    assertTrue(g.gameMap.playerIsInCavernNextToPit());
     g.move(GameMap.WEST);
-    assertFalse(g.gameMap.playerCanHearPit());
+    assertFalse(g.gameMap.playerIsInCavernNextToPit());
   }
 
   public void testKillWumpusAtDistance() throws Exception {
@@ -147,7 +147,7 @@ public class GameTest extends TestCase {
     g.gameMap.addPath(1, 2, GameMap.EAST);
     g.gameMap.putPlayerInCavern(1);
     g.gameMap.putBatsInCavern(2);
-    assertTrue(g.gameMap.playerCanHearBats());
+    assertTrue(g.gameMap.playerIsInCavernNextToBats());
   }
 
   public void testBatsCarryYouAway() throws Exception {

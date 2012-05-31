@@ -16,20 +16,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="491d0f11-ba0b-4738-8f8e-2cbee03d1a20" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/HuntTheWumpus/GameMap.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HuntTheWumpus/Command/CommandInterpreter.java" afterPath="$PROJECT_DIR$/src/HuntTheWumpus/Command/CommandInterpreter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HuntTheWumpus/Game.java" afterPath="$PROJECT_DIR$/src/HuntTheWumpus/Game.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HuntTheWumpus/Presentation/AvailableDirections.java" afterPath="$PROJECT_DIR$/src/HuntTheWumpus/Presentation/AvailableDirections.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HuntTheWumpus/Presentation/GamePresenter.java" afterPath="$PROJECT_DIR$/src/HuntTheWumpus/Presentation/GamePresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HuntTheWumpus/Runner.java" afterPath="$PROJECT_DIR$/src/HuntTheWumpus/Runner.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/GamePresenterTest.java" afterPath="$PROJECT_DIR$/test/GamePresenterTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/HuntTheWumpus/GameControllerTest.java" afterPath="$PROJECT_DIR$/test/HuntTheWumpus/GameControllerTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HuntTheWumpus/GameMap.java" afterPath="$PROJECT_DIR$/src/HuntTheWumpus/GameMap.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/HuntTheWumpus/GameTest.java" afterPath="$PROJECT_DIR$/test/HuntTheWumpus/GameTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/HuntTheWumpus/fixtures/CheckRandomBatTransport.java" afterPath="$PROJECT_DIR$/test/HuntTheWumpus/fixtures/CheckRandomBatTransport.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/HuntTheWumpus/fixtures/CheckRandomWumpusMovement.java" afterPath="$PROJECT_DIR$/test/HuntTheWumpus/fixtures/CheckRandomWumpusMovement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/HuntTheWumpus/fixtures/GameDriver.java" afterPath="$PROJECT_DIR$/test/HuntTheWumpus/fixtures/GameDriver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/HuntTheWumpus/fixtures/MakeMap.java" afterPath="$PROJECT_DIR$/test/HuntTheWumpus/fixtures/MakeMap.java" />
     </list>
     <ignored path="HuntTheWumpus.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -95,10 +84,10 @@
       <file leaf-file-name="Game.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="136" column="2" selection-start="3315" selection-end="3315" vertical-scroll-proportion="0.7661142">
+            <state line="77" column="5" selection-start="2222" selection-end="2222" vertical-scroll-proportion="0.06813996">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4620#4629#0" expanded="true" />
+                <element signature="e#4621#4630#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -107,7 +96,7 @@
       <file leaf-file-name="GameMap.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/GameMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="93" column="0" selection-start="2328" selection-end="2328" vertical-scroll-proportion="0.0">
+            <state line="130" column="6" selection-start="3023" selection-end="3023" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#355#361#0" expanded="true" />
                 <element signature="e#480#489#0" expanded="true" />
@@ -1244,7 +1233,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/GameMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="93" column="0" selection-start="2328" selection-end="2328" vertical-scroll-proportion="0.0">
+        <state line="130" column="6" selection-start="3023" selection-end="3023" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#355#361#0" expanded="true" />
             <element signature="e#480#489#0" expanded="true" />
@@ -1254,10 +1243,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="136" column="2" selection-start="3315" selection-end="3315" vertical-scroll-proportion="0.7661142">
+        <state line="77" column="5" selection-start="2222" selection-end="2222" vertical-scroll-proportion="0.06813996">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4620#4629#0" expanded="true" />
+            <element signature="e#4621#4630#0" expanded="true" />
           </folding>
         </state>
       </provider>

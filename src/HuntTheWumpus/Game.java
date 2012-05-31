@@ -61,9 +61,9 @@ public class Game {
     int destination = gameMap.adjacentTo(direction, gameMap.playerCavern);
     if (destination != 0) {
       gameMap.playerCavern = destination;
-      checkWumpusEatsPlayer();
-      checkForPit();
-      checkForBats();
+      checkIfWumpusEatsPlayer();
+      checkIfPlayerFallsIntoPit();
+      checkIfPlayerIsTransportedByBats();
       pickUpArrow();
       moveWumpus();
       return true;
@@ -71,21 +71,21 @@ public class Game {
     return false;
   }
 
-  private void checkWumpusEatsPlayer() {
+  private void checkIfWumpusEatsPlayer() {
     if (gameMap.playerIsInWumpusCavern()) {
       gameTerminated = true;
       responseModel.setReasonGameTerminated(GameOverReasons.EATEN_BY_WUMPUS);
     }
   }
 
-  private void checkForPit() {
+  private void checkIfPlayerFallsIntoPit() {
     if (gameMap.playerIsInCavernWithPit()) {
       gameTerminated = true;
       responseModel.setReasonGameTerminated(GameOverReasons.FELL_IN_PIT);
     }
   }
 
-  private void checkForBats() {
+  private void checkIfPlayerIsTransportedByBats() {
     while (gameMap.playerIsInCavernWithBats()) {
       transportPlayer();
       batTransport = true;
@@ -134,13 +134,12 @@ public class Game {
     return quiver;
   }
   // END FOR TESTING
-  
-  // SHOOTING SCENARIO //
+
   public boolean shoot(String direction) {
     if (quiver <= 0)
       return false;
     quiver--;
-    if (gameMap.adjacentTo(direction, gameMap.playerCavern) == 0) {
+    if (gameMap.thereIsAWallInDirection(direction)) {
       gameTerminated = true;
       responseModel.setReasonGameTerminated(GameOverReasons.KILLED_BY_ARROW_BOUNCE);
       return true;
@@ -159,11 +158,11 @@ public class Game {
     if (nextCavern == 0)
       return cavern;
     else {
-      if (nextCavern == gameMap.wumpusCavern) {
+      if (gameMap.isWumpusCavern(nextCavern)) {
         responseModel.setReasonGameTerminated(GameOverReasons.WUMPUS_HIT_BY_ARROW);
         gameTerminated = true;
         return nextCavern;
-      } else if (nextCavern == gameMap.playerCavern) {
+      } else if (gameMap.isPlayerCavern(nextCavern)) {
         gameTerminated = true;
         responseModel.setReasonGameTerminated(GameOverReasons.HIT_BY_OWN_ARROW);
         return nextCavern;
@@ -171,7 +170,7 @@ public class Game {
       return shootAsFarAsPossible(direction, nextCavern);
     }
   }
-  // END SHOOTING SCENARIO //
+
 
   public void moveWumpus() {
     if (wumpusFrozen)
@@ -186,33 +185,31 @@ public class Game {
     int selection = (int) (Math.random() * moves.size());
     int selectedMove = moves.get(selection);
     if (selectedMove != 0) {
-      gameMap.wumpusCavern = selectedMove;
-      checkWumpusEatsPlayer();
+      gameMap.moveWumpusTo(selectedMove);
+      checkIfWumpusEatsPlayer();
     }
   }
 
-  private void addPossibleMove(String dir, List<Integer> moves) {
+  private void addPossibleMove(String direction, List<Integer> moves) {
     int possibleMove;
-    possibleMove = gameMap.adjacentTo(dir, gameMap.wumpusCavern);
+    possibleMove = gameMap.adjacentTo(direction, gameMap.wumpusCavern);
     if (possibleMove != 0)
       moves.add(possibleMove);
   }
 
   public ResponseModel finalizeResponseModel() {
-    ResponseModel model = this.responseModel;
+    responseModel.setGameTerminated(gameTerminated);
+    responseModel.setQuiver(quiver);
 
-    model.setGameTerminated(gameTerminated);
-    model.setQuiver(quiver);
-
-    model.setBatTransport(batTransport);
+    responseModel.setBatTransport(batTransport);
     batTransport = false;
 
-    model.setAvailableDirections(gameMap.getAvailableDirections(this));
+    responseModel.setAvailableDirections(gameMap.getAvailableDirections());
 
-    model.setCanSmellWumpus(gameMap.playerCanSmellWumpus());
-    model.setCanHearPit(gameMap.playerCanHearPit());
-    model.setCanHearBats(gameMap.playerCanHearBats());
-    return model;
+    responseModel.setCanSmellWumpus(gameMap.playerIsInCavernNextToWumpus());
+    responseModel.setCanHearPit(gameMap.playerIsInCavernNextToPit());
+    responseModel.setCanHearBats(gameMap.playerIsInCavernNextToBats());
+    return responseModel;
   }
 
 
