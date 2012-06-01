@@ -8,6 +8,8 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="Core" />
     <orderEntry type="module" module-name="Presenters" />
+    <orderEntry type="module" module-name="InputHandlers" />
+    <orderEntry type="module" module-name="EnglishLanguagePack" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="module-library">
       <library>
@@ -18,8 +20,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module" module-name="InputHandlers" />
-    <orderEntry type="module" module-name="EnglishLanguagePack" />
   </component>
 </module>
 

@@ -2,6 +2,7 @@ package HuntTheWumpus.Core;
 
 import HuntTheWumpus.Core.Actors.GameCaverns;
 import HuntTheWumpus.Core.Constants.Direction;
+import junit.framework.Assert;
 import junit.framework.TestCase;
 
 import java.util.HashSet;
@@ -17,7 +18,7 @@ public class GameCavernsTest extends TestCase {
   public void testAvailableDirectionsWithNoPlaceToGo() {
     Set<String> expected = (new HashSet<String>());
     Set<String> availableDirections = caverns.getAvailableDirectionsFrom(1);
-    assertEquals(expected, availableDirections);
+    Assert.assertEquals(expected, availableDirections);
   }
 
   public void testSouthIsAvailable() throws Exception {
@@ -25,7 +26,7 @@ public class GameCavernsTest extends TestCase {
     Set<Direction> expected = new HashSet<Direction>();
     expected.add(Direction.SOUTH);
     Set<String> availableDirections = caverns.getAvailableDirectionsFrom(1);
-    assertEquals(expected, availableDirections);
+    Assert.assertEquals(expected, availableDirections);
   }
 
   public void testNorthAndSouthAvailable() throws Exception {
@@ -37,7 +38,7 @@ public class GameCavernsTest extends TestCase {
     expected.add(Direction.NORTH);
 
     Set<String>  availableDirections = caverns.getAvailableDirectionsFrom(1);
-    assertEquals(expected, availableDirections);
+    Assert.assertEquals(expected, availableDirections);
   }
 
   public void testFourDirections() throws Exception {
@@ -53,6 +54,6 @@ public class GameCavernsTest extends TestCase {
     expected.add(Direction.NORTH);
 
     Set<String> availableDirections = caverns.getAvailableDirectionsFrom(1);
-    assertEquals(expected, availableDirections);
+    Assert.assertEquals(expected, availableDirections);
   }
 }

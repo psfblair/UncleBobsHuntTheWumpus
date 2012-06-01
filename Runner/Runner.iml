@@ -6,9 +6,9 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="Core" />
     <orderEntry type="module" module-name="EnglishLanguagePack" />
     <orderEntry type="module" module-name="InputHandlers" />
-    <orderEntry type="module" module-name="Core" />
     <orderEntry type="module" module-name="Presenters" />
     <orderEntry type="inheritedJdk" />
   </component>

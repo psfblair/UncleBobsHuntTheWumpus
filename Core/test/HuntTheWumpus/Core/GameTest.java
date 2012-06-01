@@ -10,6 +10,7 @@ import HuntTheWumpus.Core.Output.ResponseModel;
 import HuntTheWumpus.Core.Scenarios.MovePlayer;
 import HuntTheWumpus.Core.Scenarios.ShootArrow;
 import HuntTheWumpus.Core.Scenarios.UnknownCommand;
+import junit.framework.Assert;
 import junit.framework.TestCase;
 
 public class GameTest extends TestCase {
@@ -52,7 +53,7 @@ public class GameTest extends TestCase {
     caverns.addPath(1, 2, Direction.EAST);
     player.putPlayerInCavern(1);
     wumpus.putWumpusInCavern(2);
-    assertTrue(player.isInCavernNextToWumpus());
+    Assert.assertTrue(player.isInCavernNextToWumpus());
   }
 
   public void testCantSmellWumpus() throws Exception {
@@ -60,7 +61,7 @@ public class GameTest extends TestCase {
     caverns.addPath(2, 3, Direction.EAST);
     player.putPlayerInCavern(1);
     wumpus.putWumpusInCavern(3);
-    assertFalse(player.isInCavernNextToWumpus());
+    Assert.assertFalse(player.isInCavernNextToWumpus());
   }
 
   public void testPickUpArrows() throws Exception {
@@ -81,11 +82,11 @@ public class GameTest extends TestCase {
     player.setQuiver(1);
 
     ShootArrow shootScenario = shoot(Direction.EAST);
-    assertTrue(shootScenario.arrowWasShot());
+    Assert.assertTrue(shootScenario.arrowWasShot());
     assertEquals(0, player.getQuiver());
     assertEquals(1, caverns.arrowsInCavern(3));
     assertEquals(0, caverns.arrowsInCavern(2));
-    assertFalse(game.isGameTerminated());
+    Assert.assertFalse(game.isGameTerminated());
   }
 
   public void testShootArrowWhenQuiverEmpty() throws Exception {
@@ -94,10 +95,10 @@ public class GameTest extends TestCase {
     player.setQuiver(0);
 
     ShootArrow shootScenario = shoot(Direction.EAST);
-    assertFalse(shootScenario.arrowWasShot());
+    Assert.assertFalse(shootScenario.arrowWasShot());
     assertEquals(0, player.getQuiver());
     assertEquals(0, caverns.arrowsInCavern(2));
-    assertFalse(game.isGameTerminated());
+    Assert.assertFalse(game.isGameTerminated());
   }
 
   public void testPlayerDiesIfShootsAtWall() throws Exception {
@@ -105,7 +106,7 @@ public class GameTest extends TestCase {
     player.setQuiver(1);
 
     ShootArrow shootScenario = shoot(Direction.EAST);
-    assertTrue(game.isGameTerminated());
+    Assert.assertTrue(game.isGameTerminated());
     assertEquals(GameOverReason.KILLED_BY_ARROW_BOUNCE, shootScenario.gameTerminationReason());
   }
 
@@ -115,7 +116,7 @@ public class GameTest extends TestCase {
     caverns.putPitInCavern(2);
 
     MovePlayer move = move(Direction.EAST);
-    assertTrue(game.isGameTerminated());
+    Assert.assertTrue(game.isGameTerminated());
     assertEquals(GameOverReason.FELL_IN_PIT, move.gameTerminationReason());
   }
 
@@ -126,9 +127,9 @@ public class GameTest extends TestCase {
     caverns.putPitInCavern(3);
 
     move(Direction.EAST);
-    assertTrue(player.isInCavernNextToPit());
+    Assert.assertTrue(player.isInCavernNextToPit());
     move(Direction.WEST);
-    assertFalse(player.isInCavernNextToPit());
+    Assert.assertFalse(player.isInCavernNextToPit());
   }
 
   public void testKillWumpusAtDistance() throws Exception {
@@ -139,7 +140,7 @@ public class GameTest extends TestCase {
     player.setQuiver(1);
 
     ShootArrow shootScenario = shoot(Direction.EAST);
-    assertTrue(game.isGameTerminated());
+    Assert.assertTrue(game.isGameTerminated());
     assertEquals(GameOverReason.WUMPUS_HIT_BY_ARROW, shootScenario.gameTerminationReason());
   }
 
@@ -150,7 +151,7 @@ public class GameTest extends TestCase {
     player.setQuiver(1);
 
     ShootArrow shootScenario = shoot(Direction.EAST);
-    assertTrue(game.isGameTerminated());
+    Assert.assertTrue(game.isGameTerminated());
     assertEquals(GameOverReason.WUMPUS_HIT_BY_ARROW, shootScenario.gameTerminationReason());
   }
 
@@ -167,14 +168,14 @@ public class GameTest extends TestCase {
         break;
       }
     }
-    assertTrue(moved);
+    Assert.assertTrue(moved);
   }
 
   public void testHearBats() throws Exception {
     caverns.addPath(1, 2, Direction.EAST);
     player.putPlayerInCavern(1);
     caverns.putBatsInCavern(2);
-    assertTrue(player.isInCavernNextToBats());
+    Assert.assertTrue(player.isInCavernNextToBats());
   }
 
   public void testBatsCarryYouAway() throws Exception {
@@ -183,7 +184,7 @@ public class GameTest extends TestCase {
     caverns.putBatsInCavern(2);
 
     MovePlayer move = move(Direction.EAST);
-    assertTrue(move.isTransportedByBats());
+    Assert.assertTrue(move.isTransportedByBats());
     assertEquals(1, player.getPlayerCavern());
   }
   
