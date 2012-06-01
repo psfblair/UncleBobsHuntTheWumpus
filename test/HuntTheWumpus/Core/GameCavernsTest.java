@@ -20,36 +20,36 @@ public class GameCavernsTest extends TestCase {
   }
 
   public void testSouthIsAvailable() throws Exception {
-    caverns.addPath(1, 2, GameCaverns.SOUTH);
-    Set<String> expected = (new HashSet<String>());
-    expected.add(GameCaverns.SOUTH);
+    caverns.addPath(1, 2, Direction.SOUTH);
+    Set<Direction> expected = new HashSet<Direction>();
+    expected.add(Direction.SOUTH);
     Set<String> availableDirections = caverns.getAvailableDirectionsFrom(1);
     assertEquals(expected, availableDirections);
   }
 
   public void testNorthAndSouthAvailable() throws Exception {
-    caverns.addPath(1, 2, GameCaverns.SOUTH);
-    caverns.addPath(1, 3, GameCaverns.NORTH);
+    caverns.addPath(1, 2, Direction.SOUTH);
+    caverns.addPath(1, 3, Direction.NORTH);
 
-    Set<String> expected = (new HashSet<String>());
-    expected.add(GameCaverns.SOUTH);
-    expected.add(GameCaverns.NORTH);
+    Set<Direction> expected = new HashSet<Direction>();
+    expected.add(Direction.SOUTH);
+    expected.add(Direction.NORTH);
 
     Set<String>  availableDirections = caverns.getAvailableDirectionsFrom(1);
     assertEquals(expected, availableDirections);
   }
 
   public void testFourDirections() throws Exception {
-    caverns.addPath(1, 2, GameCaverns.EAST);
-    caverns.addPath(1, 3, GameCaverns.WEST);
-    caverns.addPath(1, 4, GameCaverns.SOUTH);
-    caverns.addPath(1, 5, GameCaverns.NORTH);
+    caverns.addPath(1, 2, Direction.EAST);
+    caverns.addPath(1, 3, Direction.WEST);
+    caverns.addPath(1, 4, Direction.SOUTH);
+    caverns.addPath(1, 5, Direction.NORTH);
 
-    Set<String> expected = (new HashSet<String>());
-    expected.add(GameCaverns.SOUTH);
-    expected.add(GameCaverns.EAST);
-    expected.add(GameCaverns.WEST);
-    expected.add(GameCaverns.NORTH);
+    Set<Direction> expected = new HashSet<Direction>();
+    expected.add(Direction.SOUTH);
+    expected.add(Direction.EAST);
+    expected.add(Direction.WEST);
+    expected.add(Direction.NORTH);
 
     Set<String> availableDirections = caverns.getAvailableDirectionsFrom(1);
     assertEquals(expected, availableDirections);

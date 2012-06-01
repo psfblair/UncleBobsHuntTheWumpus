@@ -1,5 +1,7 @@
 package HuntTheWumpus.Core.Actors;
 
+import HuntTheWumpus.Core.Direction;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -23,22 +25,21 @@ public class GameCaverns {
     paths.clear();
   }
 
-  public void addPath(int start, int end, String direction) throws Exception {
-    direction = direction.toLowerCase();
+  public void addPath(int start, int end, Direction direction) throws Exception {
     addSinglePath(start, end, direction);
     addSinglePath(end, start, oppositeDirection(direction));
   }
 
-  public void addSinglePath(int start, int end, String direction) {
+  public void addSinglePath(int start, int end, Direction direction) {
     Path p = new Path(start, end, direction);
     paths.add(p);
   }
 
-  public String oppositeDirection(String direction) throws Exception {
-    if (direction.equals(EAST)) return WEST;
-    else if (direction.equals(WEST)) return EAST;
-    else if (direction.equals(NORTH)) return SOUTH;
-    else if (direction.equals(SOUTH)) return NORTH;
+  public Direction oppositeDirection(Direction direction) throws Exception {
+    if (direction.equals(Direction.EAST)) return Direction.WEST;
+    else if (direction.equals(Direction.WEST)) return Direction.EAST;
+    else if (direction.equals(Direction.NORTH)) return Direction.SOUTH;
+    else if (direction.equals(Direction.SOUTH)) return Direction.NORTH;
     else
       throw new Exception("No such direction: " + direction);
   }
@@ -59,11 +60,11 @@ public class GameCaverns {
     return directions;
   }
 
-  public boolean thereIsAWallInDirectionFromCavern(String direction, int cavern) {
+  public boolean thereIsAWallInDirectionFromCavern(Direction direction, int cavern) {
     return adjacentTo(direction, cavern) == 0;
   }
 
-  public int adjacentTo(String direction, int cavern) {
+  public int adjacentTo(Direction direction, int cavern) {
     for (Path p : paths) {
       if (p.start == cavern && p.direction.equals(direction))
         return p.end;
@@ -145,9 +146,9 @@ public class GameCaverns {
   class Path {
     public int start;
     public int end;
-    public String direction;
+    public Direction direction;
 
-    public Path(int start, int end, String direction) {
+    public Path(int start, int end, Direction direction) {
       this.start = start;
       this.end = end;
       this.direction = direction;

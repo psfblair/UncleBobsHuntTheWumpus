@@ -7,8 +7,8 @@ import HuntTheWumpus.Core.Output.ResponseModel;
 public class UnknownCommand extends Scenario {
   private String command;
 
-  public UnknownCommand(Game game, Output presenter, String command) {
-    super(game, presenter);
+  public UnknownCommand(Game game, Output output, String command) {
+    super(game, output);
     this.command = command;
   }
 

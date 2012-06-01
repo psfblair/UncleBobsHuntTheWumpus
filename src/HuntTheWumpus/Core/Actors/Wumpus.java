@@ -1,5 +1,7 @@
 package HuntTheWumpus.Core.Actors;
 
+import HuntTheWumpus.Core.Direction;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,10 +43,10 @@ public class Wumpus {
     if (wumpusFrozen)
       return;
     List<Integer> moves = new ArrayList<Integer>();
-    addPossibleMove(GameCaverns.EAST, moves);
-    addPossibleMove(GameCaverns.WEST, moves);
-    addPossibleMove(GameCaverns.NORTH, moves);
-    addPossibleMove(GameCaverns.SOUTH, moves);
+    addPossibleMove(Direction.EAST, moves);
+    addPossibleMove(Direction.WEST, moves);
+    addPossibleMove(Direction.NORTH, moves);
+    addPossibleMove(Direction.SOUTH, moves);
     moves.add(0); // rest;
 
     int selection = (int) (Math.random() * moves.size());
@@ -54,7 +56,7 @@ public class Wumpus {
     }
   }
 
-  private void addPossibleMove(String direction, List<Integer> moves) {
+  private void addPossibleMove(Direction direction, List<Integer> moves) {
     int possibleMove;
     possibleMove = gameCaverns.adjacentTo(direction, wumpusCavern);
     if (possibleMove != 0)

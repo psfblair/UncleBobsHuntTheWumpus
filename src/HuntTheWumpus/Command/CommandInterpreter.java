@@ -1,9 +1,9 @@
 package HuntTheWumpus.Command;
 
-import HuntTheWumpus.Core.*;
-import HuntTheWumpus.Core.Actors.GameCaverns;
-import HuntTheWumpus.Core.Scenarios.*;
+import HuntTheWumpus.Core.Direction;
+import HuntTheWumpus.Core.Game;
 import HuntTheWumpus.Core.Output.Output;
+import HuntTheWumpus.Core.Scenarios.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -67,7 +67,7 @@ public abstract class CommandInterpreter {
   }
 
   private Scenario createShootCommand(Scenario command, String token, Game game, Output presenter) {
-    String direction = directionFromName(token);
+    Direction direction = directionFromName(token);
     if (direction != null)
       command = new ShootArrow(game, presenter, direction);
     return command;
@@ -82,17 +82,17 @@ public abstract class CommandInterpreter {
   }
 
   private Scenario createGoCommand(Scenario command, String token, Game game, Output presenter) {
-    String direction = directionFromName(token);
+    Direction direction = directionFromName(token);
     if (direction != null)
       command = new MovePlayer(game, presenter,direction);
     return command;
   }
 
-  private String directionFromName(String name) {
-    if (name.equals(east()) || name.equals(verboseEast())) return GameCaverns.EAST;
-    else if (name.equals(west()) || name.equals(verboseWest())) return GameCaverns.WEST;
-    else if (name.equals(north()) || name.equals(verboseNorth())) return GameCaverns.NORTH;
-    else if (name.equals(south()) || name.equals(verboseSouth())) return GameCaverns.SOUTH;
+  public Direction directionFromName(String name) {
+    if (name.equals(east()) || name.equals(verboseEast())) return Direction.EAST;
+    else if (name.equals(west()) || name.equals(verboseWest())) return Direction.WEST;
+    else if (name.equals(north()) || name.equals(verboseNorth())) return Direction.NORTH;
+    else if (name.equals(south()) || name.equals(verboseSouth())) return Direction.SOUTH;
     else return null;
   }
 

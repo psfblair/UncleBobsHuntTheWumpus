@@ -1,7 +1,7 @@
 package HuntTheWumpus.Presentation;
 
-import HuntTheWumpus.Core.Actors.GameCaverns;
-import HuntTheWumpus.Core.GameOverReasons;
+import HuntTheWumpus.Core.Direction;
+import HuntTheWumpus.Core.GameOverReason;
 import HuntTheWumpus.Core.Output.Output;
 import HuntTheWumpus.Core.Output.ResponseModel;
 
@@ -50,7 +50,7 @@ public class TextPresenter implements Output {
 
   public void printCannotMove(ResponseModel responseModel) {
     if (responseModel.cannotMoveInRequestedDirection()) {
-      String direction = responseModel.requestedDirection();
+      Direction direction = responseModel.requestedDirection();
       console.print("You can't go " + TextPresenter.directionName(direction) + " from here.");
     }
   }
@@ -92,15 +92,15 @@ public class TextPresenter implements Output {
   }
 
   private void printCauseOfTermination(ResponseModel responseModel) {
-    if (responseModel.getGameTerminationReason() == GameOverReasons.KILLED_BY_ARROW_BOUNCE)
+    if (responseModel.getGameTerminationReason() == GameOverReason.KILLED_BY_ARROW_BOUNCE)
       console.print("The arrow bounced off the wall and killed you.");
-    else if (responseModel.getGameTerminationReason() == GameOverReasons.FELL_IN_PIT)
+    else if (responseModel.getGameTerminationReason() == GameOverReason.FELL_IN_PIT)
       console.print("You fall into a pit and die.");
-    else if (responseModel.getGameTerminationReason() == GameOverReasons.WUMPUS_HIT_BY_ARROW)
+    else if (responseModel.getGameTerminationReason() == GameOverReason.WUMPUS_HIT_BY_ARROW)
       console.print("You have killed the Wumpus.");
-    else if (responseModel.getGameTerminationReason() == GameOverReasons.EATEN_BY_WUMPUS)
+    else if (responseModel.getGameTerminationReason() == GameOverReason.EATEN_BY_WUMPUS)
       console.print("The ravenous snarling Wumpus gobbles you down.");
-    else if (responseModel.getGameTerminationReason() == GameOverReasons.HIT_BY_OWN_ARROW)
+    else if (responseModel.getGameTerminationReason() == GameOverReason.HIT_BY_OWN_ARROW)
       console.print("You were hit by your own arrow.");
   }
 
@@ -109,14 +109,14 @@ public class TextPresenter implements Output {
     console.print(availableDirections.toString());
   }
 
-  static String directionName(String direction) {
-    if (direction.equals(GameCaverns.NORTH))
+  static String directionName(Direction direction) {
+    if (direction.equals(Direction.NORTH))
       return "north";
-    else if (direction.equals(GameCaverns.SOUTH))
+    else if (direction.equals(Direction.SOUTH))
       return "south";
-    else if (direction.equals(GameCaverns.EAST))
+    else if (direction.equals(Direction.EAST))
       return "east";
-    else if (direction.equals(GameCaverns.WEST))
+    else if (direction.equals(Direction.WEST))
       return "west";
     else
       return "tilt";
@@ -144,7 +144,7 @@ public class TextPresenter implements Output {
       available = new StringBuffer();
       nDirections = directions.size();
       directionsPlaced = 0;
-      for (String dir : new String[]{GameCaverns.NORTH, GameCaverns.SOUTH, GameCaverns.EAST, GameCaverns.WEST}) {
+      for (Direction dir : new Direction[]{Direction.NORTH, Direction.SOUTH, Direction.EAST, Direction.WEST}) {
         if (directions.contains(dir)) {
           placeDirection(dir);
         }
@@ -152,7 +152,7 @@ public class TextPresenter implements Output {
       return "You can go " + available.toString() + " from here.";
     }
 
-    private void placeDirection(String dir) {
+    private void placeDirection(Direction dir) {
       directionsPlaced++;
       if (isLastOfMany())
         available.append(" and ");

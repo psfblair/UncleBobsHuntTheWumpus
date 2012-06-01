@@ -8,7 +8,7 @@ public class Game {
   public final GameCaverns gameCaverns = new GameCaverns();
   public final Wumpus wumpus = new Wumpus(gameCaverns);
   public final Player player = new Player(gameCaverns, wumpus);
-  private GameOverReasons gameTerminationReason = null;
+  private GameOverReason gameTerminationReason = null;
   private boolean batTransport = false;
 
   public void rest() {
@@ -20,7 +20,7 @@ public class Game {
     checkIfWumpusEatsPlayer();
   }
 
-  public boolean move(String direction) {
+  public boolean move(Direction direction) {
     int destination = gameCaverns.adjacentTo(direction, player.getPlayerCavern());
     if (destination != 0) {
       player.putPlayerInCavern(destination);
@@ -30,19 +30,20 @@ public class Game {
       pickUpArrow();
       wumpusMoves();
       return true;
+    } else {
+      return false;
     }
-    return false;
   }
 
   private void checkIfWumpusEatsPlayer() {
     if (player.isInWumpusCavern()) {
-      gameTerminationReason = GameOverReasons.EATEN_BY_WUMPUS;
+      gameTerminationReason = GameOverReason.EATEN_BY_WUMPUS;
     }
   }
 
   private void checkIfPlayerFallsIntoPit() {
     if (player.isInCavernWithPit()) {
-      gameTerminationReason = GameOverReasons.FELL_IN_PIT;
+      gameTerminationReason = GameOverReason.FELL_IN_PIT;
     }
   }
 
@@ -60,7 +61,6 @@ public class Game {
   private void pickUpArrow() {
     if (player.playerIsInCavernWithArrow()) {
       player.pickUpArrow();
-
     }
   }
 
@@ -68,7 +68,7 @@ public class Game {
     return gameTerminationReason != null;
   }
 
-  public GameOverReasons gameTerminationReason() {
+  public GameOverReason gameTerminationReason() {
     return gameTerminationReason;
   }
 
@@ -80,12 +80,12 @@ public class Game {
     batTransport = false;
   }
 
-  public boolean shoot(String direction) {
+  public boolean shoot(Direction direction) {
     if (player.getQuiver() <= 0)
       return false;
     player.shootArrow();
     if (gameCaverns.thereIsAWallInDirectionFromCavern(direction, player.getPlayerCavern())) {
-      gameTerminationReason = GameOverReasons.KILLED_BY_ARROW_BOUNCE;
+      gameTerminationReason = GameOverReason.KILLED_BY_ARROW_BOUNCE;
       return true;
     }
 
@@ -97,16 +97,16 @@ public class Game {
     return true;
   }
 
-  private int shootAsFarAsPossible(String direction, int cavern) {
+  private int shootAsFarAsPossible(Direction direction, int cavern) {
     int nextCavern = gameCaverns.adjacentTo(direction, cavern);
     if (nextCavern == 0)
       return cavern;
     else {
       if (nextCavern == wumpus.getWumpusCavern()) {
-        gameTerminationReason = GameOverReasons.WUMPUS_HIT_BY_ARROW;
+        gameTerminationReason = GameOverReason.WUMPUS_HIT_BY_ARROW;
         return nextCavern;
       } else if (player.isPlayerCavern(nextCavern)) {
-        gameTerminationReason = GameOverReasons.HIT_BY_OWN_ARROW;
+        gameTerminationReason = GameOverReason.HIT_BY_OWN_ARROW;
         return nextCavern;
       }
       return shootAsFarAsPossible(direction, nextCavern);

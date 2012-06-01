@@ -1,15 +1,16 @@
 package HuntTheWumpus.Core.Scenarios;
 
+import HuntTheWumpus.Core.Direction;
 import HuntTheWumpus.Core.Game;
 import HuntTheWumpus.Core.Output.Output;
 import HuntTheWumpus.Core.Output.ResponseModel;
 
 public class MovePlayer extends Scenario {
-  private String direction;
+  private Direction direction;
   private boolean cannotMoveInRequestedDirection = false;
 
-  public MovePlayer(Game game, Output presenter, String direction) {
-    super(game, presenter);
+  public MovePlayer(Game game, Output output, Direction direction) {
+    super(game, output);
     this.direction = direction;
   }
 

@@ -1,6 +1,6 @@
 package HuntTheWumpus.Core;
 
-public enum GameOverReasons {
+public enum GameOverReason {
   FELL_IN_PIT,
   EATEN_BY_WUMPUS,
   WUMPUS_HIT_BY_ARROW,

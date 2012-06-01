@@ -1,6 +1,6 @@
 package HuntTheWumpus.fixtures;
 
-import HuntTheWumpus.Core.Actors.GameCaverns;
+import HuntTheWumpus.Core.Direction;
 
 import static HuntTheWumpus.fixtures.GameDriver.g;
 
@@ -13,7 +13,7 @@ public class CheckRandomBatTransport {
 
     for (int i=0; i<1000; i++) {
       g.getPlayer().putPlayerInCavern(1);
-      g.move(GameCaverns.EAST);
+      g.move(Direction.EAST);
       //Also used in Game start
       counts[g.getPlayer().getPlayerCavern()]++;
     }

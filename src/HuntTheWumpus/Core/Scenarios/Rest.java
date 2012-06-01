@@ -5,8 +5,8 @@ import HuntTheWumpus.Core.Output.Output;
 
 public class Rest extends Scenario {
 
-  public Rest(Game game, Output presenter) {
-    super(game, presenter);
+  public Rest(Game game, Output output) {
+    super(game, output);
   }
 
   @Override

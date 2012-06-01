@@ -11,7 +11,7 @@ public class Player {
     this.wumpus = wumpus;
   }
 
-  public int getPlayerCavern() { //Also used in Game start
+  public int getPlayerCavern() {
     return playerCavern;
   }
 

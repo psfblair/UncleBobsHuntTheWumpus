@@ -1,10 +1,13 @@
 package HuntTheWumpus.fixtures;
 
 
+import HuntTheWumpus.Command.EnglishCommandInterpreter;
+import HuntTheWumpus.Core.Direction;
+
 public class MakeMap {
   private int start;
   private int end;
-  private String direction;
+  private Direction direction;
 
   public void execute() throws Exception {
     GameDriver.gameController.getGame().getGameCaverns().addPath(start, end, direction);
@@ -19,6 +22,7 @@ public class MakeMap {
   }
 
   public void setDirection(String direction) {
-    this.direction = direction;
+    EnglishCommandInterpreter interpreter = new EnglishCommandInterpreter();
+    this.direction = interpreter.directionFromName(direction.toLowerCase());;
   }
 }

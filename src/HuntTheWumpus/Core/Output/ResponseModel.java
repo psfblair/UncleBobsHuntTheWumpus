@@ -1,6 +1,7 @@
 package HuntTheWumpus.Core.Output;
 
-import HuntTheWumpus.Core.GameOverReasons;
+import HuntTheWumpus.Core.Direction;
+import HuntTheWumpus.Core.GameOverReason;
 
 import java.util.Set;
 
@@ -13,12 +14,12 @@ public class ResponseModel {
   private boolean canHearPit;
   private boolean canHearBats;
   private Set availableDirections;
-  private GameOverReasons gameTerminationReason;
+  private GameOverReason gameTerminationReason;
   private String unknownCommand;
   private boolean arrowWasShot;
   private boolean triedShootingWithNoArrows;
   private boolean cannotMoveInRequestedDirection;
-  private String requestedDirection;
+  private Direction requestedDirection;
 
   public int getQuiver() {
     return quiver;
@@ -84,11 +85,11 @@ public class ResponseModel {
     return availableDirections;
   }
 
-  public void setReasonGameTerminated(GameOverReasons gameTerminationReason) {
+  public void setReasonGameTerminated(GameOverReason gameTerminationReason) {
     this.gameTerminationReason = gameTerminationReason;
   }
 
-  public GameOverReasons getGameTerminationReason() {
+  public GameOverReason getGameTerminationReason() {
     return gameTerminationReason;
   }
 
@@ -124,11 +125,11 @@ public class ResponseModel {
     this.cannotMoveInRequestedDirection = cannotMoveInRequestedDirection;
   }
 
-  public String requestedDirection() {
+  public Direction requestedDirection() {
     return requestedDirection;
   }
 
-  public void setRequestedDirection(String requestedDirection) {
+  public void setRequestedDirection(Direction requestedDirection) {
     this.requestedDirection = requestedDirection;
   }
 }
