@@ -42,7 +42,7 @@
     </target>
 
 	<target name="start_fitness" depends="unit_tests" description="starts fitness on port 8080">
-		<java  jar="fitnesse.jar" fork="true" failonerror="true">
+		<java  jar="lib/fitnesse.jar" fork="true" failonerror="true">
 			<arg value="-p" />
 			<arg value="8080" />
         </java>
