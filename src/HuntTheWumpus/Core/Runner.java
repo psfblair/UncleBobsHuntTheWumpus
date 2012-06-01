@@ -60,7 +60,7 @@ public class Runner {
 
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     p.execute("r");
-    while (g.gameTerminated() == false) {
+    while (g.isGameTerminated() == false) {
       String command = br.readLine();
       p.execute(command);
     }

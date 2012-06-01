@@ -1,5 +1,7 @@
 package HuntTheWumpus.Core.Scenarios;
 
+import HuntTheWumpus.Core.Actors.Wumpus;
+import HuntTheWumpus.Core.Constants.GameOverReason;
 import HuntTheWumpus.Core.Game;
 import HuntTheWumpus.Core.Actors.GameCaverns;
 import HuntTheWumpus.Core.Actors.Player;
@@ -13,16 +15,19 @@ public abstract class Scenario {
   protected Player player;
   protected Game game;
   protected Output output;
-  private GameCaverns caverns;
+  protected GameCaverns caverns;
   private int arrowsInQuiverBeforeTurn;
+  protected GameOverReason gameTerminationReason;
+  protected boolean batTransport;
+  protected Wumpus wumpus;
 
   protected Scenario(Game game, Output output) {
     this.game = game;
     this.output = output;
     this.player = game.getPlayer();
     this.caverns = game.getGameCaverns();
+    this.wumpus = game.getWumpus();
 
-    this.game.resetBatTransport();
     this.arrowsInQuiverBeforeTurn = player.getQuiver();
     initializeResponseModel();
   }
@@ -41,11 +46,11 @@ public abstract class Scenario {
   }
 
   public ResponseModel prepareResponseModel() {
-    responseModel.setGameTerminated(game.gameTerminated());
-    responseModel.setReasonGameTerminated(game.gameTerminationReason());
+    responseModel.setGameTerminated(game.isGameTerminated());
+    responseModel.setReasonGameTerminated(gameTerminationReason);
     responseModel.setArrowsInQuiverBeforeTurn(arrowsInQuiverBeforeTurn);
     responseModel.setQuiver(player.getQuiver());
-    responseModel.setBatTransport(game.isTransportedByBats());
+    responseModel.setBatTransport(batTransport);
 
     Set availableDirections = caverns.getAvailableDirectionsFrom(player.getPlayerCavern());
     responseModel.setAvailableDirections(availableDirections);
@@ -56,4 +61,28 @@ public abstract class Scenario {
     return responseModel;
   }
 
+
+  public GameOverReason gameTerminationReason() {
+    return gameTerminationReason;
+  }
+
+  protected void terminateGame(GameOverReason reason) {
+    gameTerminationReason = reason;
+    game.setGameTerminated(true);
+  }
+
+  public void transportPlayer() {
+    player.putPlayerInRandomCavern();
+  }
+
+  public void wumpusMoves() {
+    wumpus.move();
+    checkIfWumpusEatsPlayer();
+  }
+
+  protected void checkIfWumpusEatsPlayer() {
+    if (player.isInWumpusCavern()) {
+      terminateGame(GameOverReason.EATEN_BY_WUMPUS);
+    }
+  }
 }

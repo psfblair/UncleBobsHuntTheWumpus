@@ -1,6 +1,7 @@
 package HuntTheWumpus.Core.Scenarios;
 
 import HuntTheWumpus.Core.Constants.Direction;
+import HuntTheWumpus.Core.Constants.GameOverReason;
 import HuntTheWumpus.Core.Game;
 import HuntTheWumpus.Core.Output.Output;
 import HuntTheWumpus.Core.Output.ResponseModel;
@@ -16,7 +17,15 @@ public class MovePlayer extends Scenario {
 
   @Override
   public void invoke() {
-    if (game.move(direction) == false) {
+    int destination = caverns.adjacentTo(direction, player.getPlayerCavern());
+    if (destination != 0) {
+      player.putPlayerInCavern(destination);
+      checkIfWumpusEatsPlayer();
+      checkIfPlayerFallsIntoPit();
+      checkIfPlayerIsTransportedByBats();
+      pickUpArrow();
+      wumpusMoves();
+    } else {
       cannotMoveInRequestedDirection = true;
     }
     super.invoke();
@@ -27,5 +36,29 @@ public class MovePlayer extends Scenario {
     responseModel.setRequestedDirection(direction);
     responseModel.setCannotMoveInRequestedDirection(cannotMoveInRequestedDirection);
     return super.prepareResponseModel();
+  }
+
+  private void checkIfPlayerFallsIntoPit() {
+    if (player.isInCavernWithPit()) {
+      terminateGame(GameOverReason.FELL_IN_PIT);
+    }
+  }
+
+  private void checkIfPlayerIsTransportedByBats() {
+    while (player.isInCavernWithBats()) {
+      transportPlayer();
+      batTransport = true;
+    }
+  }
+
+  private void pickUpArrow() {
+    if (player.playerIsInCavernWithArrow()) {
+      player.pickUpArrow();
+    }
+  }
+
+  // For Testing
+  public boolean isTransportedByBats() {
+    return batTransport;
   }
 }

@@ -11,7 +11,7 @@ public class Rest extends Scenario {
 
   @Override
   public void invoke() {
-    game.rest();
+    wumpusMoves();
     super.invoke();
   }
 }

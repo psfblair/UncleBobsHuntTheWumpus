@@ -70,7 +70,7 @@ public class GameDriver {
   }
 
   public int arrowsInCavern(int cavern) {
-    return game.gameCaverns.arrowsInCavern(cavern);
+    return game.getGameCaverns().arrowsInCavern(cavern);
   }
 
   public int arrowsInQuiver() {
@@ -78,7 +78,7 @@ public class GameDriver {
   }
 
   public boolean gameTerminated() {
-    return game.gameTerminated();
+    return game.isGameTerminated();
   }
 
   public void newGame() {
