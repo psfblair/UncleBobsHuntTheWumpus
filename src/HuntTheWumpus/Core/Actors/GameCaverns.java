@@ -8,11 +8,6 @@ import java.util.List;
 import java.util.Set;
 
 public class GameCaverns {
-  public static final String EAST = "e";
-  public static final String WEST = "w";
-  public static final String NORTH = "n";
-  public static final String SOUTH = "s";
-
   public List<Path> paths = new ArrayList<Path>();
   private ArrayList<Integer> arrows = new ArrayList<Integer>();
   public ArrayList<Integer> pits = new ArrayList<Integer>();

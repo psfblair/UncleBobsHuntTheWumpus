@@ -26,7 +26,7 @@ public class MovePlayer extends Scenario {
       pickUpArrow();
       wumpusMoves();
     } else {
-      cannotMoveInRequestedDirection = true;
+      cannotMoveInRequestedDirection();
     }
     super.invoke();
   }
@@ -55,6 +55,10 @@ public class MovePlayer extends Scenario {
     if (player.playerIsInCavernWithArrow()) {
       player.pickUpArrow();
     }
+  }
+
+  private void cannotMoveInRequestedDirection() {
+    cannotMoveInRequestedDirection = true;
   }
 
   // For Testing

@@ -62,13 +62,13 @@ public abstract class Scenario {
   }
 
 
-  public GameOverReason gameTerminationReason() {
-    return gameTerminationReason;
-  }
-
   protected void terminateGame(GameOverReason reason) {
     gameTerminationReason = reason;
     game.setGameTerminated(true);
+  }
+
+  public GameOverReason gameTerminationReason() {
+    return gameTerminationReason;
   }
 
   public void transportPlayer() {

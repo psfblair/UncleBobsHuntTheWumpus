@@ -61,8 +61,8 @@ public class ShootArrow extends Scenario {
 
   @Override
   public ResponseModel prepareResponseModel() {
-    responseModel.setArrowWasShot(arrowWasShot);
-    responseModel.setTriedShootingWithNoArrows(!arrowWasShot);
+    responseModel.setArrowWasShot(arrowWasShot());
+    responseModel.setTriedShootingWithNoArrows(! arrowWasShot());
     return super.prepareResponseModel();
   }
 
