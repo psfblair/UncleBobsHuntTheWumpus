@@ -7,36 +7,36 @@ import HuntTheWumpus.Core.Game;
 public class GameDriver {
   public static GameController gameController;
   private MockConsole mc;
-  public static Game g;
+  public static Game game;
 
   public GameDriver() {
     gameController = new GameController(mc = new MockConsole(), new EnglishCommandInterpreter());
-    g = gameController.getGame();
+    game = gameController.getGame();
   }
 
 
   public void putPlayerInCavern(int cavern) {
-    g.getPlayer().putPlayerInCavern(cavern);
+    game.getPlayer().putPlayerInCavern(cavern);
   }
   public boolean putInCavern(String what, int where) {
     if (what.equals("player")) {
-      g.getPlayer().putPlayerInCavern(where);
+      game.getPlayer().putPlayerInCavern(where);
       return true;
     }
     else if (what.equals("wumpus")) {
-      g.getWumpus().putWumpusInCavern(where);
+      game.getWumpus().putWumpusInCavern(where);
       return true;
     }
     else if (what.equals("arrow")) {
-      g.gameCaverns.putArrowInCavern(where);
+      game.gameCaverns.putArrowInCavern(where);
       return true;
     }
     else if (what.equals("pit")) {
-      g.getGameCaverns().putPitInCavern(where);
+      game.getGameCaverns().putPitInCavern(where);
       return true;
     }
     else if (what.equals("bats")) {
-      g.getGameCaverns().putBatsInCavern(where);
+      game.getGameCaverns().putBatsInCavern(where);
       return true;
     }
     return false;
@@ -48,7 +48,7 @@ public class GameDriver {
   public boolean cavernHas(int cavern, String what) {
     if (what.equals("player")) {
       //Also used in Game start
-      return g.getPlayer().getPlayerCavern() == cavern;
+      return game.getPlayer().getPlayerCavern() == cavern;
     }
     return false;
   }
@@ -58,30 +58,30 @@ public class GameDriver {
   }
 
   public void clearMap() {
-    g.getGameCaverns().clearMap();
+    game.getGameCaverns().clearMap();
   }
 
   public void freezeWumpus(boolean freeze) {
-    g.getWumpus().freeze();
+    game.getWumpus().freeze();
   }
 
   public void setQuiverTo(int arrows) {
-    g.getPlayer().setQuiver(arrows);
+    game.getPlayer().setQuiver(arrows);
   }
 
   public int arrowsInCavern(int cavern) {
-    return g.gameCaverns.arrowsInCavern(cavern);
+    return game.gameCaverns.arrowsInCavern(cavern);
   }
 
   public int arrowsInQuiver() {
-    return g.getPlayer().getQuiver();
+    return game.getPlayer().getQuiver();
   }
 
   public boolean gameTerminated() {
-    return g.gameTerminated();
+    return game.gameTerminated();
   }
 
   public void newGame() {
-    g.reset();
+    game.reset();
   }
 }
