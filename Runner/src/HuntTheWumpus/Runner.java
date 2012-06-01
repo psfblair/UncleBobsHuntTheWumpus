@@ -1,8 +1,8 @@
 package HuntTheWumpus;
 
 import HuntTheWumpus.Command.EnglishCommandInterpreter;
+import HuntTheWumpus.Command.TextCommandInterpreter;
 import HuntTheWumpus.Core.Constants.Direction;
-import HuntTheWumpus.Command.CommandInterpreter;
 import HuntTheWumpus.Core.Input.GameController;
 import HuntTheWumpus.Core.Output.Output;
 import HuntTheWumpus.Core.Scenarios.Initialize;
@@ -18,7 +18,7 @@ public class Runner {
   public static void main(String[] args) throws Exception {
     Output output = createOutputHandler();
     GameController controller = new GameController(output);
-    CommandInterpreter commandInterpreter = createCommandInterpreter(controller);
+    TextCommandInterpreter commandInterpreter = createCommandInterpreter(controller);
 
     Initialize.InitializationParameters initializationParameters = createInitializationParameters();
     controller.execute(initializationParameters);

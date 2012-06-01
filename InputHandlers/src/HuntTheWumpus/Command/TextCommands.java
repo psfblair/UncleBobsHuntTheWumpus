@@ -1,6 +1,6 @@
 package HuntTheWumpus.Command;
 
-enum Commands {
+enum TextCommands {
   VERBOSE_REST,
   REST,
   VERBOSE_SHOOT,

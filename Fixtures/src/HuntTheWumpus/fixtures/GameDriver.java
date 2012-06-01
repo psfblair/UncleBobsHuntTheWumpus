@@ -1,7 +1,7 @@
 package HuntTheWumpus.fixtures;
 
-import HuntTheWumpus.Command.CommandInterpreter;
 import HuntTheWumpus.Command.EnglishCommandInterpreter;
+import HuntTheWumpus.Command.TextCommandInterpreter;
 import HuntTheWumpus.Core.Game;
 import HuntTheWumpus.Core.Input.GameController;
 import HuntTheWumpus.Presentation.MockConsole;
@@ -10,7 +10,7 @@ import HuntTheWumpus.Presentation.TextPresenter;
 public class GameDriver {
   private MockConsole mc;
   public static Game game;
-  public static CommandInterpreter commandInterpreter;
+  public static TextCommandInterpreter commandInterpreter;
 
   public GameDriver() {
     mc = new MockConsole();

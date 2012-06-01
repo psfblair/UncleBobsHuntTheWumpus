@@ -6,18 +6,18 @@ public class EnglishCommandInterpreter extends TextCommandInterpreter {
 
   public EnglishCommandInterpreter(GameController controller) {
     super(controller);
-    commandTranslations.put(Commands.SHOOT, "s");
-    commandTranslations.put(Commands.VERBOSE_REST, "rest");
-    commandTranslations.put(Commands.REST, "r");
-    commandTranslations.put(Commands.VERBOSE_SHOOT, "shoot");
-    commandTranslations.put(Commands.VERBOSE_GO, "go");
-    commandTranslations.put(Commands.VERBOSE_EAST, "east");
-    commandTranslations.put(Commands.EAST, "e");
-    commandTranslations.put(Commands.VERBOSE_WEST, "west");
-    commandTranslations.put(Commands.WEST, "w");
-    commandTranslations.put(Commands.VERBOSE_NORTH, "north");
-    commandTranslations.put(Commands.NORTH, "n");
-    commandTranslations.put(Commands.VERBOSE_SOUTH, "south");
-    commandTranslations.put(Commands.SOUTH, "s");
+    commandTranslations.put(TextCommands.SHOOT, "s");
+    commandTranslations.put(TextCommands.VERBOSE_REST, "rest");
+    commandTranslations.put(TextCommands.REST, "r");
+    commandTranslations.put(TextCommands.VERBOSE_SHOOT, "shoot");
+    commandTranslations.put(TextCommands.VERBOSE_GO, "go");
+    commandTranslations.put(TextCommands.VERBOSE_EAST, "east");
+    commandTranslations.put(TextCommands.EAST, "e");
+    commandTranslations.put(TextCommands.VERBOSE_WEST, "west");
+    commandTranslations.put(TextCommands.WEST, "w");
+    commandTranslations.put(TextCommands.VERBOSE_NORTH, "north");
+    commandTranslations.put(TextCommands.NORTH, "n");
+    commandTranslations.put(TextCommands.VERBOSE_SOUTH, "south");
+    commandTranslations.put(TextCommands.SOUTH, "s");
   }
 }

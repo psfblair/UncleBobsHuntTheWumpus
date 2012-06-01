@@ -8,7 +8,7 @@ import HuntTheWumpus.Core.Input.RequestModel;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class TextCommandInterpreter implements CommandInterpreter {
+public abstract class TextCommandInterpreter {
 
   private GameController controller;
 
@@ -21,7 +21,7 @@ public abstract class TextCommandInterpreter implements CommandInterpreter {
     controller.execute(requestModel);
   }
 
-  protected Map<Commands, String> commandTranslations = new HashMap();
+  protected Map<TextCommands, String> commandTranslations = new HashMap();
 
   public RequestModel getRequestModel(String commandString) {
     RequestModel requestModel = new RequestModel();
@@ -105,18 +105,18 @@ public abstract class TextCommandInterpreter implements CommandInterpreter {
     else return null;
   }
 
-  public String verboseRest() { return commandTranslations.get(Commands.VERBOSE_REST); }
-  public String rest() { return commandTranslations.get(Commands.REST); }
-  public String verboseShoot(){ return commandTranslations.get(Commands.VERBOSE_SHOOT); }
-  public String shoot(){ return commandTranslations.get(Commands.SHOOT); }
+  public String verboseRest() { return commandTranslations.get(TextCommands.VERBOSE_REST); }
+  public String rest() { return commandTranslations.get(TextCommands.REST); }
+  public String verboseShoot(){ return commandTranslations.get(TextCommands.VERBOSE_SHOOT); }
+  public String shoot(){ return commandTranslations.get(TextCommands.SHOOT); }
   public char shootChar() { return shoot().toCharArray()[0]; }
-  public String verboseGo(){ return commandTranslations.get(Commands.VERBOSE_GO); }
-  public String verboseEast(){ return commandTranslations.get(Commands.VERBOSE_EAST); }
-  public String east(){ return commandTranslations.get(Commands.EAST); }
-  public String verboseWest(){ return commandTranslations.get(Commands.VERBOSE_WEST); }
-  public String west(){ return commandTranslations.get(Commands.WEST); }
-  public String verboseNorth(){ return commandTranslations.get(Commands.VERBOSE_NORTH); }
-  public String north(){ return commandTranslations.get(Commands.NORTH); }
-  public String verboseSouth(){ return commandTranslations.get(Commands.VERBOSE_SOUTH); }
-  public String south(){ return commandTranslations.get(Commands.SOUTH); }
+  public String verboseGo(){ return commandTranslations.get(TextCommands.VERBOSE_GO); }
+  public String verboseEast(){ return commandTranslations.get(TextCommands.VERBOSE_EAST); }
+  public String east(){ return commandTranslations.get(TextCommands.EAST); }
+  public String verboseWest(){ return commandTranslations.get(TextCommands.VERBOSE_WEST); }
+  public String west(){ return commandTranslations.get(TextCommands.WEST); }
+  public String verboseNorth(){ return commandTranslations.get(TextCommands.VERBOSE_NORTH); }
+  public String north(){ return commandTranslations.get(TextCommands.NORTH); }
+  public String verboseSouth(){ return commandTranslations.get(TextCommands.VERBOSE_SOUTH); }
+  public String south(){ return commandTranslations.get(TextCommands.SOUTH); }
 }
