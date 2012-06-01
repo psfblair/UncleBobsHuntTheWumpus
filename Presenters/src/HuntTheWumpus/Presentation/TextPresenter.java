@@ -2,36 +2,15 @@ package HuntTheWumpus.Presentation;
 
 import HuntTheWumpus.Core.Constants.Direction;
 import HuntTheWumpus.Core.Constants.GameOverReason;
-import HuntTheWumpus.Core.Output.Output;
 import HuntTheWumpus.Core.Output.ResponseModel;
 
 import java.util.Set;
 
-public class TextPresenter implements Output {
+public class TextPresenter extends Presenter {
   private TextDisplay console;
 
   public TextPresenter(TextDisplay console) {
     this.console = console;
-  }
-
-  public void outputResponse(ResponseModel responseModel) {
-    printShotArrow(responseModel);
-    printCannotMove(responseModel);
-
-    if (responseModel.isGameTerminated()) {
-      printCauseOfTermination(responseModel);
-      console.print("Game over.");
-      return;
-    }
-
-    printUnknownCommand(responseModel);
-    printTransportMessage(responseModel);
-    printArrowsFound(responseModel);
-    printQuiverStatus(responseModel);
-    printWumpusOdor(responseModel);
-    printPitSounds(responseModel);
-    printBatSounds(responseModel);
-    printAvailableDirections(responseModel);
   }
 
   public void printUnknownCommand(ResponseModel responseModel) {
@@ -40,6 +19,7 @@ public class TextPresenter implements Output {
       console.print("I don't know how to " + command + ".");
     }
   }
+
   public void printShotArrow(ResponseModel responseModel) {
     if (responseModel.arrowWasShot()) {
       console.print("The arrow flies away in silence.");
@@ -55,28 +35,28 @@ public class TextPresenter implements Output {
     }
   }
 
-  private void printTransportMessage(ResponseModel responseModel) {
+  protected void printTransportMessage(ResponseModel responseModel) {
     if (responseModel.isTransportedByBats())
       console.print("A swarm of angry bats has carried you off.");
   }
 
-  private void printBatSounds(ResponseModel responseModel) {
+  protected void printBatSounds(ResponseModel responseModel) {
     if (responseModel.canHearBats())
       console.print("You hear chirping.");
   }
 
-  private void printPitSounds(ResponseModel responseModel) {
+  protected void printPitSounds(ResponseModel responseModel) {
     if (responseModel.canHearPit())
       console.print("You hear wind.");
   }
 
-  private void printWumpusOdor(ResponseModel responseModel) {
+  protected void printWumpusOdor(ResponseModel responseModel) {
     if (responseModel.canSmellWumpus()) {
       console.print("You smell the Wumpus.");
     }
   }
 
-  private void printQuiverStatus(ResponseModel responseModel) {
+  protected void printQuiverStatus(ResponseModel responseModel) {
     int quiver = responseModel.getQuiver();
     if (quiver == 0)
       console.print("You have no arrows.");
@@ -86,12 +66,12 @@ public class TextPresenter implements Output {
       console.print("You have " + quiver + " arrows.");
   }
 
-  private void printArrowsFound(ResponseModel responseModel) {
+  protected void printArrowsFound(ResponseModel responseModel) {
     if (responseModel.getQuiver() > responseModel.getArrowsInQuiverBeforeTurn())
       console.print("You found an arrow.");
   }
 
-  private void printCauseOfTermination(ResponseModel responseModel) {
+  protected void printCauseOfTermination(ResponseModel responseModel) {
     if (responseModel.getGameTerminationReason() == GameOverReason.KILLED_BY_ARROW_BOUNCE)
       console.print("The arrow bounced off the wall and killed you.");
     else if (responseModel.getGameTerminationReason() == GameOverReason.FELL_IN_PIT)
@@ -102,6 +82,10 @@ public class TextPresenter implements Output {
       console.print("The ravenous snarling Wumpus gobbles you down.");
     else if (responseModel.getGameTerminationReason() == GameOverReason.HIT_BY_OWN_ARROW)
       console.print("You were hit by your own arrow.");
+  }
+
+  protected void printGameOver() {
+    console.print("Game over.");
   }
 
   public void printAvailableDirections(ResponseModel responseModel) {
