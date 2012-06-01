@@ -1,5 +1,5 @@
 package HuntTheWumpus.Presentation;
 
-public interface Console {
+public interface TextDisplay {
   public void print(String message);
 }
