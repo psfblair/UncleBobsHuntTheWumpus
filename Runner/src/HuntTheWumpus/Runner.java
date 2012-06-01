@@ -1,15 +1,17 @@
 package HuntTheWumpus;
 
+import HuntTheWumpus.Command.ConsoleInputHandler;
 import HuntTheWumpus.Command.EnglishCommandInterpreter;
+import HuntTheWumpus.Command.TextCommandInterpreter;
+import HuntTheWumpus.Command.TextInputHandler;
 import HuntTheWumpus.Core.Constants.Direction;
 import HuntTheWumpus.Core.Input.GameController;
 import HuntTheWumpus.Core.Output.Output;
 import HuntTheWumpus.Core.Scenarios.Initialize;
+import HuntTheWumpus.Presentation.Console;
 import HuntTheWumpus.Presentation.TextDisplay;
 import HuntTheWumpus.Presentation.TextPresenter;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,28 +19,28 @@ public class Runner {
   public static void main(String[] args) throws Exception {
     Output output = createOutputHandler();
     GameController controller = new GameController(output);
-    EnglishCommandInterpreter commandInterpreter = createCommandInterpreter(controller);
+    TextCommandInterpreter commandInterpreter = createCommandInterpreter(controller);
 
     Initialize.InitializationParameters initializationParameters = createInitializationParameters();
     controller.execute(initializationParameters);
 
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    TextInputHandler br = createInputHandler();
     while (! controller.isGameTerminated()) {
       String command = br.readLine();
       commandInterpreter.execute(command);
     }
   }
 
-  private static EnglishCommandInterpreter createCommandInterpreter(GameController controller) {
+  private static TextInputHandler createInputHandler() {
+    return new ConsoleInputHandler();
+  }
+
+  private static TextCommandInterpreter createCommandInterpreter(GameController controller) {
     return new EnglishCommandInterpreter(controller);
   }
 
   private static TextPresenter createOutputHandler() {
-    TextDisplay console = new TextDisplay() {
-      public void print(String message) {
-        System.out.println(message);
-      }
-    };
+    TextDisplay console = new Console();
     return new TextPresenter(console);
   }
 
@@ -96,4 +98,5 @@ public class Runner {
     initializationParameters.setBats(bats);
     return initializationParameters;
   }
+
 }
