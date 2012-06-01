@@ -21,7 +21,7 @@ public class MakeMap {
   }
 
   public void setDirection(String direction) {
-    EnglishCommandInterpreter interpreter = new EnglishCommandInterpreter();
+    EnglishCommandInterpreter interpreter = new EnglishCommandInterpreter(null);
     this.direction = interpreter.directionFromName(direction.toLowerCase());;
   }
 }

@@ -1,53 +1,52 @@
 package HuntTheWumpus.Command;
 
 import HuntTheWumpus.Core.Constants.Direction;
-import HuntTheWumpus.Core.Game;
-import HuntTheWumpus.Core.Input.CommandInterpreter;
-import HuntTheWumpus.Core.Output.Output;
-import HuntTheWumpus.Core.Scenarios.*;
+import HuntTheWumpus.Core.Constants.Scenarios;
+import HuntTheWumpus.Core.Input.GameController;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public abstract class TextCommandInterpreter implements CommandInterpreter {
-  enum Commands {
-    VERBOSE_REST,
-    REST,
-    VERBOSE_SHOOT,
-    SHOOT,
-    VERBOSE_GO,
-    VERBOSE_EAST,
-    EAST,
-    VERBOSE_WEST,
-    WEST,
-    VERBOSE_NORTH,
-    NORTH,
-    VERBOSE_SOUTH,
-    SOUTH
+
+  private GameController controller;
+
+  protected TextCommandInterpreter(GameController controller) {
+    this.controller = controller;
   }
-  
+
+  public void execute(String commandString) {
+    RequestModel requestModel = getRequestModel(commandString);
+    controller.execute(requestModel);
+  }
+
   protected Map<Commands, String> commandTranslations = new HashMap();
 
-  public Scenario getCommand(String commandString, Game game, Output presenter) {
-    Scenario command = new UnknownCommand(game, presenter, commandString);
+  public RequestModel getRequestModel(String commandString) {
+    RequestModel requestModel = new RequestModel();
     String[] tokens = tokenizeInput(commandString);
 
-    if (isRestCommand(tokens))
-      command = new Rest(game, presenter);
-    else if (isShootCommand(tokens)) {
-      command = createShootCommand(command, tokens[1], game, presenter);
+    if (isRestCommand(tokens)) {
+      requestModel.setScenario(Scenarios.REST);
+    } else if (isShootCommand(tokens)) {
+      createShootRequest(tokens[1], requestModel);
     }
     else if (isSingleWordShootCommand(tokens)) {
-      command = createShootCommand(command, tokens[0].substring(1), game, presenter);
+      createShootRequest(tokens[0].substring(1), requestModel);
     }
     else if (isGoCommand(tokens)) {
-      command = createGoCommand(command, tokens[1], game, presenter);
+      createMoveRequest(tokens[1], requestModel);
     }
     else if (isImplicitGoCommand(tokens)) {
-      command = createGoCommand(command, tokens[0], game, presenter);
+      createMoveRequest(tokens[0], requestModel);
+    } else {
+      requestModel.setScenario(Scenarios.UNKNOWN);
     }
 
-    return command;
+    if (requestModel.getScenario().equals(Scenarios.UNKNOWN)) {
+      requestModel.setUnknownCommand(commandString);
+    }
+    return requestModel;
   }
 
   private String[] tokenizeInput(String command) {
@@ -67,11 +66,15 @@ public abstract class TextCommandInterpreter implements CommandInterpreter {
     return tokens[0].charAt(0) == shootChar() && directionFromName(tokens[0].substring(1)) != null;
   }
 
-  private Scenario createShootCommand(Scenario command, String token, Game game, Output presenter) {
+  private void createShootRequest(String token, RequestModel requestModel) {
     Direction direction = directionFromName(token);
-    if (direction != null)
-      command = new ShootArrow(game, presenter, direction);
-    return command;
+    if (direction != null) {
+      requestModel.setScenario(Scenarios.SHOOT);
+      requestModel.setDirection(direction);
+    } else {
+      requestModel.setScenario(Scenarios.UNKNOWN);
+    }
+    return;
   }
 
   private boolean isGoCommand(String[] tokens) {
@@ -82,11 +85,15 @@ public abstract class TextCommandInterpreter implements CommandInterpreter {
     return tokens.length == 1 && directionFromName(tokens[0]) != null;
   }
 
-  private Scenario createGoCommand(Scenario command, String token, Game game, Output presenter) {
+  private void createMoveRequest(String token, RequestModel requestModel) {
     Direction direction = directionFromName(token);
-    if (direction != null)
-      command = new MovePlayer(game, presenter,direction);
-    return command;
+    if (direction != null) {
+      requestModel.setScenario(Scenarios.MOVE);
+      requestModel.setDirection(direction);
+    } else {
+      requestModel.setScenario(Scenarios.UNKNOWN);
+    }
+    return;
   }
 
   public Direction directionFromName(String name) {

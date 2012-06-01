@@ -1,9 +1,9 @@
 package HuntTheWumpus;
 
-import HuntTheWumpus.Core.Input.CommandInterpreter;
 import HuntTheWumpus.Command.EnglishCommandInterpreter;
-import HuntTheWumpus.Core.Input.GameController;
 import HuntTheWumpus.Core.Constants.Direction;
+import HuntTheWumpus.Command.CommandInterpreter;
+import HuntTheWumpus.Core.Input.GameController;
 import HuntTheWumpus.Core.Output.Output;
 import HuntTheWumpus.Core.Scenarios.Initialize;
 import HuntTheWumpus.Presentation.TextDisplay;
@@ -16,9 +16,9 @@ import java.util.Set;
 
 public class Runner {
   public static void main(String[] args) throws Exception {
-    CommandInterpreter commandInterpreter = createCommandInterpreter();
     Output output = createOutputHandler();
-    GameController controller = new GameController(commandInterpreter, output);
+    GameController controller = new GameController(output);
+    CommandInterpreter commandInterpreter = createCommandInterpreter(controller);
 
     Initialize.InitializationParameters initializationParameters = createInitializationParameters();
     controller.execute(initializationParameters);
@@ -26,12 +26,12 @@ public class Runner {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     while (! controller.isGameTerminated()) {
       String command = br.readLine();
-      controller.execute(command);
+      commandInterpreter.execute(command);
     }
   }
 
-  private static EnglishCommandInterpreter createCommandInterpreter() {
-    return new EnglishCommandInterpreter();
+  private static EnglishCommandInterpreter createCommandInterpreter(GameController controller) {
+    return new EnglishCommandInterpreter(controller);
   }
 
   private static TextPresenter createOutputHandler() {

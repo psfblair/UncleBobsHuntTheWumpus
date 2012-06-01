@@ -1,8 +1,11 @@
 package HuntTheWumpus.Command;
 
+import HuntTheWumpus.Core.Input.GameController;
+
 public class EnglishCommandInterpreter extends TextCommandInterpreter {
 
-  public EnglishCommandInterpreter() {
+  public EnglishCommandInterpreter(GameController controller) {
+    super(controller);
     commandTranslations.put(Commands.SHOOT, "s");
     commandTranslations.put(Commands.VERBOSE_REST, "rest");
     commandTranslations.put(Commands.REST, "r");
