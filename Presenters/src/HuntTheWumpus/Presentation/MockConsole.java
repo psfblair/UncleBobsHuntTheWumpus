@@ -1,10 +1,9 @@
-package HuntTheWumpus.fixtures;
+package HuntTheWumpus.Presentation;
 
-import HuntTheWumpus.Presentation.Console;
+import java.util.ArrayList;
+import java.util.List;
 
-import java.util.*;
-
-public class MockConsole implements Console {
+public class MockConsole implements TextDisplay {
   private List<String> messages = new ArrayList<String>();
   private boolean checked = false;
 

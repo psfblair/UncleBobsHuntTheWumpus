@@ -1,5 +1,7 @@
 package HuntTheWumpus.fixtures;
 
+import HuntTheWumpus.Presentation.MockConsole;
+import junit.framework.Assert;
 import junit.framework.TestCase;
 
 public class MockConsoleTest extends TestCase {
@@ -10,31 +12,31 @@ public class MockConsoleTest extends TestCase {
   }
 
   public void testCheckFailsOnNoMessage() throws Exception {
-    assertFalse(mc.check("message"));
+    Assert.assertFalse(mc.check("message"));
   }
 
 
   public void testCheckPassesWithOneMessage() {
     mc.print("message");
-    assertTrue(mc.check("message"));
+    Assert.assertTrue(mc.check("message"));
   }
 
   public void testCheckPassesWithThreeMessages() {
     mc.print("message one");
     mc.print("message two");
     mc.print("message three");
-    assertTrue(mc.check("message three"));
-    assertTrue(mc.check("message one"));
-    assertTrue(mc.check("message two"));
-    assertFalse(mc.check("message x"));
-    assertFalse(mc.check("message"));
+    Assert.assertTrue(mc.check("message three"));
+    Assert.assertTrue(mc.check("message one"));
+    Assert.assertTrue(mc.check("message two"));
+    Assert.assertFalse(mc.check("message x"));
+    Assert.assertFalse(mc.check("message"));
   }
 
   public void testListClearedBetweenCheckAndPrint() {
     mc.print("message one");
-    assertTrue(mc.check("message one"));
+    Assert.assertTrue(mc.check("message one"));
     mc.print("message two");
-    assertFalse(mc.check("message one"));
-    assertTrue(mc.check("message two"));
+    Assert.assertFalse(mc.check("message one"));
+    Assert.assertTrue(mc.check("message two"));
   }
 }

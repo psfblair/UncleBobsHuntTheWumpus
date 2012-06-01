@@ -20,7 +20,7 @@ public class GameCaverns {
     paths.clear();
   }
 
-  public void addPath(int start, int end, Direction direction) throws Exception {
+  public void addPath(int start, int end, Direction direction) {
     addSinglePath(start, end, direction);
     addSinglePath(end, start, oppositeDirection(direction));
   }
@@ -30,13 +30,15 @@ public class GameCaverns {
     paths.add(p);
   }
 
-  public Direction oppositeDirection(Direction direction) throws Exception {
-    if (direction.equals(Direction.EAST)) return Direction.WEST;
-    else if (direction.equals(Direction.WEST)) return Direction.EAST;
-    else if (direction.equals(Direction.NORTH)) return Direction.SOUTH;
-    else if (direction.equals(Direction.SOUTH)) return Direction.NORTH;
-    else
-      throw new Exception("No such direction: " + direction);
+  public Direction oppositeDirection(Direction direction) {
+    Direction oppositeDirection = Direction.NORTH;
+    switch (direction) {
+      case EAST: oppositeDirection = Direction.WEST; break;
+      case WEST: oppositeDirection = Direction.EAST; break;
+      case NORTH: oppositeDirection = Direction.SOUTH; break;
+      case SOUTH: oppositeDirection = Direction.NORTH; break;
+    }
+    return oppositeDirection;
   }
 
   public int getRandomPathStart() {

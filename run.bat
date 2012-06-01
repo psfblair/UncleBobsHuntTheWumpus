@@ -1,3 +1,3 @@
-java -cp classes HuntTheWumpus.Core.Runner
+java -cp classes HuntTheWumpus.Runner
 pause
 

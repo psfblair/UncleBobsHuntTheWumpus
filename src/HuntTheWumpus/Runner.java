@@ -1,8 +1,10 @@
 package HuntTheWumpus;
 
+import HuntTheWumpus.Command.CommandInterpreter;
 import HuntTheWumpus.Command.EnglishCommandInterpreter;
-import HuntTheWumpus.Command.GameController;
-import HuntTheWumpus.Command.InitializeCommand;import HuntTheWumpus.Core.Constants.Direction;
+import HuntTheWumpus.Core.GameController;
+import HuntTheWumpus.Core.Constants.Direction;
+import HuntTheWumpus.Core.Output.Output;
 import HuntTheWumpus.Core.Scenarios.Initialize;
 import HuntTheWumpus.Presentation.TextDisplay;
 import HuntTheWumpus.Presentation.TextPresenter;
@@ -14,14 +16,34 @@ import java.util.Set;
 
 public class Runner {
   public static void main(String[] args) throws Exception {
+    CommandInterpreter commandInterpreter = createCommandInterpreter();
+    Output output = createOutputHandler();
+    GameController controller = new GameController(commandInterpreter, output);
+
+    Initialize.InitializationParameters initializationParameters = createInitializationParameters();
+    controller.execute(initializationParameters);
+
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    while (! controller.isGameTerminated()) {
+      String command = br.readLine();
+      controller.execute(command);
+    }
+  }
+
+  private static EnglishCommandInterpreter createCommandInterpreter() {
+    return new EnglishCommandInterpreter();
+  }
+
+  private static TextPresenter createOutputHandler() {
     TextDisplay console = new TextDisplay() {
       public void print(String message) {
         System.out.println(message);
       }
     };
+    return new TextPresenter(console);
+  }
 
-    GameController controller = new GameController(new EnglishCommandInterpreter(), new TextPresenter(console));
-
+  private static Initialize.InitializationParameters createInitializationParameters() {
     Set<Initialize.PathInitializer> paths = new HashSet<Initialize.PathInitializer>();
     paths.add(Initialize.pathFor(1, 2, Direction.EAST));
     paths.add(Initialize.pathFor(2, 3, Direction.EAST));
@@ -73,13 +95,6 @@ public class Runner {
     Set<Integer> bats = new HashSet<Integer>();
     bats.add(8);
     initializationParameters.setBats(bats);
-
-    controller.execute(new InitializeCommand(initializationParameters));
-
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    while (! controller.isGameTerminated()) {
-      String command = br.readLine();
-      controller.execute(command);
-    }
+    return initializationParameters;
   }
 }

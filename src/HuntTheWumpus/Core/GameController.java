@@ -1,10 +1,9 @@
 package HuntTheWumpus.Core;
 
 import HuntTheWumpus.Command.CommandInterpreter;
-import HuntTheWumpus.Core.Game;
+import HuntTheWumpus.Core.Output.Output;
 import HuntTheWumpus.Core.Scenarios.Initialize;
 import HuntTheWumpus.Core.Scenarios.Scenario;
-import HuntTheWumpus.Core.Output.Output;
 
 public class GameController {
 

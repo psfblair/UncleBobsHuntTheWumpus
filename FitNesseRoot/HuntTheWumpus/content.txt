@@ -36,7 +36,9 @@ Each turn the player is given a description of where he is, and what directions 
 
 ----
 
-!path classes
+!path classes/production/Core
+!path classes/production/Presenters
+!path classes/test/Fixtures
 !path fitnesse.jar
 !define TEST_SYSTEM {slim}
 

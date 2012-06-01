@@ -1,8 +1,10 @@
 package HuntTheWumpus.fixtures;
 
 import HuntTheWumpus.Command.EnglishCommandInterpreter;
-import HuntTheWumpus.Command.GameController;
 import HuntTheWumpus.Core.Game;
+import HuntTheWumpus.Core.GameController;
+import HuntTheWumpus.Presentation.MockConsole;
+import HuntTheWumpus.Presentation.TextPresenter;
 
 public class GameDriver {
   public static GameController gameController;
@@ -10,7 +12,8 @@ public class GameDriver {
   public static Game game;
 
   public GameDriver() {
-    gameController = new GameController(mc = new MockConsole(), new EnglishCommandInterpreter());
+    mc = new MockConsole();
+    gameController = new GameController(new EnglishCommandInterpreter(), new TextPresenter(mc));
     game = gameController.getGame();
   }
 

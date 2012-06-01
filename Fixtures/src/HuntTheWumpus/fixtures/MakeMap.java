@@ -1,6 +1,5 @@
 package HuntTheWumpus.fixtures;
 
-
 import HuntTheWumpus.Command.EnglishCommandInterpreter;
 import HuntTheWumpus.Core.Constants.Direction;
 
@@ -10,7 +9,7 @@ public class MakeMap {
   private Direction direction;
 
   public void execute() throws Exception {
-    GameDriver.gameController.getGame().getGameCaverns().addPath(start, end, direction);
+    GameDriver.game.getGameCaverns().addPath(start, end, direction);
   }
 
   public void setStart(int start) {

@@ -38,7 +38,7 @@
     </target>
 
     <target name="HTW" depends="compile" description="runs HTW">
-        <java classpath="classes" classname="HuntTheWumpus.Core.Runner" failonerror="true"/>
+        <java classpath="classes" classname="HuntTheWumpus.Runner" failonerror="true"/>
     </target>
 
 	<target name="start_fitness" depends="unit_tests" description="starts fitness on port 8080">

@@ -8,9 +8,9 @@ import HuntTheWumpus.Core.Output.ResponseModel;
 import java.util.Set;
 
 public class TextPresenter implements Output {
-  private Console console;
+  private TextDisplay console;
 
-  public TextPresenter(Console console) {
+  public TextPresenter(TextDisplay console) {
     this.console = console;
   }
 

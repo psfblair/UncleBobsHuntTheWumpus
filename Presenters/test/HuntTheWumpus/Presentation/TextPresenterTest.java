@@ -2,7 +2,6 @@ package HuntTheWumpus.Presentation;
 
 import HuntTheWumpus.Core.Constants.Direction;
 import HuntTheWumpus.Core.Output.ResponseModel;
-import HuntTheWumpus.fixtures.MockConsole;
 import junit.framework.TestCase;
 
 import java.util.HashSet;
