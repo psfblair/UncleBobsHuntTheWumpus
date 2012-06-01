@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Core.iml" filepath="$PROJECT_DIR$/Core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EnglishLanguagePack/EnglishLanguagePack.iml" filepath="$PROJECT_DIR$/EnglishLanguagePack/EnglishLanguagePack.iml" />
       <module fileurl="file://$PROJECT_DIR$/Fixtures/Fixtures.iml" filepath="$PROJECT_DIR$/Fixtures/Fixtures.iml" />
       <module fileurl="file://$PROJECT_DIR$/InputHandlers/InputHandlers.iml" filepath="$PROJECT_DIR$/InputHandlers/InputHandlers.iml" />
       <module fileurl="file://$PROJECT_DIR$/Presenters/Presenters.iml" filepath="$PROJECT_DIR$/Presenters/Presenters.iml" />

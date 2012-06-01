@@ -1,6 +1,5 @@
 package HuntTheWumpus.Core.Input;
 
-import HuntTheWumpus.Command.RequestModel;
 import HuntTheWumpus.Core.Constants.Scenarios;
 import HuntTheWumpus.Core.Game;
 import HuntTheWumpus.Core.Output.Output;

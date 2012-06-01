@@ -38,6 +38,8 @@ Each turn the player is given a description of where he is, and what directions 
 
 !path ../classes/production/Core
 !path ../classes/production/Presenters
+!path ../classes/production/EnglishLanguagePack
+!path ../classes/production/InputHandlers
 !path ../classes/test/Fixtures
 !path ../lib/fitnesse.jar
 !define TEST_SYSTEM {slim}

@@ -3,6 +3,7 @@ package HuntTheWumpus.Command;
 import HuntTheWumpus.Core.Constants.Direction;
 import HuntTheWumpus.Core.Constants.Scenarios;
 import HuntTheWumpus.Core.Input.GameController;
+import HuntTheWumpus.Core.Input.RequestModel;
 
 import java.util.HashMap;
 import java.util.Map;
