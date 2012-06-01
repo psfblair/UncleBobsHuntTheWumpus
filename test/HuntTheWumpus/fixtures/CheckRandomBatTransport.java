@@ -1,6 +1,6 @@
 package HuntTheWumpus.fixtures;
 
-import HuntTheWumpus.Core.Direction;
+import HuntTheWumpus.Core.Constants.Direction;
 
 import static HuntTheWumpus.fixtures.GameDriver.g;
 

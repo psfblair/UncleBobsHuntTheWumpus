@@ -1,7 +1,7 @@
 package HuntTheWumpus.Presentation;
 
-import HuntTheWumpus.Core.Direction;
-import HuntTheWumpus.Core.GameOverReason;
+import HuntTheWumpus.Core.Constants.Direction;
+import HuntTheWumpus.Core.Constants.GameOverReason;
 import HuntTheWumpus.Core.Output.Output;
 import HuntTheWumpus.Core.Output.ResponseModel;
 

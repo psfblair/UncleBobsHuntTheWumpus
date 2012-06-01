@@ -1,6 +1,6 @@
 package HuntTheWumpus.Presentation;
 
-import HuntTheWumpus.Core.Direction;
+import HuntTheWumpus.Core.Constants.Direction;
 import HuntTheWumpus.Core.Output.ResponseModel;
 import HuntTheWumpus.fixtures.MockConsole;
 import junit.framework.TestCase;

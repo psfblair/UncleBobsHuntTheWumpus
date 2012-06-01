@@ -1,8 +1,9 @@
 package HuntTheWumpus.Core;
 
-import HuntTheWumpus.Core.Actors.GameCaverns;
 import HuntTheWumpus.Core.Actors.Player;
 import HuntTheWumpus.Core.Actors.Wumpus;
+import HuntTheWumpus.Core.Constants.Direction;
+import HuntTheWumpus.Core.Constants.GameOverReason;
 import HuntTheWumpus.fixtures.MockConsole;
 import junit.framework.TestCase;
 

@@ -1,6 +1,6 @@
 package HuntTheWumpus.Core.Actors;
 
-import HuntTheWumpus.Core.Direction;
+import HuntTheWumpus.Core.Constants.Direction;
 
 import java.util.ArrayList;
 import java.util.HashSet;

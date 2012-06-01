@@ -1,7 +1,7 @@
 package HuntTheWumpus.Core.Output;
 
-import HuntTheWumpus.Core.Direction;
-import HuntTheWumpus.Core.GameOverReason;
+import HuntTheWumpus.Core.Constants.Direction;
+import HuntTheWumpus.Core.Constants.GameOverReason;
 
 import java.util.Set;
 

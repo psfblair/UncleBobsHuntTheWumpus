@@ -1,6 +1,6 @@
 package HuntTheWumpus.Command;
 
-import HuntTheWumpus.Core.Direction;
+import HuntTheWumpus.Core.Constants.Direction;
 import HuntTheWumpus.Core.Game;
 import HuntTheWumpus.Core.Output.Output;
 import HuntTheWumpus.Core.Scenarios.*;

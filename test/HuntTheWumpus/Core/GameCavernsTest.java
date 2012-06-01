@@ -1,6 +1,7 @@
 package HuntTheWumpus.Core;
 
 import HuntTheWumpus.Core.Actors.GameCaverns;
+import HuntTheWumpus.Core.Constants.Direction;
 import junit.framework.TestCase;
 
 import java.util.HashSet;

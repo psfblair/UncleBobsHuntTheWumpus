@@ -2,7 +2,7 @@ package HuntTheWumpus.fixtures;
 
 
 import HuntTheWumpus.Command.EnglishCommandInterpreter;
-import HuntTheWumpus.Core.Direction;
+import HuntTheWumpus.Core.Constants.Direction;
 
 public class MakeMap {
   private int start;

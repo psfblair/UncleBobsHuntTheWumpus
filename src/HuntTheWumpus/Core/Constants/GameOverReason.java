@@ -1,4 +1,4 @@
-package HuntTheWumpus.Core;
+package HuntTheWumpus.Core.Constants;
 
 public enum GameOverReason {
   FELL_IN_PIT,
