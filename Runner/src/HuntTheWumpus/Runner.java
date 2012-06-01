@@ -1,8 +1,8 @@
 package HuntTheWumpus;
 
-import HuntTheWumpus.Command.CommandInterpreter;
+import HuntTheWumpus.Core.Input.CommandInterpreter;
 import HuntTheWumpus.Command.EnglishCommandInterpreter;
-import HuntTheWumpus.Core.GameController;
+import HuntTheWumpus.Core.Input.GameController;
 import HuntTheWumpus.Core.Constants.Direction;
 import HuntTheWumpus.Core.Output.Output;
 import HuntTheWumpus.Core.Scenarios.Initialize;

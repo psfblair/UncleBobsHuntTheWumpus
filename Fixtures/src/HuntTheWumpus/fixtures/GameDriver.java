@@ -2,7 +2,7 @@ package HuntTheWumpus.fixtures;
 
 import HuntTheWumpus.Command.EnglishCommandInterpreter;
 import HuntTheWumpus.Core.Game;
-import HuntTheWumpus.Core.GameController;
+import HuntTheWumpus.Core.Input.GameController;
 import HuntTheWumpus.Presentation.MockConsole;
 import HuntTheWumpus.Presentation.TextPresenter;
 

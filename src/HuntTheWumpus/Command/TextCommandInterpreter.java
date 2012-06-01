@@ -2,13 +2,14 @@ package HuntTheWumpus.Command;
 
 import HuntTheWumpus.Core.Constants.Direction;
 import HuntTheWumpus.Core.Game;
+import HuntTheWumpus.Core.Input.CommandInterpreter;
 import HuntTheWumpus.Core.Output.Output;
 import HuntTheWumpus.Core.Scenarios.*;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class CommandInterpreter {
+public abstract class TextCommandInterpreter implements CommandInterpreter {
   enum Commands {
     VERBOSE_REST,
     REST,

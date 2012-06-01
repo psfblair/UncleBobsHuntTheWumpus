@@ -1,6 +1,6 @@
 package HuntTheWumpus.Command;
 
-public class EnglishCommandInterpreter extends CommandInterpreter {
+public class EnglishCommandInterpreter extends TextCommandInterpreter {
 
   public EnglishCommandInterpreter() {
     commandTranslations.put(Commands.SHOOT, "s");

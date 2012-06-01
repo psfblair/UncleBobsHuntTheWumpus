@@ -16,18 +16,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="491d0f11-ba0b-4738-8f8e-2cbee03d1a20" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Runner/Runner.iml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/FitNesseRoot/HuntTheWumpus/3-20100915001740.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/run.sh" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/fitnesse.jar" afterPath="$PROJECT_DIR$/lib/fitnesse.jar" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/run" afterPath="$PROJECT_DIR$/Runner/run" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/run.bat" afterPath="$PROJECT_DIR$/Runner/run.bat" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HuntTheWumpus/Presentation/TextDisplay.java" afterPath="$PROJECT_DIR$/Presenters/src/HuntTheWumpus/Presentation/TextDisplay.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HuntTheWumpus/Presentation/TextPresenter.java" afterPath="$PROJECT_DIR$/Presenters/src/HuntTheWumpus/Presentation/TextPresenter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HuntTheWumpus/Runner.java" afterPath="$PROJECT_DIR$/Runner/src/HuntTheWumpus/Runner.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/InputHandlers/InputHandlers.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/HuntTheWumpus/Core/Input/CommandInterpreter.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HuntTheWumpus/Command/CommandInterpreter.java" afterPath="$PROJECT_DIR$/src/HuntTheWumpus/Command/TextCommandInterpreter.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/HuntTheWumpus/Core/GameController.java" afterPath="$PROJECT_DIR$/src/HuntTheWumpus/Core/Input/GameController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Fixtures/src/HuntTheWumpus/fixtures/GameDriver.java" afterPath="$PROJECT_DIR$/Fixtures/src/HuntTheWumpus/fixtures/GameDriver.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Runner/src/HuntTheWumpus/Runner.java" afterPath="$PROJECT_DIR$/Runner/src/HuntTheWumpus/Runner.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HuntTheWumpus/Command/EnglishCommandInterpreter.java" afterPath="$PROJECT_DIR$/src/HuntTheWumpus/Command/EnglishCommandInterpreter.java" />
     </list>
     <ignored path="HuntTheWumpus.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -115,13 +112,13 @@
       <file leaf-file-name="GameDriver.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Fixtures/src/HuntTheWumpus/fixtures/GameDriver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="18" selection-start="351" selection-end="351" vertical-scroll-proportion="0.0">
+            <state line="10" column="18" selection-start="357" selection-end="357" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CheckRandomBatTransport.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="CheckRandomBatTransport.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Fixtures/src/HuntTheWumpus/fixtures/CheckRandomBatTransport.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="30" selection-start="30" selection-end="30" vertical-scroll-proportion="0.0">
@@ -132,14 +129,23 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="TextCommandInterpreter.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/Command/TextCommandInterpreter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="30" selection-start="323" selection-end="323" vertical-scroll-proportion="0.084745765">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Runner.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Runner/src/HuntTheWumpus/Runner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="33" selection-start="340" selection-end="340" vertical-scroll-proportion="0.0">
+            <state line="8" column="33" selection-start="349" selection-end="349" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="e#1659#1687#0" expanded="true" />
-                <element signature="e#3979#3988#0" expanded="true" />
-                <element signature="e#4108#4117#0" expanded="true" />
+                <element signature="e#1668#1696#0" expanded="true" />
+                <element signature="e#3988#3997#0" expanded="true" />
+                <element signature="e#4117#4126#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -158,7 +164,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/HuntTheWumpus/Runner.java" />
         <option value="$PROJECT_DIR$/test/HuntTheWumpus/fixtures/GameDriver.java" />
         <option value="$PROJECT_DIR$/src/HuntTheWumpus/Command/GameController.java" />
         <option value="$PROJECT_DIR$/test/HuntTheWumpus/fixtures/MakeMap.java" />
@@ -174,6 +179,7 @@
         <option value="$PROJECT_DIR$/Fixtures/runFitnesse.bat" />
         <option value="$PROJECT_DIR$/Runner/run" />
         <option value="$PROJECT_DIR$/Runner/run.bat" />
+        <option value="$PROJECT_DIR$/src/HuntTheWumpus/Command/TextCommandInterpreter.java" />
       </list>
     </option>
   </component>
@@ -621,7 +627,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HuntTheWumpus" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -644,6 +654,14 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="HuntTheWumpus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Input" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -679,7 +697,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Runner" />
+              <option name="myItemId" value="InputHandlers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -693,29 +711,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Runner" />
+              <option name="myItemId" value="InputHandlers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HuntTheWumpus" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HTW" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HTW" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Fixtures" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -758,6 +758,7 @@
   </component>
   <component name="RecentsManager">
     <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="HuntTheWumpus.Command" />
       <recent name="HuntTheWumpus" />
     </key>
     <key name="MoveMembersDialog.RECENTS_KEY">
@@ -1021,7 +1022,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1403" height="854" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24484849" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1040,7 +1041,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.72242427" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3994253" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22952029" sideWeight="0.7225892" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22952029" sideWeight="0.7225892" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27741084" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Dataflow to this" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Clojure REPL" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1149,7 +1150,7 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/Core/GameController.java">
+    <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/Core/Input/GameController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="32" column="16" selection-start="951" selection-end="951" vertical-scroll-proportion="0.77956986">
           <folding />
@@ -1206,7 +1207,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Fixtures/src/HuntTheWumpus/fixtures/GameDriver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="18" selection-start="351" selection-end="351" vertical-scroll-proportion="0.0">
+        <state line="10" column="18" selection-start="357" selection-end="357" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1229,11 +1230,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Runner/src/HuntTheWumpus/Runner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="33" selection-start="340" selection-end="340" vertical-scroll-proportion="0.0">
+        <state line="8" column="33" selection-start="349" selection-end="349" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#1659#1687#0" expanded="true" />
-            <element signature="e#3979#3988#0" expanded="true" />
-            <element signature="e#4108#4117#0" expanded="true" />
+            <element signature="e#1668#1696#0" expanded="true" />
+            <element signature="e#3988#3997#0" expanded="true" />
+            <element signature="e#4117#4126#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1265,6 +1266,13 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HuntTheWumpus/Command/TextCommandInterpreter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="30" selection-start="323" selection-end="323" vertical-scroll-proportion="0.084745765">
+          <folding />
         </state>
       </provider>
     </entry>
