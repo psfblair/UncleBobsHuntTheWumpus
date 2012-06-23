@@ -52,7 +52,7 @@ public class GameTest extends TestCase {
   public void testSmellWumpus() throws Exception {
     caverns.addPath(1, 2, Direction.EAST);
     player.putPlayerInCavern(1);
-    wumpus.putWumpusInCavern(2);
+    wumpus.startInCavern(2);
     Assert.assertTrue(player.isInCavernNextToWumpus());
   }
 
@@ -60,7 +60,7 @@ public class GameTest extends TestCase {
     caverns.addPath(1, 2, Direction.EAST);
     caverns.addPath(2, 3, Direction.EAST);
     player.putPlayerInCavern(1);
-    wumpus.putWumpusInCavern(3);
+    wumpus.startInCavern(3);
     Assert.assertFalse(player.isInCavernNextToWumpus());
   }
 
@@ -135,7 +135,7 @@ public class GameTest extends TestCase {
   public void testKillWumpusAtDistance() throws Exception {
     caverns.addPath(1, 2, Direction.EAST);
     caverns.addPath(2, 3, Direction.EAST);
-    wumpus.putWumpusInCavern(3);
+    wumpus.startInCavern(3);
     player.putPlayerInCavern(1);
     player.setQuiver(1);
 
@@ -146,7 +146,7 @@ public class GameTest extends TestCase {
 
   public void testKillWumpusUpClose() throws Exception {
     caverns.addPath(1, 2, Direction.EAST);
-    wumpus.putWumpusInCavern(2);
+    wumpus.startInCavern(2);
     player.putPlayerInCavern(1);
     player.setQuiver(1);
 
@@ -158,7 +158,7 @@ public class GameTest extends TestCase {
   public void testRandomWumpusMovement() throws Exception {
     boolean moved = false;
     caverns.addPath(1, 2, Direction.EAST);
-    wumpus.putWumpusInCavern(1);
+    wumpus.startInCavern(1);
 
     UnknownCommand commandToTestWumpusMotion = new UnknownCommand(game, output, "foo");
     for (int i = 0; i < 100; i++) {

@@ -3,7 +3,7 @@ package HuntTheWumpus.Presentation;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MockConsole implements TextDisplay {
+public class MockConsoleDisplay implements TextDisplay {
   private List<String> messages = new ArrayList<String>();
   private boolean checked = false;
 

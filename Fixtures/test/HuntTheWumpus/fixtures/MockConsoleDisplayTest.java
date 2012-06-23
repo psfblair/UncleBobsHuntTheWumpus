@@ -1,14 +1,14 @@
 package HuntTheWumpus.fixtures;
 
-import HuntTheWumpus.Presentation.MockConsole;
+import HuntTheWumpus.Presentation.MockConsoleDisplay;
 import junit.framework.Assert;
 import junit.framework.TestCase;
 
-public class MockConsoleTest extends TestCase {
-  private MockConsole mc;
+public class MockConsoleDisplayTest extends TestCase {
+  private MockConsoleDisplay mc;
 
   protected void setUp() throws Exception {
-    mc = new MockConsole();
+    mc = new MockConsoleDisplay();
   }
 
   public void testCheckFailsOnNoMessage() throws Exception {

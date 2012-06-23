@@ -2,23 +2,22 @@ package HuntTheWumpus.Command;
 
 import HuntTheWumpus.Core.Constants.Direction;
 import HuntTheWumpus.Core.Constants.Scenarios;
-import HuntTheWumpus.Core.Input.GameController;
 import HuntTheWumpus.Core.Input.RequestModel;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class TextCommandInterpreter {
+public abstract class TextCommandInterpreter implements CommandInterpreter {
 
-  private GameController controller;
+  private TextInputHandler inputHandler;
 
-  protected TextCommandInterpreter(GameController controller) {
-    this.controller = controller;
+  protected TextCommandInterpreter(TextInputHandler inputHandler) {
+    this.inputHandler = inputHandler;
   }
 
-  public void execute(String commandString) {
-    RequestModel requestModel = getRequestModel(commandString);
-    controller.execute(requestModel);
+  public RequestModel getRequest() throws Exception {
+    String commandString = inputHandler.readLine();
+    return getRequestModel(commandString);
   }
 
   protected Map<TextCommands, String> commandTranslations = new HashMap();

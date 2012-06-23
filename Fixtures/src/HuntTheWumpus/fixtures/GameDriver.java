@@ -1,21 +1,25 @@
 package HuntTheWumpus.fixtures;
 
+import HuntTheWumpus.Command.CommandInterpreter;
+import HuntTheWumpus.Command.ConsoleInputHandlerStub;
 import HuntTheWumpus.Command.EnglishCommandInterpreter;
-import HuntTheWumpus.Command.TextCommandInterpreter;
 import HuntTheWumpus.Core.Game;
 import HuntTheWumpus.Core.Input.GameController;
-import HuntTheWumpus.Presentation.MockConsole;
+import HuntTheWumpus.Presentation.MockConsoleDisplay;
 import HuntTheWumpus.Presentation.TextPresenter;
 
 public class GameDriver {
-  private MockConsole mc;
+  public static MockConsoleDisplay display;
   public static Game game;
-  public static TextCommandInterpreter commandInterpreter;
+  public static CommandInterpreter commandInterpreter;
+  public static ConsoleInputHandlerStub inputHandler;
+  public static GameController gameController;
 
   public GameDriver() {
-    mc = new MockConsole();
-    GameController gameController = new GameController(new TextPresenter(mc));
-    commandInterpreter = new EnglishCommandInterpreter(gameController);
+    display = new MockConsoleDisplay();
+    gameController = new GameController(new TextPresenter(display));
+    inputHandler = new ConsoleInputHandlerStub();
+    commandInterpreter = new EnglishCommandInterpreter(inputHandler);
     game = gameController.getGame();
   }
 
@@ -28,7 +32,7 @@ public class GameDriver {
       return true;
     }
     else if (what.equals("wumpus")) {
-      game.getWumpus().putWumpusInCavern(where);
+      game.getWumpus().startInCavern(where);
       return true;
     }
     else if (what.equals("arrow")) {
@@ -45,8 +49,10 @@ public class GameDriver {
     }
     return false;
   }
-  public void enterCommand(String command) {
-    commandInterpreter.execute(command);
+
+  public void enterCommand(String command) throws Exception {
+    inputHandler.setLineToReturn(command);
+    gameController.execute(commandInterpreter.getRequest());
   }
 
   public boolean cavernHas(int cavern, String what) {
@@ -58,7 +64,7 @@ public class GameDriver {
   }
 
   public boolean messageWasPrinted(String message) {
-    return mc.check(message);
+    return display.check(message);
   }
 
   public void clearMap() {

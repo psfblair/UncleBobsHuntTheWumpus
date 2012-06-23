@@ -1,7 +1,5 @@
 package HuntTheWumpus.Command;
 
-import HuntTheWumpus.Core.Input.GameController;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 

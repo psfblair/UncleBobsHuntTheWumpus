@@ -27,7 +27,7 @@ public class Initialize extends Scenario {
     initializeBats();
     player.putPlayerInCavern(playerCavern);
     player.setQuiver(numberOfArrows);
-    wumpus.putWumpusInCavern(wumpusCavern);
+    wumpus.startInCavern(wumpusCavern);
     super.invoke();
   }
 

@@ -9,10 +9,10 @@ import java.util.Set;
 
 public class TextPresenterTest extends TestCase {
   private TextPresenter presenter;
-  private MockConsole mc;
+  private MockConsoleDisplay mc;
 
   protected void setUp() throws Exception {
-    mc = new MockConsole();
+    mc = new MockConsoleDisplay();
     presenter = new TextPresenter(mc);
   }
   public void testNoAvailableDirections(){

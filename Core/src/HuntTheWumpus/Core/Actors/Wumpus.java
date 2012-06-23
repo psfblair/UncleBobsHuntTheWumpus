@@ -19,7 +19,7 @@ public class Wumpus {
     return wumpusCavern;
   }
 
-  public void putWumpusInCavern(int where) {
+  public void startInCavern(int where) {
     wumpusCavern = where;
   }
 
