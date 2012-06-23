@@ -11,24 +11,28 @@ public class Player {
     this.wumpus = wumpus;
   }
 
-  public int getPlayerCavern() {
+  public int cavern() {
     return playerCavern;
   }
 
-  public void putPlayerInCavern(int cavern) {
+  public void startInCavern(int cavern) {
     playerCavern = cavern;
   }
 
-  public boolean isPlayerCavern(int nextCavern) {
+  public void moveTo(int destination) {
+    playerCavern = destination;
+  }
+
+  public boolean isMyCavern(int nextCavern) {
     return nextCavern == playerCavern;
   }
 
-  public void putPlayerInRandomCavern() {
+  public void moveToRandomCavern() {
     playerCavern = caverns.getRandomPathStart();
   }
 
   public boolean isInWumpusCavern() {
-    return wumpus.isWumpusCavern(playerCavern);
+    return wumpus.isMyCavern(playerCavern);
   }
 
   public boolean isInCavernNextToWumpus() {
@@ -51,7 +55,7 @@ public class Player {
     return caverns.isCavernNextToBats(playerCavern);
   }
 
-  public boolean playerIsInCavernWithArrow() {
+  public boolean isInCavernWithArrow() {
     return caverns.isInCavernWithArrow(playerCavern);
   }
 

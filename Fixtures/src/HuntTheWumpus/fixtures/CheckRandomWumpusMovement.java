@@ -10,7 +10,7 @@ public class CheckRandomWumpusMovement {
       GameDriver.game.getWumpus().startInCavern(wumpusCavern);
       GameDriver.inputHandler.setLineToReturn("R");
       GameDriver.gameController.execute(GameDriver.commandInterpreter.getRequest());
-      carvernCounts[GameDriver.game.getWumpus().getWumpusCavern()]++;
+      carvernCounts[GameDriver.game.getWumpus().cavern()]++;
     }
   }
 

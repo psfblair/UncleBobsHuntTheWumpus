@@ -16,11 +16,11 @@ public class CheckRandomBatTransport {
     GameDriver.game.getGameCaverns().putBatsInCavern(2);
 
     for (int i=0; i<1000; i++) {
-      GameDriver.game.getPlayer().putPlayerInCavern(1);
+      GameDriver.game.getPlayer().startInCavern(1);
       MovePlayer movePlayer = new MovePlayer(GameDriver.game, output, Direction.EAST);
       movePlayer.invoke();
       //Also used in Game start
-      counts[GameDriver.game.getPlayer().getPlayerCavern()]++;
+      counts[GameDriver.game.getPlayer().cavern()]++;
     }
   }
 

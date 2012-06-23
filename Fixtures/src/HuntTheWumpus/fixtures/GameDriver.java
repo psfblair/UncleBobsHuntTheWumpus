@@ -24,11 +24,11 @@ public class GameDriver {
   }
 
   public void putPlayerInCavern(int cavern) {
-    game.getPlayer().putPlayerInCavern(cavern);
+    game.getPlayer().startInCavern(cavern);
   }
   public boolean putInCavern(String what, int where) {
     if (what.equals("player")) {
-      game.getPlayer().putPlayerInCavern(where);
+      game.getPlayer().startInCavern(where);
       return true;
     }
     else if (what.equals("wumpus")) {
@@ -58,7 +58,7 @@ public class GameDriver {
   public boolean cavernHas(int cavern, String what) {
     if (what.equals("player")) {
       //Also used in Game start
-      return game.getPlayer().getPlayerCavern() == cavern;
+      return game.getPlayer().cavern() == cavern;
     }
     return false;
   }

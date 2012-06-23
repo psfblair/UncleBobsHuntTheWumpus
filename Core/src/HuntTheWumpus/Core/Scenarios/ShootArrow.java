@@ -32,7 +32,7 @@ public class ShootArrow extends Scenario {
       terminateGame(GameOverReason.KILLED_BY_ARROW_BOUNCE);
       return;
     }
-    int endCavern = shootAsFarAsPossible(direction, player.getPlayerCavern());
+    int endCavern = shootAsFarAsPossible(direction, player.cavern());
     if (!game.isGameTerminated()) {
       caverns.putArrowInCavern(endCavern);
       wumpusMoves();
@@ -40,7 +40,7 @@ public class ShootArrow extends Scenario {
   }
 
   private boolean arrowHitsWall() {
-    return caverns.thereIsAWallInDirectionFromCavern(direction, player.getPlayerCavern());
+    return caverns.thereIsAWallInDirectionFromCavern(direction, player.cavern());
   }
 
   private int shootAsFarAsPossible(Direction direction, int cavern) {
@@ -48,10 +48,10 @@ public class ShootArrow extends Scenario {
     if (nextCavern == 0)
       return cavern;
     else {
-      if (nextCavern == wumpus.getWumpusCavern()) {
+      if (nextCavern == wumpus.cavern()) {
         terminateGame(GameOverReason.WUMPUS_HIT_BY_ARROW);
         return nextCavern;
-      } else if (player.isPlayerCavern(nextCavern)) {
+      } else if (player.isMyCavern(nextCavern)) {
         terminateGame(GameOverReason.HIT_BY_OWN_ARROW);
         return nextCavern;
       }

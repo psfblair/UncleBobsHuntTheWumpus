@@ -17,9 +17,9 @@ public class MovePlayer extends Scenario {
 
   @Override
   public void invoke() {
-    int destination = caverns.adjacentTo(direction, player.getPlayerCavern());
+    int destination = caverns.adjacentTo(direction, player.cavern());
     if (destination != 0) {
-      player.putPlayerInCavern(destination);
+      player.moveTo(destination);
       checkIfWumpusEatsPlayer();
       checkIfPlayerFallsIntoPit();
       checkIfPlayerIsTransportedByBats();
@@ -52,7 +52,7 @@ public class MovePlayer extends Scenario {
   }
 
   private void pickUpArrow() {
-    if (player.playerIsInCavernWithArrow()) {
+    if (player.isInCavernWithArrow()) {
       player.pickUpArrow();
     }
   }

@@ -52,7 +52,7 @@ public abstract class Scenario {
     responseModel.setQuiver(player.getQuiver());
     responseModel.setBatTransport(batTransport);
 
-    Set availableDirections = caverns.getAvailableDirectionsFrom(player.getPlayerCavern());
+    Set availableDirections = caverns.getAvailableDirectionsFrom(player.cavern());
     responseModel.setAvailableDirections(availableDirections);
 
     responseModel.setCanSmellWumpus(player.isInCavernNextToWumpus());
@@ -72,7 +72,7 @@ public abstract class Scenario {
   }
 
   public void transportPlayer() {
-    player.putPlayerInRandomCavern();
+    player.moveToRandomCavern();
   }
 
   public void wumpusMoves() {

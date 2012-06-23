@@ -15,7 +15,7 @@ public class Wumpus {
     this.gameCaverns = gameCaverns;
   }
 
-  public int getWumpusCavern() {
+  public int cavern() {
     return wumpusCavern;
   }
 
@@ -23,16 +23,16 @@ public class Wumpus {
     wumpusCavern = where;
   }
 
-  boolean isWumpusCavern(int cavern) {
+  void moveTo(int selectedMove) {
+    wumpusCavern = selectedMove;
+  }
+
+  boolean isMyCavern(int cavern) {
     return cavern == wumpusCavern;
   }
 
   public boolean isAdjacentTo(int cavern) {
     return gameCaverns.areAdjacent(cavern, wumpusCavern);
-  }
-
-  void moveWumpusTo(int selectedMove) {
-    wumpusCavern = selectedMove;
   }
 
   public void freeze() {
@@ -52,7 +52,7 @@ public class Wumpus {
     int selection = (int) (Math.random() * moves.size());
     int selectedMove = moves.get(selection);
     if (selectedMove != 0) {
-      moveWumpusTo(selectedMove);
+      moveTo(selectedMove);
     }
   }
 
