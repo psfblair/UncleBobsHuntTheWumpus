@@ -3,10 +3,10 @@ package HuntTheWumpus.fixtures;
 import HuntTheWumpus.Command.CommandInterpreter;
 import HuntTheWumpus.Command.ConsoleInputHandlerStub;
 import HuntTheWumpus.Command.EnglishCommandInterpreter;
+import HuntTheWumpus.Command.EnglishTextPresenter;
 import HuntTheWumpus.Core.Game;
 import HuntTheWumpus.Core.Input.GameController;
 import HuntTheWumpus.Presentation.MockConsoleDisplay;
-import HuntTheWumpus.Presentation.TextPresenter;
 
 public class GameDriver {
   public static MockConsoleDisplay display;
@@ -17,7 +17,7 @@ public class GameDriver {
 
   public GameDriver() {
     display = new MockConsoleDisplay();
-    gameController = new GameController(new TextPresenter(display));
+    gameController = new GameController(new EnglishTextPresenter(display));
     inputHandler = new ConsoleInputHandlerStub();
     commandInterpreter = new EnglishCommandInterpreter(inputHandler);
     game = gameController.getGame();

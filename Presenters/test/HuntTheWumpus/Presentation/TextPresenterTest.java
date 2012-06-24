@@ -13,7 +13,7 @@ public class TextPresenterTest extends TestCase {
 
   protected void setUp() throws Exception {
     mc = new MockConsoleDisplay();
-    presenter = new TextPresenter(mc);
+    presenter = new EnglishTextPresenterForTesting(mc);
   }
   public void testNoAvailableDirections(){
     ResponseModel responseModel = new ResponseModel();

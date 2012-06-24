@@ -41,7 +41,7 @@ public class Runner {
 
   private static TextPresenter createOutputHandler() {
     TextDisplay console = new Console();
-    return new TextPresenter(console);
+    return new EnglishTextPresenter(console);
   }
 
   private static Initialize.InitializationParameters createInitializationParameters() {

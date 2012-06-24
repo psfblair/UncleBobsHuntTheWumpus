@@ -6,86 +6,116 @@ import HuntTheWumpus.Core.Output.ResponseModel;
 
 import java.util.Set;
 
-public class TextPresenter extends Presenter {
+public abstract class TextPresenter extends Presenter {
   private TextDisplay console;
 
   public TextPresenter(TextDisplay console) {
     this.console = console;
   }
 
+  protected abstract String unknownCommandResponse(String command);
+  protected abstract String arrowShotResponse();
+  protected abstract String noArrowsResponse();
+  protected abstract String cannotMoveResponse(Direction direction);
+  protected abstract String batTransportResponse();
+  protected abstract String batSoundsResponse();
+  protected abstract String pitSoundsResponse();
+  protected abstract String wumpusOdorResponse();
+  protected abstract String quiverStatusNoArrowsResponse();
+  protected abstract String quiverStatusOneArrowResponse();
+  protected abstract String quiverStatusCountResponse(int quiverCount);
+  protected abstract String foundArrowResponse();
+  protected abstract String killedByArrowBounceResponse();
+  protected abstract String fellInPitResponse();
+  protected abstract String killedWumpusResponse();
+  protected abstract String killedByWumpusResponse();
+  protected abstract String hitByOwnArrowResponse();
+  protected abstract String gameOverResponse();
+  protected abstract String northDirectionName();
+  protected abstract String southDirectionName();
+  protected abstract String eastDirectionName();
+  protected abstract String westDirectionName();
+  protected abstract String unknownDirectionName();
+
+  protected abstract String availableDirectionsResponse(StringBuffer available);
+  protected abstract String noExitsResponse();
+  protected abstract String and();
+  protected abstract String comma();
+
+
   public void printUnknownCommand(ResponseModel responseModel) {
     String command = responseModel.unknownCommand();
     if (command != null) {
-      console.print("I don't know how to " + command + ".");
-    }
-  }
-
-  public void printShotArrow(ResponseModel responseModel) {
-    if (responseModel.arrowWasShot()) {
-      console.print("The arrow flies away in silence.");
-    } else if (responseModel.triedShootingWithNoArrows()) {
-      console.print("You don't have any arrows.");
+      console.print(unknownCommandResponse(command));
     }
   }
 
   public void printCannotMove(ResponseModel responseModel) {
     if (responseModel.cannotMoveInRequestedDirection()) {
       Direction direction = responseModel.requestedDirection();
-      console.print("You can't go " + TextPresenter.directionName(direction) + " from here.");
+      console.print(cannotMoveResponse(direction));
+    }
+  }
+
+  public void printShotArrow(ResponseModel responseModel) {
+    if (responseModel.arrowWasShot()) {
+      console.print(arrowShotResponse());
+    } else if (responseModel.triedShootingWithNoArrows()) {
+      console.print(noArrowsResponse());
     }
   }
 
   protected void printTransportMessage(ResponseModel responseModel) {
     if (responseModel.isTransportedByBats())
-      console.print("A swarm of angry bats has carried you off.");
+      console.print(batTransportResponse());
   }
 
   protected void printBatSounds(ResponseModel responseModel) {
     if (responseModel.canHearBats())
-      console.print("You hear chirping.");
+      console.print(batSoundsResponse());
   }
 
   protected void printPitSounds(ResponseModel responseModel) {
     if (responseModel.canHearPit())
-      console.print("You hear wind.");
+      console.print(pitSoundsResponse());
   }
 
   protected void printWumpusOdor(ResponseModel responseModel) {
     if (responseModel.canSmellWumpus()) {
-      console.print("You smell the Wumpus.");
+      console.print(wumpusOdorResponse());
     }
   }
 
   protected void printQuiverStatus(ResponseModel responseModel) {
     int quiver = responseModel.getQuiver();
     if (quiver == 0)
-      console.print("You have no arrows.");
+      console.print(quiverStatusNoArrowsResponse());
     else if (quiver == 1)
-      console.print("You have 1 arrow.");
+      console.print(quiverStatusOneArrowResponse());
     else
-      console.print("You have " + quiver + " arrows.");
+      console.print(quiverStatusCountResponse(quiver));
   }
 
   protected void printArrowsFound(ResponseModel responseModel) {
     if (responseModel.getQuiver() > responseModel.getArrowsInQuiverBeforeTurn())
-      console.print("You found an arrow.");
+      console.print(foundArrowResponse());
   }
 
   protected void printCauseOfTermination(ResponseModel responseModel) {
     if (responseModel.getGameTerminationReason() == GameOverReason.KILLED_BY_ARROW_BOUNCE)
-      console.print("The arrow bounced off the wall and killed you.");
+      console.print(killedByArrowBounceResponse());
     else if (responseModel.getGameTerminationReason() == GameOverReason.FELL_IN_PIT)
-      console.print("You fall into a pit and die.");
+      console.print(fellInPitResponse());
     else if (responseModel.getGameTerminationReason() == GameOverReason.WUMPUS_HIT_BY_ARROW)
-      console.print("You have killed the Wumpus.");
+      console.print(killedWumpusResponse());
     else if (responseModel.getGameTerminationReason() == GameOverReason.EATEN_BY_WUMPUS)
-      console.print("The ravenous snarling Wumpus gobbles you down.");
+      console.print(killedByWumpusResponse());
     else if (responseModel.getGameTerminationReason() == GameOverReason.HIT_BY_OWN_ARROW)
-      console.print("You were hit by your own arrow.");
+      console.print(hitByOwnArrowResponse());
   }
 
   protected void printGameOver() {
-    console.print("Game over.");
+    console.print(gameOverResponse());
   }
 
   public void printAvailableDirections(ResponseModel responseModel) {
@@ -93,20 +123,20 @@ public class TextPresenter extends Presenter {
     console.print(availableDirections.toString());
   }
 
-  static String directionName(Direction direction) {
+  protected String directionName(Direction direction) {
     if (direction.equals(Direction.NORTH))
-      return "north";
+      return northDirectionName();
     else if (direction.equals(Direction.SOUTH))
-      return "south";
+      return southDirectionName();
     else if (direction.equals(Direction.EAST))
-      return "east";
+      return eastDirectionName();
     else if (direction.equals(Direction.WEST))
-      return "west";
+      return westDirectionName();
     else
-      return "tilt";
+      return unknownDirectionName();
   }
 
-  static class AvailableDirectionsMessages {
+  class AvailableDirectionsMessages {
     private Set<String> directions;
     private int nDirections;
     private StringBuffer available;
@@ -118,7 +148,7 @@ public class TextPresenter extends Presenter {
 
     public String toString() {
       if (directions.isEmpty())
-        return "There are no exits!";
+        return noExitsResponse();
       else {
         return assembleDirections();
       }
@@ -133,21 +163,20 @@ public class TextPresenter extends Presenter {
           placeDirection(dir);
         }
       }
-      return "You can go " + available.toString() + " from here.";
+      return availableDirectionsResponse(available);
     }
 
     private void placeDirection(Direction dir) {
       directionsPlaced++;
       if (isLastOfMany())
-        available.append(" and ");
+        available.append(and());
       else if (notFirst())
-        available.append(", ");
+        available.append(comma());
       available.append(directionName(dir));
     }
 
     private boolean notFirst() {return directionsPlaced > 1;}
 
     private boolean isLastOfMany() {return nDirections > 1 && directionsPlaced == nDirections;}
-
   }
 }
