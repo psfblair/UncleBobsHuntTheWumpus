@@ -18,8 +18,7 @@ public class Runner {
     Output output = createOutputHandler();
     GameController controller = new GameController(output);
 
-    TextInputHandler br = createInputHandler();
-    CommandInterpreter commandInterpreter = createCommandInterpreter(br);
+    CommandInterpreter commandInterpreter = createCommandInterpreter();
 
     Initialize.InitializationParameters initializationParameters = createInitializationParameters();
     controller.execute(initializationParameters);
@@ -31,12 +30,8 @@ public class Runner {
     }
   }
 
-  private static TextInputHandler createInputHandler() {
-    return new ConsoleInputHandler();
-  }
-
-  private static CommandInterpreter createCommandInterpreter(TextInputHandler controller) {
-    return new EnglishCommandInterpreter(controller);
+  private static CommandInterpreter createCommandInterpreter() {
+    return new EnglishCommandInterpreter();
   }
 
   private static TextPresenter createOutputHandler() {
