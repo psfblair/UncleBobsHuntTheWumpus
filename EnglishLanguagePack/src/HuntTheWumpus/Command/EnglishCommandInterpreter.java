@@ -2,8 +2,12 @@ package HuntTheWumpus.Command;
 
 public class EnglishCommandInterpreter extends TextCommandInterpreter {
 
-  public EnglishCommandInterpreter(TextInputHandler inputHandler) {
-    super(inputHandler);
+  static {
+    TextCommandInterpreter.textInputHandlerClassName = ConsoleInputHandler.class.getCanonicalName();
+  }
+
+  public EnglishCommandInterpreter() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+    super();
     commandTranslations.put(TextCommands.SHOOT, "s");
     commandTranslations.put(TextCommands.VERBOSE_REST, "rest");
     commandTranslations.put(TextCommands.REST, "r");

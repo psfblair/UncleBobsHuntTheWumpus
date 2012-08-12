@@ -1,6 +1,4 @@
-package HuntTheWumpus.Command;
-
-import HuntTheWumpus.Core.Input.RequestModel;
+package HuntTheWumpus.Core.Input;
 
 public interface CommandInterpreter {
   RequestModel getRequest() throws Exception;

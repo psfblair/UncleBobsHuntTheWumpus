@@ -7,10 +7,19 @@ import HuntTheWumpus.Core.Output.ResponseModel;
 import java.util.Set;
 
 public abstract class TextPresenter extends Presenter {
-  private TextDisplay console;
 
-  public TextPresenter(TextDisplay console) {
-    this.console = console;
+  // Poor man's registration. Receive instance class name created by static initializers on the implementation class.
+  public static String textDisplayClassName;
+
+  TextDisplay textDisplay;
+
+  public TextPresenter() throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+    textDisplay = (TextDisplay) Class.forName(textDisplayClassName).newInstance();
+  }
+
+  public void setDisplayForTesting(TextDisplay display)
+  {
+    textDisplay = display;
   }
 
   protected abstract String unknownCommandResponse(String command);
@@ -46,81 +55,81 @@ public abstract class TextPresenter extends Presenter {
   public void printUnknownCommand(ResponseModel responseModel) {
     String command = responseModel.unknownCommand();
     if (command != null) {
-      console.print(unknownCommandResponse(command));
+      textDisplay.print(unknownCommandResponse(command));
     }
   }
 
   public void printCannotMove(ResponseModel responseModel) {
     if (responseModel.cannotMoveInRequestedDirection()) {
       Direction direction = responseModel.requestedDirection();
-      console.print(cannotMoveResponse(direction));
+      this.textDisplay.print(cannotMoveResponse(direction));
     }
   }
 
   public void printShotArrow(ResponseModel responseModel) {
     if (responseModel.arrowWasShot()) {
-      console.print(arrowShotResponse());
+      this.textDisplay.print(arrowShotResponse());
     } else if (responseModel.triedShootingWithNoArrows()) {
-      console.print(noArrowsResponse());
+      this.textDisplay.print(noArrowsResponse());
     }
   }
 
   protected void printTransportMessage(ResponseModel responseModel) {
     if (responseModel.isTransportedByBats())
-      console.print(batTransportResponse());
+      this.textDisplay.print(batTransportResponse());
   }
 
   protected void printBatSounds(ResponseModel responseModel) {
     if (responseModel.canHearBats())
-      console.print(batSoundsResponse());
+      this.textDisplay.print(batSoundsResponse());
   }
 
   protected void printPitSounds(ResponseModel responseModel) {
     if (responseModel.canHearPit())
-      console.print(pitSoundsResponse());
+      this.textDisplay.print(pitSoundsResponse());
   }
 
   protected void printWumpusOdor(ResponseModel responseModel) {
     if (responseModel.canSmellWumpus()) {
-      console.print(wumpusOdorResponse());
+      this.textDisplay.print(wumpusOdorResponse());
     }
   }
 
   protected void printQuiverStatus(ResponseModel responseModel) {
     int quiver = responseModel.getQuiver();
     if (quiver == 0)
-      console.print(quiverStatusNoArrowsResponse());
+      this.textDisplay.print(quiverStatusNoArrowsResponse());
     else if (quiver == 1)
-      console.print(quiverStatusOneArrowResponse());
+      this.textDisplay.print(quiverStatusOneArrowResponse());
     else
-      console.print(quiverStatusCountResponse(quiver));
+      this.textDisplay.print(quiverStatusCountResponse(quiver));
   }
 
   protected void printArrowsFound(ResponseModel responseModel) {
     if (responseModel.getQuiver() > responseModel.getArrowsInQuiverBeforeTurn())
-      console.print(foundArrowResponse());
+      this.textDisplay.print(foundArrowResponse());
   }
 
   protected void printCauseOfTermination(ResponseModel responseModel) {
     if (responseModel.getGameTerminationReason() == GameOverReason.KILLED_BY_ARROW_BOUNCE)
-      console.print(killedByArrowBounceResponse());
+      this.textDisplay.print(killedByArrowBounceResponse());
     else if (responseModel.getGameTerminationReason() == GameOverReason.FELL_IN_PIT)
-      console.print(fellInPitResponse());
+      this.textDisplay.print(fellInPitResponse());
     else if (responseModel.getGameTerminationReason() == GameOverReason.WUMPUS_HIT_BY_ARROW)
-      console.print(killedWumpusResponse());
+      this.textDisplay.print(killedWumpusResponse());
     else if (responseModel.getGameTerminationReason() == GameOverReason.EATEN_BY_WUMPUS)
-      console.print(killedByWumpusResponse());
+      this.textDisplay.print(killedByWumpusResponse());
     else if (responseModel.getGameTerminationReason() == GameOverReason.HIT_BY_OWN_ARROW)
-      console.print(hitByOwnArrowResponse());
+      this.textDisplay.print(hitByOwnArrowResponse());
   }
 
   protected void printGameOver() {
-    console.print(gameOverResponse());
+    this.textDisplay.print(gameOverResponse());
   }
 
   public void printAvailableDirections(ResponseModel responseModel) {
     AvailableDirectionsMessages availableDirections = new AvailableDirectionsMessages(responseModel.getAvailableDirections());
-    console.print(availableDirections.toString());
+    this.textDisplay.print(availableDirections.toString());
   }
 
   protected String directionName(Direction direction) {

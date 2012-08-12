@@ -13,7 +13,9 @@ public class TextPresenterTest extends TestCase {
 
   protected void setUp() throws Exception {
     mc = new MockConsoleDisplay();
-    presenter = new EnglishTextPresenterForTesting(mc);
+    TextPresenter.textDisplayClassName = "HuntTheWumpus.Presentation.MockConsoleDisplay";
+    presenter = new EnglishTextPresenterForTesting();
+    presenter.setDisplayForTesting(mc);
   }
   public void testNoAvailableDirections(){
     ResponseModel responseModel = new ResponseModel();

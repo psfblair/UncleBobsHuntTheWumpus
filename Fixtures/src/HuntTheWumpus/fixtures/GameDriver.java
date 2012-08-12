@@ -1,12 +1,14 @@
 package HuntTheWumpus.fixtures;
 
-import HuntTheWumpus.Command.CommandInterpreter;
 import HuntTheWumpus.Command.ConsoleInputHandlerStub;
 import HuntTheWumpus.Command.EnglishCommandInterpreter;
-import HuntTheWumpus.Command.EnglishTextPresenter;
+import HuntTheWumpus.Presentation.EnglishTextPresenter;
+import HuntTheWumpus.Command.TextCommandInterpreter;
 import HuntTheWumpus.Core.Game;
+import HuntTheWumpus.Core.Input.CommandInterpreter;
 import HuntTheWumpus.Core.Input.GameController;
 import HuntTheWumpus.Presentation.MockConsoleDisplay;
+import HuntTheWumpus.Presentation.TextPresenter;
 
 public class GameDriver {
   public static MockConsoleDisplay display;
@@ -15,11 +17,17 @@ public class GameDriver {
   public static ConsoleInputHandlerStub inputHandler;
   public static GameController gameController;
 
-  public GameDriver() {
+  public GameDriver() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
     display = new MockConsoleDisplay();
-    gameController = new GameController(new EnglishTextPresenter(display));
+    TextPresenter.textDisplayClassName = "HuntTheWumpus.Presentation.MockConsoleDisplay";
+    EnglishTextPresenter textPresenter = new EnglishTextPresenter();
+    textPresenter.setDisplayForTesting(display);
+    gameController = new GameController(textPresenter);
+
     inputHandler = new ConsoleInputHandlerStub();
-    commandInterpreter = new EnglishCommandInterpreter(inputHandler);
+    TextCommandInterpreter.textInputHandlerClassName = "HuntTheWumpus.Command.ConsoleInputHandlerStub";
+    commandInterpreter = new EnglishCommandInterpreter();
+    ((TextCommandInterpreter)commandInterpreter).setInputHandlerForTesting(inputHandler);
     game = gameController.getGame();
   }
 

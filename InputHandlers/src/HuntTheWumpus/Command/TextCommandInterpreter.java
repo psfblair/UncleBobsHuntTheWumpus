@@ -2,6 +2,7 @@ package HuntTheWumpus.Command;
 
 import HuntTheWumpus.Core.Constants.Direction;
 import HuntTheWumpus.Core.Constants.Scenarios;
+import HuntTheWumpus.Core.Input.CommandInterpreter;
 import HuntTheWumpus.Core.Input.RequestModel;
 
 import java.util.HashMap;
@@ -9,14 +10,21 @@ import java.util.Map;
 
 public abstract class TextCommandInterpreter implements CommandInterpreter {
 
-  private TextInputHandler inputHandler;
+  // Poor man's registration. Receive instance class name created by static initializers on the implementation class.
+  public static String textInputHandlerClassName;
 
-  protected TextCommandInterpreter(TextInputHandler inputHandler) {
-    this.inputHandler = inputHandler;
+  private TextInputHandler textInputHandler;
+
+  public TextCommandInterpreter() throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+    textInputHandler = (TextInputHandler) Class.forName(textInputHandlerClassName).newInstance();
+  }
+
+  public void setInputHandlerForTesting(TextInputHandler inputHandler){
+    textInputHandler = inputHandler;
   }
 
   public RequestModel getRequest() throws Exception {
-    String commandString = inputHandler.readLine();
+    String commandString = textInputHandler.readLine();
     return getRequestModel(commandString);
   }
 

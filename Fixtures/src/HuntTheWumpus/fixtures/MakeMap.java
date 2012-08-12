@@ -20,8 +20,8 @@ public class MakeMap {
     this.end = end;
   }
 
-  public void setDirection(String direction) {
-    EnglishCommandInterpreter interpreter = new EnglishCommandInterpreter(null);
+  public void setDirection(String direction) throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+    EnglishCommandInterpreter interpreter = new EnglishCommandInterpreter();
     this.direction = interpreter.directionFromName(direction.toLowerCase());;
   }
 }

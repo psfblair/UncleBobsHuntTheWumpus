@@ -1,42 +1,33 @@
-package HuntTheWumpus;
+package HuntTheWumpus.Core;
 
-import HuntTheWumpus.Command.*;
 import HuntTheWumpus.Core.Constants.Direction;
+import HuntTheWumpus.Core.Input.CommandInterpreter;
 import HuntTheWumpus.Core.Input.GameController;
 import HuntTheWumpus.Core.Input.RequestModel;
 import HuntTheWumpus.Core.Output.Output;
 import HuntTheWumpus.Core.Scenarios.Initialize;
-import HuntTheWumpus.Presentation.Console;
-import HuntTheWumpus.Presentation.TextDisplay;
-import HuntTheWumpus.Presentation.TextPresenter;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public class Runner {
-  public static void main(String[] args) throws Exception {
-    Output output = createOutputHandler();
-    GameController controller = new GameController(output);
 
-    CommandInterpreter commandInterpreter = createCommandInterpreter();
+  public static void main(String[] args) throws Exception {
+    String commandInterpreterClassName = args[0];
+    String outputHandlerClassName = args[1];
+
+    Output outputHandler = (Output) Class.forName(outputHandlerClassName).newInstance();
+    GameController controller = new GameController(outputHandler);
 
     Initialize.InitializationParameters initializationParameters = createInitializationParameters();
     controller.execute(initializationParameters);
 
+    CommandInterpreter commandInterpreter = (CommandInterpreter) Class.forName(commandInterpreterClassName).newInstance();
 
-    while (! controller.isGameTerminated()) {
+    while (!controller.isGameTerminated()) {
       RequestModel request = commandInterpreter.getRequest();
       controller.execute(request);
     }
-  }
-
-  private static CommandInterpreter createCommandInterpreter() {
-    return new EnglishCommandInterpreter();
-  }
-
-  private static TextPresenter createOutputHandler() {
-    TextDisplay console = new Console();
-    return new EnglishTextPresenter(console);
   }
 
   private static Initialize.InitializationParameters createInitializationParameters() {
@@ -93,5 +84,4 @@ public class Runner {
     initializationParameters.setBats(bats);
     return initializationParameters;
   }
-
 }

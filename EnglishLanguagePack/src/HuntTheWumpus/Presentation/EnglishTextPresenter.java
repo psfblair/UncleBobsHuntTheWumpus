@@ -1,12 +1,15 @@
-package HuntTheWumpus.Command;
+package HuntTheWumpus.Presentation;
 
 import HuntTheWumpus.Core.Constants.Direction;
-import HuntTheWumpus.Presentation.TextDisplay;
-import HuntTheWumpus.Presentation.TextPresenter;
 
 public class EnglishTextPresenter extends TextPresenter {
-  public EnglishTextPresenter(TextDisplay console) {
-    super(console);
+
+  static {
+    TextPresenter.textDisplayClassName = Console.class.getCanonicalName();
+  }
+
+  public EnglishTextPresenter() throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+    super();
   }
 
   protected String unknownCommandResponse(String command) {

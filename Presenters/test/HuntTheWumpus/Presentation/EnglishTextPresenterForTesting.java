@@ -3,8 +3,9 @@ package HuntTheWumpus.Presentation;
 import HuntTheWumpus.Core.Constants.Direction;
 
 public class EnglishTextPresenterForTesting extends TextPresenter {
-  public EnglishTextPresenterForTesting(TextDisplay console) {
-    super(console);
+
+  public EnglishTextPresenterForTesting() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+    super();
   }
 
   protected String unknownCommandResponse(String command) {

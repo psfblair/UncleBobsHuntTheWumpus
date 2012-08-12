@@ -1,0 +1,3 @@
+java -cp ..\classes\production\Core;..\classes\production\Presenters;..\classes\production\InputHandlers..\classes\production\EnglishLanguagePack HuntTheWumpus.Core.Runner HuntTheWumpus.Command.EnglishCommandInterpreter HuntTheWumpus.Presentation.EnglishTextPresenter
+pause
+

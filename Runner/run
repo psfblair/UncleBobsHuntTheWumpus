@@ -1,2 +1,0 @@
-java -cp ../classes/production/Core:../classes/production/Presenters:../classes/production/Runner:../classes/production/EnglishLanguagePack:../classes/production/InputHandlers HuntTheWumpus.Runner
-
